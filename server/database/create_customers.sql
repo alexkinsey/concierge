@@ -3,18 +3,18 @@
 DROP TABLE IF EXISTS customers;
 
 CREATE TABLE customers(
-    customer_id INTEGER PRIMARY KEY,
-    first_name TEXT NOT NULL,
-    last_name TEXT NOT NULL,
-    date_of_birth DATE NOT NULL,
-    address1 TEXT NOT NULL,
-    address2 TEXT,
-    address3 TEXT,
-    city TEXT NOT NULL,
+    customerId INTEGER PRIMARY KEY,
+    firstName VARCHAR(25) NOT NULL,
+    lastName VARCHAR(25) NOT NULL,
+    dateOfBirth DATE NOT NULL,
+    address1 VARCHAR(80) NOT NULL,
+    address2 VARCHAR(80),
+    address3 VARCHAR(80),
+    city VARCHAR(50) NOT NULL,
     postcode VARCHAR(7) NOT NULL,
-    email TEXT NOT NULL,
-    phone_number VARCHAR(15) NOT NULL,
-    national_insurance_number CHAR(9)
+    email VARCHAR(50) NOT NULL,
+    phoneNumber VARCHAR(15) NOT NULL,
+    nationalInsuranceNo CHAR(9)
 );
 
 .system echo "Customers table created"

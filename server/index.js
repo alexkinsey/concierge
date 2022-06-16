@@ -16,6 +16,9 @@ app.listen(PORT, () => {
   console.log(`Server listening on ${PORT}`);
 });
 
+// ----------------------------------------------------------------------------
+// -------------------------CUSTOMER ENDPOINTS---------------------------------
+// ----------------------------------------------------------------------------
 // GET all customers
 app.get('/api/customers', (req, res) => {
   const sql = 'SELECT * FROM customers';
@@ -34,7 +37,7 @@ app.get('/api/customers', (req, res) => {
 
 // GET customer by id
 app.get('/api/customers/:id', (req, res) => {
-  const sql = 'SELECT * FROM customers WHERE customer_id = ?';
+  const sql = 'SELECT * FROM customers WHERE customerId = ?';
   const params = [req.params.id];
   db.get(sql, params, (err, row) => {
     if (err) {
@@ -50,44 +53,44 @@ app.get('/api/customers/:id', (req, res) => {
 
 // CREATE customer
 app.post('/api/customers/', (req, res) => {
-  const data = {
-    first_name: req.body.first_name,
-    last_name: req.body.last_name,
-    date_of_birth: req.body.date_of_birth,
-    address1: req.body.address1,
-    address2: req.body?.address2,
-    address3: req.body?.address3,
-    city: req.body.city,
-    postcode: req.body.postcode,
-    email: req.body.email,
-    phone_number: req.body.phone_number,
-    national_insurance_number: req.body?.national_insurance_number
-  };
+  // const data = {
+  //   first_name: req.body.first_name,
+  //   last_name: req.body.last_name,
+  //   date_of_birth: req.body.date_of_birth,
+  //   address1: req.body.address1,
+  //   address2: req.body?.address2,
+  //   address3: req.body?.address3,
+  //   city: req.body.city,
+  //   postcode: req.body.postcode,
+  //   email: req.body.email,
+  //   phone_number: req.body.phone_number,
+  //   national_insurance_number: req.body?.national_insurance_number
+  // };
   const sql = `INSERT INTO customers 
-                (first_name, 
-                  last_name, 
-                  date_of_birth, 
+                (firstName, 
+                  lastName, 
+                  dateOfBirth, 
                   address1, 
                   address2, 
                   address3, 
                   city, 
                   postcode, 
                   email, 
-                  phone_number, 
-                  national_insurance_number) 
+                  phoneNumber, 
+                  nationalInsuranceNo) 
               VALUES (?,?,?,?,?,?,?,?,?,?,?)`;
   const params = [
-    data.first_name,
-    data.last_name,
-    data.date_of_birth,
-    data.address1,
-    data.address2,
-    data.address3,
-    data.city,
-    data.postcode,
-    data.email,
-    data.phone_number,
-    data.national_insurance_number
+    req.body.firstName,
+    req.body.lastName,
+    req.body.dateOfBirth,
+    req.body.address1,
+    req.body.address2,
+    req.body.address3,
+    req.body.city,
+    req.body.postcode,
+    req.body.email,
+    req.body.phoneNumber,
+    req.body.nationalInsuranceNo
   ];
 
   db.run(sql, params, function (err, result) {
@@ -97,7 +100,7 @@ app.post('/api/customers/', (req, res) => {
     }
     res.json({
       message: 'success',
-      data: data,
+      data: params,
       id: this.lastID
     });
   });
@@ -105,45 +108,45 @@ app.post('/api/customers/', (req, res) => {
 
 // UPDATE customer
 app.put('/api/customers/:id', (req, res) => {
-  console.log(req.body);
+  // console.log(req.body);
   const data = {
-    first_name: req.body.first_name,
-    last_name: req.body.last_name,
-    date_of_birth: req.body.date_of_birth,
+    firstName: req.body.firstName,
+    lastName: req.body.lastName,
+    dateOfBirth: req.body.dateOfBirth,
     address1: req.body.address1,
     address2: req.body?.address2,
     address3: req.body?.address3,
     city: req.body.city,
     postcode: req.body.postcode,
     email: req.body.email,
-    phone_number: req.body.phone_number,
-    national_insurance_number: req.body?.national_insurance_number
+    phoneNumber: req.body.phoneNumber,
+    nationalInsuranceNo: req.body?.nationalInsuranceNo
   };
   const sql = `UPDATE customers SET
-                first_name = COALESCE(?,first_name),
-                last_name = COALESCE(?,last_name),
-                date_of_birth = COALESCE(?,date_of_birth),
+                firstName = COALESCE(?,firstName),
+                lastName = COALESCE(?,lastName),
+                dateOfBirth = COALESCE(?,dateOfBirth),
                 address1 = COALESCE(?,address1),
                 address2 = COALESCE(?,address2),
                 address3 = COALESCE(?,address3),
                 city = COALESCE(?,city),
                 postcode = COALESCE(?,postcode),
                 email = COALESCE(?,email),
-                phone_number = COALESCE(?,phone_number),
-                national_insurance_number = COALESCE(?,national_insurance_number)
-              WHERE customer_id = ?`;
+                phoneNumber = COALESCE(?,phoneNumber),
+                nationalInsuranceNo = COALESCE(?,nationalInsuranceNo)
+              WHERE customerId = ?`;
   const params = [
-    data.first_name,
-    data.last_name,
-    data.date_of_birth,
-    data.address1,
-    data.address2,
-    data.address3,
-    data.city,
-    data.postcode,
-    data.email,
-    data.phone_number,
-    data.national_insurance_number,
+    req.body.firstName,
+    req.body.lastName,
+    req.body.dateOfBirth,
+    req.body.address1,
+    req.body.address2,
+    req.body.address3,
+    req.body.city,
+    req.body.postcode,
+    req.body.email,
+    req.body.phoneNumber,
+    req.body.nationalInsuranceNo,
     req.params.id
   ];
 
@@ -163,7 +166,7 @@ app.put('/api/customers/:id', (req, res) => {
 // DELETE customer
 app.delete('/api/customers/:id', (req, res) => {
   db.run(
-    'DELETE FROM customers WHERE customer_id = ?',
+    'DELETE FROM customers WHERE customerId = ?',
     req.params.id,
     function (err, result) {
       if (err) {
@@ -178,32 +181,32 @@ app.delete('/api/customers/:id', (req, res) => {
 // SEARCH for customer
 app.post('/api/customers/search', (req, res) => {
   const data = {
-    first_name: req.body.firstName,
-    last_name: req.body.lastName,
-    date_of_birth: req.body.dateOfBirth,
+    firstName: req.body.firstName,
+    lastName: req.body.lastName,
+    dateOfBirth: req.body.dateOfBirth,
     postcode: req.body.postcode
   };
 
-  var sql = 'SELECT * FROM customers WHERE last_name = ? AND date_of_birth = ?';
-  var params = [data.last_name, data.date_of_birth];
+  var sql = 'SELECT * FROM customers WHERE lastName = ? AND dateOfBirth = ?';
+  var params = [data.lastName, data.dateOfBirth];
 
-  if (data.first_name && data.postcode) {
+  if (data.firstName && data.postcode) {
     sql =
-      'SELECT * FROM customers WHERE first_name = ? AND last_name = ? AND date_of_birth = ? AND postcode = ?';
+      'SELECT * FROM customers WHERE firstName = ? AND lastName = ? AND dateOfBirth = ? AND postcode = ?';
     params = [
-      data.first_name,
-      data.last_name,
-      data.date_of_birth,
+      data.firstName,
+      data.lastName,
+      data.dateOfBirth,
       data.postcode
     ];
-  } else if (data.first_name) {
+  } else if (data.firstName) {
     sql =
-      'SELECT * FROM customers WHERE first_name = ? AND last_name = ? AND date_of_birth = ?';
-    params = [data.first_name, data.last_name, data.date_of_birth];
+      'SELECT * FROM customers WHERE firstName = ? AND lastName = ? AND dateOfBirth = ?';
+    params = [data.firstName, data.lastName, data.dateOfBirth];
   } else if (data.postcode) {
     sql =
-      'SELECT * FROM customers WHERE last_name = ? AND date_of_birth = ? AND postcode = ?';
-    params = [data.last_name, data.date_of_birth, data.postcode];
+      'SELECT * FROM customers WHERE lastName = ? AND dateOfBirth = ? AND postcode = ?';
+    params = [data.lastName, data.dateOfBirth, data.postcode];
   }
 
   console.log(data);
