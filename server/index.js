@@ -50,21 +50,6 @@ app.get('/api/customers/:id', (req, res) => {
 
 // CREATE customer
 app.post('/api/customers/', (req, res) => {
-  const errors = [];
-  if (!req.body.first_name) {
-    errors.push('No first name specified');
-  }
-  if (!req.body.last_name) {
-    errors.push('No first name specified');
-  }
-  if (!req.body.date_of_birth) {
-    errors.push('No data of birth specified');
-  }
-  if (errors.length) {
-    res.status(400).json({ error: errors.join(',') });
-    return;
-  }
-
   const data = {
     first_name: req.body.first_name,
     last_name: req.body.last_name,
@@ -190,25 +175,26 @@ app.delete('/api/customers/:id', (req, res) => {
   );
 });
 
+// SEARCH for customer
 app.post('/api/customers/search', (req, res) => {
   const data = {
-    first_name: req.body.first_name,
-    last_name: req.body.last_name,
-    date_of_birth: req.body.date_of_birth,
+    first_name: req.body.firstName,
+    last_name: req.body.lastName,
+    date_of_birth: req.body.dateOfBirth,
     postcode: req.body.postcode
   };
 
   var sql = 'SELECT * FROM customers WHERE last_name = ? AND date_of_birth = ?';
   var params = [data.last_name, data.date_of_birth];
 
-  if (data.first_name & data.postcode) {
+  if (data.first_name && data.postcode) {
     sql =
       'SELECT * FROM customers WHERE first_name = ? AND last_name = ? AND date_of_birth = ? AND postcode = ?';
     params = [
       data.first_name,
       data.last_name,
       data.date_of_birth,
-      data.last_name
+      data.postcode
     ];
   } else if (data.first_name) {
     sql =
@@ -219,6 +205,10 @@ app.post('/api/customers/search', (req, res) => {
       'SELECT * FROM customers WHERE last_name = ? AND date_of_birth = ? AND postcode = ?';
     params = [data.last_name, data.date_of_birth, data.postcode];
   }
+
+  console.log(data);
+  console.log(sql);
+  console.log(params);
 
   db.all(sql, params, (err, row) => {
     if (err) {
