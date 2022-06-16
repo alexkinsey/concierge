@@ -13,7 +13,7 @@ CREATE TABLE customers(
     city TEXT NOT NULL,
     postcode VARCHAR(7) NOT NULL,
     email TEXT NOT NULL,
-    phone_number VARCHAR(50) NOT NULL,
+    phone_number VARCHAR(15) NOT NULL,
     national_insurance_number CHAR(9)
 );
 

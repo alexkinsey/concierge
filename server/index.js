@@ -17,7 +17,7 @@ app.listen(PORT, () => {
 });
 
 // GET all customers
-app.get('/api/customers', (req, res, next) => {
+app.get('/api/customers', (req, res) => {
   const sql = 'SELECT * FROM customers';
   const params = [];
   db.all(sql, params, (err, rows) => {
@@ -33,7 +33,7 @@ app.get('/api/customers', (req, res, next) => {
 });
 
 // GET customer by id
-app.get('/api/customers/:id', (req, res, next) => {
+app.get('/api/customers/:id', (req, res) => {
   const sql = 'SELECT * FROM customers WHERE customer_id = ?';
   const params = [req.params.id];
   db.get(sql, params, (err, row) => {
@@ -49,7 +49,7 @@ app.get('/api/customers/:id', (req, res, next) => {
 });
 
 // CREATE customer
-app.post('/api/customers/', (req, res, next) => {
+app.post('/api/customers/', (req, res) => {
   const errors = [];
   if (!req.body.first_name) {
     errors.push('No first name specified');
@@ -119,7 +119,7 @@ app.post('/api/customers/', (req, res, next) => {
 });
 
 // UPDATE customer
-app.put('/api/customers/:id', (req, res, next) => {
+app.put('/api/customers/:id', (req, res) => {
   console.log(req.body);
   const data = {
     first_name: req.body.first_name,
@@ -176,7 +176,7 @@ app.put('/api/customers/:id', (req, res, next) => {
 });
 
 // DELETE customer
-app.delete('/api/customers/:id', (req, res, next) => {
+app.delete('/api/customers/:id', (req, res) => {
   db.run(
     'DELETE FROM customers WHERE customer_id = ?',
     req.params.id,
@@ -188,4 +188,46 @@ app.delete('/api/customers/:id', (req, res, next) => {
       res.json({ message: 'deleted', changes: this.changes });
     }
   );
+});
+
+app.post('/api/customers/search', (req, res) => {
+  const data = {
+    first_name: req.body.first_name,
+    last_name: req.body.last_name,
+    date_of_birth: req.body.date_of_birth,
+    postcode: req.body.postcode
+  };
+
+  var sql = 'SELECT * FROM customers WHERE last_name = ? AND date_of_birth = ?';
+  var params = [data.last_name, data.date_of_birth];
+
+  if (data.first_name & data.postcode) {
+    sql =
+      'SELECT * FROM customers WHERE first_name = ? AND last_name = ? AND date_of_birth = ? AND postcode = ?';
+    params = [
+      data.first_name,
+      data.last_name,
+      data.date_of_birth,
+      data.last_name
+    ];
+  } else if (data.first_name) {
+    sql =
+      'SELECT * FROM customers WHERE first_name = ? AND last_name = ? AND date_of_birth = ?';
+    params = [data.first_name, data.last_name, data.date_of_birth];
+  } else if (data.postcode) {
+    sql =
+      'SELECT * FROM customers WHERE last_name = ? AND date_of_birth = ? AND postcode = ?';
+    params = [data.last_name, data.date_of_birth, data.postcode];
+  }
+
+  db.all(sql, params, (err, row) => {
+    if (err) {
+      res.status(400).json({ error: err.message });
+      return;
+    }
+    res.json({
+      message: 'success',
+      data: row
+    });
+  });
 });
