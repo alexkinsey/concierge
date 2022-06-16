@@ -8,6 +8,7 @@ const Results = ({ customers }) => {
   return (
     <>
       <h1>Results</h1>
+      {customers.length < 1 && <p>Your results will appear here</p>}
       {customerCards}
     </>
   );

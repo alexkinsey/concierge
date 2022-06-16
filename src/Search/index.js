@@ -14,7 +14,7 @@ const Search = () => {
     <>
       <h1>Customer search</h1>
       <SearchForm findCustomers={findCustomers} />
-      {foundCustomers.length > 0 && <Results customers={foundCustomers} />}
+      <Results customers={foundCustomers} />
     </>
   );
 };
