@@ -7,9 +7,13 @@ PRAGMA foreign_keys = ON;
 .system echo "------------------------------"
 
 
-.system echo "1 - create customer database"
+.system echo "1 - create customers database"
 .read create_customers.sql
 .system echo "2 - load customers"
 .read load_customers.sql
+.system echo "3 - create consultants database"
+.read create_consultants.sql
+.system echo "4 - load consultants"
+.read load_consultants.sql
 
 .system echo "setup complete"
