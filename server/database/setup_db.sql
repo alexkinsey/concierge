@@ -15,5 +15,9 @@ PRAGMA foreign_keys = ON;
 .read create_consultants.sql
 .system echo "4 - load consultants"
 .read load_consultants.sql
+.system echo "5 - create appointments database"
+.read create_appointments.sql
+.system echo "6 - load appointments"
+.read load_appointments.sql
 
 .system echo "setup complete"
