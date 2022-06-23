@@ -224,3 +224,38 @@ app.post('/api/customers/search', (req, res) => {
     });
   });
 });
+
+// ----------------------------------------------------------------------------
+// -------------------------CONSULTANT ENDPOINTS-------------------------------
+// ----------------------------------------------------------------------------
+// GET all consultants
+app.get('/api/consultants', (req, res) => {
+  const sql = 'SELECT * FROM consultants';
+  const params = [];
+  db.all(sql, params, (err, rows) => {
+    if (err) {
+      res.status(400).json({ error: err.message });
+      return;
+    }
+    res.json({
+      message: 'success',
+      data: rows
+    });
+  });
+});
+
+// GET all consultants by business area
+app.get('/api/consultants/:area', (req, res) => {
+  const sql = 'SELECT * FROM consultants WHERE businessArea = ?';
+  const params = [req.params.area];
+  db.all(sql, params, (err, rows) => {
+    if (err) {
+      res.status(400).json({ error: err.message });
+      return;
+    }
+    res.json({
+      message: 'success',
+      data: rows
+    });
+  });
+});
