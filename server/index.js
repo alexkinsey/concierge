@@ -244,10 +244,10 @@ app.get('/api/consultants', (req, res) => {
   });
 });
 
-// GET all consultants by business area
-app.get('/api/consultants/:area', (req, res) => {
-  const sql = 'SELECT * FROM consultants WHERE businessArea = ?';
-  const params = [req.params.area];
+// GET all consultants by department 
+app.get('/api/consultants/:department', (req, res) => {
+  const sql = 'SELECT * FROM consultants WHERE department = ?';
+  const params = [req.params.department];
   db.all(sql, params, (err, rows) => {
     if (err) {
       res.status(400).json({ error: err.message });
@@ -259,3 +259,23 @@ app.get('/api/consultants/:area', (req, res) => {
     });
   });
 });
+
+// ----------------------------------------------------------------------------
+// -------------------------APPOINTMENTS ENDPOINTS-----------------------------
+// ----------------------------------------------------------------------------
+// GET appointments and consultants by customer ID
+app.get('/api/appointments/:customersId', (req, res) => {
+  const sql = 'SELECT * FROM "appointments" JOIN consultants ON appointments.consultantId = consultants.consultantId WHERE customerId = ?';
+  const params = [req.params.customersId];
+  db.all(sql, params, (err, rows) => {
+    if (err) {
+      res.status(400).json({ error: err.message });
+      return;
+    }
+    res.json({
+      message: 'success',
+      data: rows
+    });
+  });
+});
+

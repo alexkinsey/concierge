@@ -6,7 +6,7 @@ CREATE TABLE consultants(
     consultantId INTEGER PRIMARY KEY,
     firstName VARCHAR(25) NOT NULL,
     lastName VARCHAR(25) NOT NULL,
-    businessArea VARCHAR(50) NOT NULL
+    department VARCHAR(50) NOT NULL
 );
 
 .system echo "Consultants table created"
