@@ -264,7 +264,7 @@ app.get('/api/consultants/:department', (req, res) => {
 // -------------------------APPOINTMENTS ENDPOINTS-----------------------------
 // ----------------------------------------------------------------------------
 // GET appointments and consultants by customer ID
-app.get('/api/appointments/:customersId', (req, res) => {
+app.get('/api/appointments/customer=:customersId', (req, res) => {
   const sql = 'SELECT * FROM "appointments" JOIN consultants ON appointments.consultantId = consultants.consultantId WHERE customerId = ?';
   const params = [req.params.customersId];
   db.all(sql, params, (err, rows) => {
