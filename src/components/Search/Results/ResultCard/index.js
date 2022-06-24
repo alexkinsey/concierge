@@ -1,10 +1,10 @@
 import { useEffect, useState } from 'react';
 import { Link } from 'react-router-dom';
 
-import { getAppointments } from '../../../services';
+import { getAppointments } from '../../../../services';
 
-import { Text, TextLabel, TextLarger } from '../../../common/Text.styles';
-import { TextButton } from '../../../common/Button.styles';
+import { Text, TextLabel, TextLarger } from '../../../../styles/Text.styles';
+import { TextButton } from '../../../../styles/Button.styles';
 import { Container, ContentsLayout, ButtonAlignments } from './index.styles';
 
 const ResultCard = ({ customer }) => {

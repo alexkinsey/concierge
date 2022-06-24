@@ -1,7 +1,7 @@
 import React, { useState } from 'react';
 
-import { TextAccent } from '../../common/Text.styles'
-import { SubmitButton } from '../../common/Button.styles';
+import { TextAccent } from '../../../styles/Text.styles'
+import { SubmitButton } from '../../../styles/Button.styles';
 import { Container, Form, FieldGroup, Label, Field } from './index.styles';
 
 const SearchForm = ({ findCustomers }) => {

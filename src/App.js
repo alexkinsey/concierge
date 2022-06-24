@@ -1,10 +1,10 @@
 import { BrowserRouter as Router, Routes, Route } from 'react-router-dom';
 
-import { GlobalStyles } from './common/GlobalStyles';
+import { GlobalStyles } from './styles/GlobalStyles';
 
-import NavBar from './NavBar';
-import Search from './Search';
-import CustomerOverview from './CustomerOverview'
+import NavBar from './components/NavBar';
+import Search from './components/Search';
+import CustomerOverview from './components/CustomerOverview'
 
 function App() {
   return (

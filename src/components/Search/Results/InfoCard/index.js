@@ -1,5 +1,5 @@
 import { Container, Aligner } from './index.styles';
-import { TextLarger } from '../../../common/Text.styles';
+import { TextLarger } from '../../../../styles/Text.styles';
 
 const InfoCard = ({ numberOfFoundCustomers }) => {
   return (

@@ -1,8 +1,8 @@
 import { useState } from 'react';
-import { searchCustomersAPI } from '../services';
+import { searchCustomersAPI } from '../../services';
 
-import { Title } from '../common/Text.styles';
-import { Layout } from './index.styles';
+import { Title } from '../../styles/Text.styles';
+import { twoColumnSB } from '../../styles/Layout.styles';
 
 import SearchForm from './SearchForm';
 import Results from './Results';
@@ -17,14 +17,14 @@ const Search = () => {
     setNumberOfFoundCustomers(customers.length);
   };
   return (
-    <Layout>
+    <twoColumnSB>
       <Title>Customer search</Title>
       <div></div>
       <SearchForm findCustomers={findCustomers} />
       <div>
-        <Results customers={foundCustomers} numberOfFoundCustomers={numberOfFoundCustomers}/>
+        <Results customers={foundCustomers} numberOfFoundCustomers={numberOfFoundCustomers} />
       </div>
-    </Layout>
+    </twoColumnSB>
   );
 };
 

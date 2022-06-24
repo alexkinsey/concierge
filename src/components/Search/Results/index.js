@@ -1,7 +1,7 @@
 import ResultCard from './ResultCard';
 import InfoCard from './InfoCard';
 
-import { Heading } from '../../common/Text.styles';
+import { Heading } from '../../../styles/Text.styles';
 import { Container } from './index.styles';
 
 const Results = ({ customers, numberOfFoundCustomers }) => {
