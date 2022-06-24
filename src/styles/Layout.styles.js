@@ -1,6 +1,6 @@
 import styled from 'styled-components';
 
-export const twoColumnSB = styled.div`
+export const TwoColumnSB = styled.div`
   max-width: var(--maxPageWidth);
   min-width: var(--minPageWidth);
   margin: auto;
@@ -11,4 +11,9 @@ export const twoColumnSB = styled.div`
   grid-template-rows: 75px 1fr;
 
   gap: 1rem 1rem;
-`
+`;
+
+export const Container = styled.div`
+  background-color: var(--white);
+  padding: 2rem;
+`;

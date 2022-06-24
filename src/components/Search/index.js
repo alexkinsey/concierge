@@ -2,7 +2,7 @@ import { useState } from 'react';
 import { searchCustomersAPI } from '../../services';
 
 import { Title } from '../../styles/Text.styles';
-import { twoColumnSB } from '../../styles/Layout.styles';
+import { TwoColumnSB } from '../../styles/Layout.styles';
 
 import SearchForm from './SearchForm';
 import Results from './Results';
@@ -17,14 +17,14 @@ const Search = () => {
     setNumberOfFoundCustomers(customers.length);
   };
   return (
-    <twoColumnSB>
+    <TwoColumnSB>
       <Title>Customer search</Title>
       <div></div>
       <SearchForm findCustomers={findCustomers} />
       <div>
         <Results customers={foundCustomers} numberOfFoundCustomers={numberOfFoundCustomers} />
       </div>
-    </twoColumnSB>
+    </TwoColumnSB>
   );
 };
 

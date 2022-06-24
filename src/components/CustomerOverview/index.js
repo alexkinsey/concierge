@@ -3,7 +3,9 @@ import { useParams } from 'react-router-dom';
 
 import { getCustomerById } from '../../services';
 
-import { twoColumnSB } from '../../styles/Layout.styles';
+import { CustomerDetails } from './CustomerDetails/index';
+
+import { TwoColumnSB } from '../../styles/Layout.styles';
 import { Title } from '../../styles/Text.styles';
 
 const CustomerOverview = () => {
@@ -20,11 +22,11 @@ const CustomerOverview = () => {
   };
 
   return (
-    <twoColumnSB>
-    <Title>Customer overview</Title>
-      <p>{customer.firstName}</p>
-      <p>{customer.lastName}</p>
-    </twoColumnSB>
+    <TwoColumnSB>
+      <Title>Customer overview</Title>
+      <div></div>
+      <CustomerDetails customer={customer} />
+    </TwoColumnSB>
   );
 };
 

@@ -1,6 +1,6 @@
-import styled from 'styled-components'
+import styled from 'styled-components';
 
-import {TextLarger} from './Text.styles'
+import { TextLarger } from './Text.styles';
 
 export const SubmitButton = styled.input`
   background-color: var(--accent);
@@ -11,13 +11,13 @@ export const SubmitButton = styled.input`
   color: var(--white);
   padding: 1rem;
 
-  :hover{
+  :hover {
     cursor: pointer;
     background-color: var(--accentDark);
   }
-`
+`;
 export const TextButton = styled(TextLarger)`
   color: var(--accent);
   margin: 0;
   padding: 0;
-`
+`;

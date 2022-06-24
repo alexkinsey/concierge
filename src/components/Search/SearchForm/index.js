@@ -1,8 +1,9 @@
 import React, { useState } from 'react';
 
-import { TextAccent } from '../../../styles/Text.styles'
+import { TextAccent } from '../../../styles/Text.styles';
 import { SubmitButton } from '../../../styles/Button.styles';
-import { Container, Form, FieldGroup, Label, Field } from './index.styles';
+import { Container } from '../../../styles/Layout.styles';
+import { Form, FieldGroup, Label, Field } from './index.styles';
 
 const SearchForm = ({ findCustomers }) => {
   const [firstName, setFirstName] = useState('');
@@ -30,7 +31,9 @@ const SearchForm = ({ findCustomers }) => {
     <Container>
       <Form onSubmit={handleSearch}>
         <FieldGroup>
-          <Label htmlFor="firstName">First name <TextAccent>(optional)</TextAccent></Label>
+          <Label htmlFor="firstName">
+            First name <TextAccent>(optional)</TextAccent>
+          </Label>
           <Field type="text" id="firstName" value={firstName} onChange={handleFirstNameChange} />
         </FieldGroup>
 
@@ -45,7 +48,9 @@ const SearchForm = ({ findCustomers }) => {
         </FieldGroup>
 
         <FieldGroup>
-          <Label htmlFor="postcode">Postcode <TextAccent>(optional)</TextAccent></Label>
+          <Label htmlFor="postcode">
+            Postcode <TextAccent>(optional)</TextAccent>
+          </Label>
           <Field type="text" id="postcode" value={postcode} onChange={handlePostcodeChange} />
         </FieldGroup>
 
