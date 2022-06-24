@@ -1,15 +1,22 @@
+import { BrowserRouter as Router, Routes, Route } from 'react-router-dom';
+
 import { GlobalStyles } from './common/GlobalStyles';
 
 import NavBar from './NavBar';
-import Search from './Search/index';
+import Search from './Search';
+import CustomerOverview from './CustomerOverview'
 
 function App() {
   return (
-    <div>
+    <Router>
       <GlobalStyles />
       <NavBar />
-      <Search />
-    </div>
+
+      <Routes>
+        <Route path="/" element={<Search />} />
+        <Route path="/customer-overview" element={<CustomerOverview />} />
+      </Routes>
+    </Router>
   );
 }
 

@@ -20,21 +20,26 @@ export const Heading = styled.h2`
 
 export const Text = styled.p`
   font-size: 18px;
-  color: ${(props) => (props.primary ? 'var(--black)' : props.secondary && 'var(--medGrey)')};
+  color: var(--medGrey);
   font-weight: 300;
 
   margin: 0;
   padding: 0;
 `;
 
+export const TextLabel = styled(Text)`
+  color: var(--black);
+  font-weight: 500;
+`;
 
 export const TextLarger = styled(Text)`
   margin: 0 0 0.75em 0;
 
+  color: var(--black);
   font-size: 24px;
   font-weight: 600;
 `;
 
 export const TextAccent = styled.span`
   color: var(--accent);
-`
+`;
