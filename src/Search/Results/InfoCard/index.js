@@ -1,11 +1,11 @@
 import { Container, Aligner } from './index.styles';
 import { TextLarger } from '../../../common/Text.styles';
 
-const InfoCard = ({ numberOfCustomers }) => {
+const InfoCard = ({ numberOfFoundCustomers }) => {
   return (
     <>
       {
-        (numberOfCustomers < 1 ? (
+        (numberOfFoundCustomers === 'start' ? (
           <Container info>
             <Aligner>
               <svg
@@ -20,7 +20,7 @@ const InfoCard = ({ numberOfCustomers }) => {
               <TextLarger noSpace>Your results will appear here.</TextLarger>
             </Aligner>
           </Container>
-        ) : numberOfCustomers > 0 ? (
+        ) : numberOfFoundCustomers > 0 ? (
           <Container info>
             <Aligner>
               <svg
@@ -33,13 +33,12 @@ const InfoCard = ({ numberOfCustomers }) => {
                 <path d="M8 16A8 8 0 1 0 8 0a8 8 0 0 0 0 16zm.93-9.412-1 4.705c-.07.34.029.533.304.533.194 0 .487-.07.686-.246l-.088.416c-.287.346-.92.598-1.465.598-.703 0-1.002-.422-.808-1.319l.738-3.468c.064-.293.006-.399-.287-.47l-.451-.081.082-.381 2.29-.287zM8 5.5a1 1 0 1 1 0-2 1 1 0 0 1 0 2z" />
               </svg>
               <TextLarger noSpace>
-                {numberOfCustomers} customer {numberOfCustomers > 1 ? 'records ' : 'record '} match your search.
+                {numberOfFoundCustomers} customer {numberOfFoundCustomers > 1 ? 'records ' : 'record '} match your search.
               </TextLarger>
             </Aligner>
           </Container>
-        ) : numberOfCustomers = 0 && (
-          /* TODO - BUG - never renders no customer found message */
-          <Container warn>
+        ) : numberOfFoundCustomers < 1 && (
+          <Container warning>
             <Aligner>
               <svg
                 xmlns="http://www.w3.org/2000/svg"

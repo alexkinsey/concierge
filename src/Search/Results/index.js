@@ -4,7 +4,7 @@ import InfoCard from './InfoCard';
 import { Heading } from '../../common/Text.styles';
 import { Container } from './index.styles';
 
-const Results = ({ customers }) => {
+const Results = ({ customers, numberOfFoundCustomers }) => {
   const resultCards = customers.map((customer) => {
     return <ResultCard customer={customer} />;
   });
@@ -12,7 +12,7 @@ const Results = ({ customers }) => {
   return (
     <Container>
       <Heading>Results</Heading>
-      <InfoCard numberOfCustomers={customers.length} />
+      <InfoCard numberOfFoundCustomers={numberOfFoundCustomers} />
       {resultCards}
     </Container>
   );

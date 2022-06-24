@@ -12,8 +12,8 @@ export const GlobalStyles = createGlobalStyle`
 
     --info: #D3E4EB;
     --infoDark: #29748C;
-    --warn: #F8EED5;
-    --warnDark: #C6962A;
+    --warning: #F8EED5;
+    --warningDark: #C6962A;
 
     --maxPageWidth: 1300px;
     --minPageWidth: 1000px;

@@ -9,10 +9,12 @@ import Results from './Results';
 
 const Search = () => {
   const [foundCustomers, setFoundCustomers] = useState([]);
+  const [numberOfFoundCustomers, setNumberOfFoundCustomers] = useState('start');
 
   const findCustomers = async (customerSearch) => {
     const customers = await searchCustomersAPI(customerSearch);
     setFoundCustomers(customers);
+    setNumberOfFoundCustomers(customers.length);
   };
   return (
     <Layout>
@@ -20,7 +22,7 @@ const Search = () => {
       <div></div>
       <SearchForm findCustomers={findCustomers} />
       <div>
-        <Results customers={foundCustomers} />
+        <Results customers={foundCustomers} numberOfFoundCustomers={numberOfFoundCustomers}/>
       </div>
     </Layout>
   );

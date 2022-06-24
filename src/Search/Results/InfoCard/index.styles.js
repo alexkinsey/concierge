@@ -3,7 +3,7 @@ import styled from 'styled-components';
 export const Container = styled.div`
   width: inherit;
   padding: 1.5rem;
-  background-color: ${(props) => (props.info ? 'var(--info)' : props.warn ? 'var(--warn)' : 'null')};
+  background-color: ${(props) => (props.info ? 'var(--info)' : props.warning ? 'var(--warning)' : 'null')};
 `;
 
 export const Aligner = styled.div`
