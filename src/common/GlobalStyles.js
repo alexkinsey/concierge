@@ -29,20 +29,4 @@ export const GlobalStyles = createGlobalStyle`
   
     background-color: var(--lightGrey);
   }
-
-  h1 {
-    font-size: 32px;
-    color: var(--black);
-    font-weight: 500;
-  }
-  h2 {
-    font-size: 28px;
-    color: var(--black);
-    font-weight: 500;
-  }
-  h3{
-    font-size: 22px;
-    color: var(--black);
-    font-weight: 400;
-  }
 `;

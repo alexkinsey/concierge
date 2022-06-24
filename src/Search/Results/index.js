@@ -1,3 +1,4 @@
+import { Heading } from '../../common/Text.styles';
 import { Container } from './index.styles';
 
 import CustomerCard from './CustomerCard';
@@ -9,7 +10,7 @@ const Results = ({ customers }) => {
 
   return (
     <Container>
-      <h2>Results</h2>
+      <Heading>Results</Heading>
       {customers.length < 1 && <p>Your results will appear here</p>}
       {customerCards}
     </Container>

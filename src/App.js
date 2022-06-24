@@ -1,4 +1,4 @@
-import { GlobalStyles } from './GlobalStyles';
+import { GlobalStyles } from './common/GlobalStyles';
 
 import NavBar from './NavBar';
 import Search from './Search/index';
