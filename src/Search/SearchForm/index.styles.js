@@ -30,4 +30,6 @@ export const Label = styled.label`
 export const Field = styled.input`
   padding: 0.75rem 1rem;
   font-size: 18px;
+
+  border: 1px solid var(--black);
 `;

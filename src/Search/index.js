@@ -1,5 +1,5 @@
 import { useState } from 'react';
-import { searchCustomersAPI } from './services';
+import { searchCustomersAPI } from '../services';
 
 import { Title } from '../common/Text.styles';
 import { Layout } from './index.styles';

@@ -14,14 +14,14 @@ export const Heading = styled.h2`
   color: var(--black);
   font-weight: 500;
 
-  margin: 0;
+  margin: 0 0 2rem 0;
   padding: 0;
 `;
 
 export const Text = styled.p`
   font-size: 18px;
   color: var(--medGrey);
-  font-weight: 300;
+  font-weight: 400;
 
   margin: 0;
   padding: 0;

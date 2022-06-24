@@ -9,4 +9,9 @@ export const ContentsLayout = styled.div`
   display: grid;
 
   grid-template-columns: 1fr 2fr;
-`
+`;
+
+export const ButtonAlignments = styled.div`
+  width: fit-content;
+  margin: 0 0 0 auto;
+`;

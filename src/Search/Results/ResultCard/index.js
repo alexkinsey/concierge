@@ -1,13 +1,13 @@
 import { useEffect, useState } from 'react';
 import { Link } from 'react-router-dom';
 
-import { getAppointments } from '../../services';
+import { getAppointments } from '../../../services';
 
 import { Text, TextLabel, TextLarger } from '../../../common/Text.styles';
 import { TextButton } from '../../../common/Button.styles';
-import { Container, ContentsLayout } from './index.styles';
+import { Container, ContentsLayout, ButtonAlignments } from './index.styles';
 
-const CustomerCard = ({ customer }) => {
+const ResultCard = ({ customer }) => {
   const [numberOfAppointments, setNumberOfAppointments] = useState('');
   useEffect(() => {
     // TODO - BUG useEffect is hit twice on render
@@ -32,9 +32,13 @@ const CustomerCard = ({ customer }) => {
         <TextLabel>Number of appointments:</TextLabel>
         <Text>{numberOfAppointments}</Text>
       </ContentsLayout>
-      <Link to="/customer-overview"><TextButton>Customer Overview &gt; </TextButton></Link>
+      <ButtonAlignments>
+        <Link to="/customer-overview">
+          <TextButton>Customer Overview &gt; </TextButton>
+        </Link>
+      </ButtonAlignments>
     </Container>
   );
 };
 
-export default CustomerCard;
+export default ResultCard;

@@ -1,11 +1,15 @@
-import { NavBackground, Title, LogoImage } from './index.style';
+import { NavBackground, Aligner, Wrapper, Title, LogoImage } from './index.style';
 import Logo from '../images/logo.svg';
 
 const NavBar = () => {
   return (
     <NavBackground>
-      <LogoImage src={Logo}></LogoImage>
-      <Title>Concierge</Title>
+      <Aligner>
+        <Wrapper href="/">
+          <LogoImage src={Logo}></LogoImage>
+          <Title>CONCIERGE</Title>
+        </Wrapper>
+      </Aligner>
     </NavBackground>
   );
 };

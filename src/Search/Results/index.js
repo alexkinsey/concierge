@@ -1,18 +1,18 @@
 import { Heading } from '../../common/Text.styles';
 import { Container } from './index.styles';
 
-import CustomerCard from './CustomerCard';
+import ResultCard from './ResultCard';
 
 const Results = ({ customers }) => {
-  const customerCards = customers.map((customer) => {
-    return <CustomerCard customer={customer} />;
+  const resultCards = customers.map((customer) => {
+    return <ResultCard customer={customer} />;
   });
 
   return (
     <Container>
       <Heading>Results</Heading>
       {customers.length < 1 && <p>Your results will appear here</p>}
-      {customerCards}
+      {resultCards}
     </Container>
   );
 };

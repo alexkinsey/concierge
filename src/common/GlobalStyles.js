@@ -10,6 +10,7 @@ export const GlobalStyles = createGlobalStyle`
     --accentDark: rgb(180, 30, 30);
 
     --maxPageWidth: 1300px;
+    --minPageWidth: 1000px;
   }
 
   button:focus,

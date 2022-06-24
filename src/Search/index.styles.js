@@ -1,8 +1,10 @@
 import styled from 'styled-components';
 
 export const Layout = styled.div`
-  width: var(--maxPageWidth);
+  max-width: var(--maxPageWidth);
+  min-width: var(--minPageWidth);
   margin: auto;
+  padding: 0 3rem;
 
   display: grid;
   grid-template-columns: 1fr 2fr;

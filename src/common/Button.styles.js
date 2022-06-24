@@ -18,4 +18,6 @@ export const SubmitButton = styled.input`
 `
 export const TextButton = styled(TextLarger)`
   color: var(--accent);
+  margin: 0;
+  padding: 0;
 `
