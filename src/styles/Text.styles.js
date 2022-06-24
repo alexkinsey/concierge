@@ -14,7 +14,7 @@ export const Heading = styled.h2`
   color: var(--black);
   font-weight: 500;
 
-  margin: 0 0 2rem 0;
+  margin: 0 0 0 0;
   padding: 0;
 `;
 

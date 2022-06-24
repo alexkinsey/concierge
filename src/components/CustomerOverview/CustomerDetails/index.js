@@ -5,7 +5,7 @@ import { HeadingAligner, ContentsLayout } from './index.styles';
 
 export const CustomerDetails = ({ customer }) => {
   return (
-    <Container>
+    <Container gap={1.5}>
       <HeadingAligner>
         <Heading>Customer details</Heading>
         <TextButton>Edit &gt;</TextButton>

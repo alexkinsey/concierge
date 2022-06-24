@@ -5,7 +5,7 @@ import { getAppointments } from '../../../../services';
 
 import { Text, TextLabel, TextLarger } from '../../../../styles/Text.styles';
 import { TextButton } from '../../../../styles/Button.styles';
-import { Container, ContentsLayout, ButtonAlignments } from './index.styles';
+import { Box, ContentsLayout, ButtonAlignments } from './index.styles';
 
 const ResultCard = ({ customer }) => {
   const [numberOfAppointments, setNumberOfAppointments] = useState('');
@@ -22,7 +22,7 @@ const ResultCard = ({ customer }) => {
   const linkToCustomerOverview = "/customer-overview/" + customer.customerId;
 
   return (
-    <Container>
+    <Box>
       <TextLarger>
         {customer.firstName} {customer.lastName}
       </TextLarger>
@@ -35,13 +35,13 @@ const ResultCard = ({ customer }) => {
         <TextLabel>Number of appointments:</TextLabel>
         <Text>{numberOfAppointments}</Text>
       </ContentsLayout>
-      
+
       <ButtonAlignments>
         <Link to={linkToCustomerOverview}>
           <TextButton>Customer Overview &gt; </TextButton>
         </Link>
       </ButtonAlignments>
-    </Container>
+    </Box>
   );
 };
 

@@ -18,5 +18,5 @@ export const Container = styled.div`
   flex-direction: column;
   background-color: var(--white);
   padding: 2rem;
-  gap: 1rem;
+  gap: ${(props) => (props.gap ? props.gap + 'rem' : '0rem')}
 `;

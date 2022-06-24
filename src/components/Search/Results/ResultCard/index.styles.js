@@ -1,8 +1,8 @@
 import styled from 'styled-components';
 
-export const Container = styled.div`
+export const Box = styled.div`
   border: 1px solid var(--black);
-  margin-top: 2rem;
+  /* margin-top: 2rem; */
   padding: 1.5rem;
 `;
 
