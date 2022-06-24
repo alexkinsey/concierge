@@ -1,11 +1,5 @@
 import styled from 'styled-components';
 
-export const Container = styled.div`
-  background-color: var(--white);
-
-  padding: 2rem;
-`;
-
 export const Form = styled.form`
   display: flex;
   flex-direction:column;
@@ -30,6 +24,7 @@ export const Label = styled.label`
 export const Field = styled.input`
   padding: 0.75rem 1rem;
   font-size: 16px;
+  color: var(--medGrey);
 
   border: 1px solid var(--black);
 `;

@@ -5,7 +5,7 @@ export const Title = styled.h1`
   color: var(--black);
   font-weight: 500;
 
-  margin: 1rem 0 0 0;
+  margin: 1.5rem 0 0 0;
   padding: 0;
 `;
 

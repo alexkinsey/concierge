@@ -1,7 +1,7 @@
 import React, { useState } from 'react';
 
 import { TextAccent } from '../../../styles/Text.styles';
-import { SubmitButton } from '../../../styles/Button.styles';
+import { PrimaryButton } from '../../../styles/Button.styles';
 import { Container } from '../../../styles/Layout.styles';
 import { Form, FieldGroup, Label, Field } from './index.styles';
 
@@ -44,7 +44,7 @@ const SearchForm = ({ findCustomers }) => {
 
         <FieldGroup>
           <Label htmlFor="dateOfBirth">Date of birth</Label>
-          <Field type="date" id="dateOfBirth" value={dateOfBirth} required onChange={handleDateOfBirthChange} />
+          <Field type="date" id="dateOfBirth" value={dateOfBirth} min="2006-01-01" required onChange={handleDateOfBirthChange} />
         </FieldGroup>
 
         <FieldGroup>
@@ -54,7 +54,7 @@ const SearchForm = ({ findCustomers }) => {
           <Field type="text" id="postcode" value={postcode} onChange={handlePostcodeChange} />
         </FieldGroup>
 
-        <SubmitButton type="submit" value="Search"></SubmitButton>
+        <PrimaryButton type="submit" value="Search">Search</PrimaryButton>
       </Form>
     </Container>
   );

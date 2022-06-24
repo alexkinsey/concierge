@@ -1,9 +1,11 @@
+import { Link } from 'react-router-dom';
+
 import ResultCard from './ResultCard';
 import InfoCard from './InfoCard';
 
 import { Heading } from '../../../styles/Text.styles';
-// import { Container } from './index.styles';
-import {Container} from '../../../styles/Layout.styles';
+import { Container } from '../../../styles/Layout.styles';
+import { PrimaryButton } from '../../../styles/Button.styles';
 
 const Results = ({ customers, numberOfFoundCustomers }) => {
   const resultCards = customers.map((customer) => {
@@ -15,6 +17,11 @@ const Results = ({ customers, numberOfFoundCustomers }) => {
       <Heading>Results</Heading>
       <InfoCard numberOfFoundCustomers={numberOfFoundCustomers} />
       {resultCards}
+      {numberOfFoundCustomers === 0 && (
+        <Link to="/create-customer">
+          <PrimaryButton>Create a new customer record</PrimaryButton>
+        </Link>
+      )}
     </Container>
   );
 };
