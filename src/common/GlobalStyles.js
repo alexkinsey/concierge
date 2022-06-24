@@ -15,7 +15,7 @@ export const GlobalStyles = createGlobalStyle`
     --warning: #F8EED5;
     --warningDark: #C6962A;
 
-    --maxPageWidth: 1300px;
+    --maxPageWidth: 1480px;
     --minPageWidth: 1000px;
   }
 

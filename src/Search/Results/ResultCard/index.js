@@ -19,6 +19,8 @@ const ResultCard = ({ customer }) => {
     setNumberOfAppointments(appointments.length);
   };
 
+  const linkToCustomerOverview = "/customer-overview/" + customer.customerId;
+
   return (
     <Container>
       <TextLarger>
@@ -33,7 +35,7 @@ const ResultCard = ({ customer }) => {
         <Text>{numberOfAppointments}</Text>
       </ContentsLayout>
       <ButtonAlignments>
-        <Link to="/customer-overview">
+        <Link to={linkToCustomerOverview}>
           <TextButton>Customer Overview &gt; </TextButton>
         </Link>
       </ButtonAlignments>
