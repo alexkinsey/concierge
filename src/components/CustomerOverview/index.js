@@ -23,8 +23,7 @@ const CustomerOverview = () => {
 
   return (
     <TwoColumnSB>
-      <Title>Customer overview</Title>
-      <div></div>
+      <Title style={{gridColumnStart: '1', gridColumnEnd: '3'}}>Customer overview - {customer.firstName} {customer.lastName}</Title>
       <CustomerDetails customer={customer} />
     </TwoColumnSB>
   );

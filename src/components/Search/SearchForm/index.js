@@ -44,7 +44,7 @@ const SearchForm = ({ findCustomers }) => {
 
         <FieldGroup>
           <Label htmlFor="dateOfBirth">Date of birth</Label>
-          <Field type="date" id="dateOfBirth" value={dateOfBirth} min="2006-01-01" required onChange={handleDateOfBirthChange} />
+          <Field type="date" id="dateOfBirth" value={dateOfBirth} required onChange={handleDateOfBirthChange} />
         </FieldGroup>
 
         <FieldGroup>

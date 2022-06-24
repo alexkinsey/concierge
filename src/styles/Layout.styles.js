@@ -23,5 +23,5 @@ export const Container = styled.div`
 
 export const LabelTextLayout = styled.div`
   display: grid;
-  grid-template-columns: 1fr 2fr;
+  grid-template-columns: 1.2fr 2fr;
 `;

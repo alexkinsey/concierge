@@ -18,8 +18,7 @@ const Search = () => {
   };
   return (
     <TwoColumnSB>
-      <Title>Customer search</Title>
-      <div></div>
+      <Title style={{gridColumnStart: '1', gridColumnEnd: '3'}}>Customer search</Title>
       <SearchForm findCustomers={findCustomers} />
       <div>
         <Results customers={foundCustomers} numberOfFoundCustomers={numberOfFoundCustomers} />
