@@ -1,7 +1,7 @@
 import styled from 'styled-components';
 
 export const Title = styled.h1`
-  font-size: 38px;
+  font-size: 32px;
   color: var(--black);
   font-weight: 500;
 
@@ -10,7 +10,7 @@ export const Title = styled.h1`
 `;
 
 export const Heading = styled.h2`
-  font-size: 32px;
+  font-size: 26px;
   color: var(--black);
   font-weight: 500;
 
@@ -19,7 +19,7 @@ export const Heading = styled.h2`
 `;
 
 export const Text = styled.p`
-  font-size: 18px;
+  font-size: 16px;
   color: var(--medGrey);
   font-weight: 400;
 
@@ -36,7 +36,7 @@ export const TextLarger = styled(Text)`
   margin: ${(props) => (props.noSpace ? '0' : '0 0 0.75em 0')};
 
   color: var(--black);
-  font-size: 24px;
+  font-size: 22px;
   font-weight: 600;
 `;
 

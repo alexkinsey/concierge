@@ -9,7 +9,7 @@ export const Container = styled.div`
 export const Form = styled.form`
   display: flex;
   flex-direction:column;
-  gap: 1.5rem;
+  gap: 1rem;
 `;
 
 export const FieldGroup = styled.div`
@@ -19,7 +19,7 @@ export const FieldGroup = styled.div`
 `;
 
 export const Label = styled.label`
-  font-size: 18px;
+  font-size: 16px;
   color: var(--black);
   font-weight: 500;
 
@@ -29,7 +29,7 @@ export const Label = styled.label`
 
 export const Field = styled.input`
   padding: 0.75rem 1rem;
-  font-size: 18px;
+  font-size: 16px;
 
   border: 1px solid var(--black);
 `;

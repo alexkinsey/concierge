@@ -6,7 +6,7 @@ export const SubmitButton = styled.input`
   background-color: var(--accent);
   border: none;
 
-  font-size: 28px;
+  font-size: 22px;
   font-weight: 500;
   color: var(--white);
   padding: 1rem;
