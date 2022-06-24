@@ -20,3 +20,8 @@ export const Container = styled.div`
   padding: 2rem;
   gap: ${(props) => (props.gap ? props.gap + 'rem' : '0rem')}
 `;
+
+export const LabelTextLayout = styled.div`
+  display: grid;
+  grid-template-columns: 1fr 2fr;
+`;

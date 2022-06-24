@@ -1,7 +1,7 @@
-import { Container } from '../../../styles/Layout.styles';
+import { Container, LabelTextLayout } from '../../../styles/Layout.styles';
 import { Heading, TextLabel, Text } from '../../../styles/Text.styles';
 import { TextButton } from '../../../styles/Button.styles';
-import { HeadingAligner, ContentsLayout } from './index.styles';
+import { HeadingAligner } from './index.styles';
 
 export const CustomerDetails = ({ customer }) => {
   return (
@@ -10,16 +10,16 @@ export const CustomerDetails = ({ customer }) => {
         <Heading>Customer details</Heading>
         <TextButton>Edit &gt;</TextButton>
       </HeadingAligner>
-      <ContentsLayout>
+      <LabelTextLayout>
         <TextLabel>First name:</TextLabel>
         <Text>{customer.firstName}</Text>
         <TextLabel>Last name:</TextLabel>
         <Text>{customer.lastName}</Text>
         <TextLabel>Date of birth:</TextLabel>
         <Text>{customer.dateOfBirth}</Text>
-      </ContentsLayout>
+      </LabelTextLayout>
 
-      <ContentsLayout>
+      <LabelTextLayout>
         <TextLabel>Address:</TextLabel>
         <Text>{customer.address1}</Text>
         <div></div>
@@ -30,14 +30,14 @@ export const CustomerDetails = ({ customer }) => {
         <Text>{customer.city}</Text>
         <TextLabel>Postcode:</TextLabel>
         <Text>{customer.postcode}</Text>
-      </ContentsLayout>
+      </LabelTextLayout>
 
-      <ContentsLayout>
+      <LabelTextLayout>
         <TextLabel>Phone number:</TextLabel>
         <Text>{customer.phoneNumber}</Text>
         <TextLabel>Email:</TextLabel>
         <Text>{customer.email}</Text>
-      </ContentsLayout>
+      </LabelTextLayout>
     </Container>
   );
 };

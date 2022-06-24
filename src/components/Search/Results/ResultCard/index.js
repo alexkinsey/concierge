@@ -3,9 +3,10 @@ import { Link } from 'react-router-dom';
 
 import { getAppointments } from '../../../../services';
 
+import {LabelTextLayout} from '../../../../styles/Layout.styles';
 import { Text, TextLabel, TextLarger } from '../../../../styles/Text.styles';
 import { TextButton } from '../../../../styles/Button.styles';
-import { Box, ContentsLayout, ButtonAlignments } from './index.styles';
+import { Box, ButtonAlignments } from './index.styles';
 
 const ResultCard = ({ customer }) => {
   const [numberOfAppointments, setNumberOfAppointments] = useState('');
@@ -27,14 +28,14 @@ const ResultCard = ({ customer }) => {
         {customer.firstName} {customer.lastName}
       </TextLarger>
 
-      <ContentsLayout>
+      <LabelTextLayout>
         <TextLabel>Date of birth:</TextLabel>
         <Text>{customer.dateOfBirth}</Text>
         <TextLabel>Postcode:</TextLabel>
         <Text>{customer.postcode}</Text>
         <TextLabel>Number of appointments:</TextLabel>
         <Text>{numberOfAppointments}</Text>
-      </ContentsLayout>
+      </LabelTextLayout>
 
       <ButtonAlignments>
         <Link to={linkToCustomerOverview}>
