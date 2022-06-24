@@ -6,8 +6,17 @@ export const GlobalStyles = createGlobalStyle`
     --lightGrey: #efefef;
     --medGrey: #5b5b5b;
     --black: #333;
+    --accent: #d73e42;
+    --accentDark: rgb(180, 30, 30);
 
     --maxPageWidth: 1300px;
+  }
+
+  button:focus,
+  input:focus,
+  textarea:focus,
+  select:focus {
+    outline: none;
   }
 
   html,
