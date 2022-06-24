@@ -7,6 +7,7 @@ export const GlobalStyles = createGlobalStyle`
     --medGrey: #5b5b5b;
     --black: #333;
   }
+
   html,
   body {
     margin: 0;
@@ -25,5 +26,21 @@ export const GlobalStyles = createGlobalStyle`
     -moz-osx-font-smoothing: grayscale;
   
     background-color: var(--lightGrey);
-}
+  }
+
+  h1 {
+    font-size: 32px;
+    color: var(--black);
+    font-weight: 500;
+  }
+  h2 {
+    font-size: 28px;
+    color: var(--black);
+    font-weight: 500;
+  }
+  h3{
+    font-size: 22px;
+    color: var(--black);
+    font-weight: 400;
+  }
 `;

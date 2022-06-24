@@ -1,4 +1,3 @@
-// import { Heading } from '@fpr-public/fpr-ui-component-library'
 import CustomerCard from './CustomerCard';
 
 const Results = ({ customers }) => {
@@ -8,7 +7,7 @@ const Results = ({ customers }) => {
 
   return (
     <>
-      {/* <Heading>Results</Heading> */}
+      <h2>Results</h2>
       {customers.length < 1 && <p>Your results will appear here</p>}
       {customerCards}
     </>
