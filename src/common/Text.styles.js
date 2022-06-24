@@ -33,7 +33,7 @@ export const TextLabel = styled(Text)`
 `;
 
 export const TextLarger = styled(Text)`
-  margin: 0 0 0.75em 0;
+  margin: ${(props) => (props.noSpace ? '0' : '0 0 0.75em 0')};
 
   color: var(--black);
   font-size: 24px;

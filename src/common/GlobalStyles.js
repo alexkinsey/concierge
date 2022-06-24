@@ -6,8 +6,14 @@ export const GlobalStyles = createGlobalStyle`
     --lightGrey: #efefef;
     --medGrey: #5b5b5b;
     --black: #333;
+
     --accent: #d73e42;
     --accentDark: rgb(180, 30, 30);
+
+    --info: #D3E4EB;
+    --infoDark: #29748C;
+    --warn: #F8EED5;
+    --warnDark: #C6962A;
 
     --maxPageWidth: 1300px;
     --minPageWidth: 1000px;

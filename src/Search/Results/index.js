@@ -1,7 +1,8 @@
+import ResultCard from './ResultCard';
+import InfoCard from './InfoCard';
+
 import { Heading } from '../../common/Text.styles';
 import { Container } from './index.styles';
-
-import ResultCard from './ResultCard';
 
 const Results = ({ customers }) => {
   const resultCards = customers.map((customer) => {
@@ -11,7 +12,7 @@ const Results = ({ customers }) => {
   return (
     <Container>
       <Heading>Results</Heading>
-      {customers.length < 1 && <p>Your results will appear here</p>}
+      <InfoCard numberOfCustomers={customers.length} />
       {resultCards}
     </Container>
   );
