@@ -26,6 +26,7 @@ const ResultCard = ({ customer }) => {
       <TextLarger>
         {customer.firstName} {customer.lastName}
       </TextLarger>
+
       <ContentsLayout>
         <TextLabel>Date of birth:</TextLabel>
         <Text>{customer.dateOfBirth}</Text>
@@ -34,6 +35,7 @@ const ResultCard = ({ customer }) => {
         <TextLabel>Number of appointments:</TextLabel>
         <Text>{numberOfAppointments}</Text>
       </ContentsLayout>
+      
       <ButtonAlignments>
         <Link to={linkToCustomerOverview}>
           <TextButton>Customer Overview &gt; </TextButton>

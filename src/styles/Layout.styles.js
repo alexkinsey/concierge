@@ -14,6 +14,9 @@ export const TwoColumnSB = styled.div`
 `;
 
 export const Container = styled.div`
+  display: flex;
+  flex-direction: column;
   background-color: var(--white);
   padding: 2rem;
+  gap: 1rem;
 `;
