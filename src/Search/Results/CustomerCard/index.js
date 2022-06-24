@@ -1,14 +1,15 @@
-import React from 'react'
+import { Container } from './index.styles';
 
-const CustomerCard = ({customer}) => {
+const CustomerCard = ({ customer }) => {
   return (
-    <>
-        <h3>CustomerCard</h3>
-        <p>{customer.firstName} {customer.lastName}</p>
-        <p>{customer.dateOfBirth}</p>
-        <p>{customer.postcode}</p>
-    </>
-  )
-}
+    <Container>
+      <p>
+        {customer.firstName} {customer.lastName}
+      </p>
+      <p>{customer.dateOfBirth}</p>
+      <p>{customer.postcode}</p>
+    </Container>
+  );
+};
 
-export default CustomerCard
+export default CustomerCard;

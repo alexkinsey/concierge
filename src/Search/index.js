@@ -1,5 +1,8 @@
 import { useState } from 'react';
+
 import { searchCustomersAPI } from './services';
+import { Layout } from './index.styles';
+
 import SearchForm from './SearchForm';
 import Results from './Results';
 
@@ -11,11 +14,13 @@ const Search = () => {
     setFoundCustomers(customers);
   };
   return (
-    <>
+    <Layout>
       <h1>Customer search</h1>
+      <div></div>
       <SearchForm findCustomers={findCustomers} />
-      <Results customers={foundCustomers} />
-    </>
+      <div><Results customers={foundCustomers} /></div>
+      
+    </Layout>
   );
 };
 

@@ -1,3 +1,5 @@
+import { Container } from './index.styles';
+
 import CustomerCard from './CustomerCard';
 
 const Results = ({ customers }) => {
@@ -6,11 +8,11 @@ const Results = ({ customers }) => {
   });
 
   return (
-    <>
+    <Container>
       <h2>Results</h2>
       {customers.length < 1 && <p>Your results will appear here</p>}
       {customerCards}
-    </>
+    </Container>
   );
 };
 

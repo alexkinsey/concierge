@@ -6,6 +6,8 @@ export const GlobalStyles = createGlobalStyle`
     --lightGrey: #efefef;
     --medGrey: #5b5b5b;
     --black: #333;
+
+    --maxPageWidth: 1300px;
   }
 
   html,
