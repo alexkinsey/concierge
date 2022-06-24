@@ -24,13 +24,13 @@ export const TextLarger = styled.p`
 
   font-size: 24px;
   color: var(--black);
-  font-weight: 500;
+  font-weight: 600;
 `;
 
 export const Text = styled.p`
   font-size: 18px;
   color: ${(props) => (props.primary ? 'var(--black)' : props.secondary && 'var(--medGrey)')};
-  font-weight: 400;
+  font-weight: 300;
 
   margin: 0;
   padding: 0;

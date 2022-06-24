@@ -8,5 +8,5 @@ export const Container = styled.div`
 export const ContentsLayout = styled.div`
   display: grid;
 
-  grid-template-columns: 1fr 3fr;
+  grid-template-columns: 1fr 2fr;
 `
