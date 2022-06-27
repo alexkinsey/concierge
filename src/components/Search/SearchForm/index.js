@@ -3,7 +3,7 @@ import React, { useState } from 'react';
 import { TextAccent } from '../../../styles/Text.styles';
 import { PrimaryButton } from '../../../styles/Button.styles';
 import { Container } from '../../../styles/Layout.styles';
-import { Form, FieldGroup, Label, Field } from './index.styles';
+import { Form, FieldGroup, Label, Field } from '../../../styles/Form.styles';
 
 const SearchForm = ({ findCustomers }) => {
   const [firstName, setFirstName] = useState('');

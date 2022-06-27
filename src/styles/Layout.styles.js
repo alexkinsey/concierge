@@ -13,6 +13,19 @@ export const TwoColumnSB = styled.div`
   gap: 1rem 1rem;
 `;
 
+export const TwoColumnBS = styled.div`
+  max-width: var(--maxPageWidth);
+  min-width: var(--minPageWidth);
+  margin: auto;
+  padding: 0 3rem;
+
+  display: grid;
+  grid-template-columns: 2fr 1fr;
+  grid-template-rows: 75px 1fr;
+
+  gap: 1rem 1rem;
+`;
+
 export const Container = styled.div`
   display: flex;
   flex-direction: column;
