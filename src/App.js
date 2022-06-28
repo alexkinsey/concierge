@@ -3,7 +3,7 @@ import { BrowserRouter as Router, Routes, Route } from 'react-router-dom';
 import { GlobalStyles } from './styles/GlobalStyles';
 import { GlobalPageWidth } from './styles/Layout.styles';
 
-import NavBar from './components/NavBar';
+import NavBar from './components/common/NavBar';
 import Search from './components/Search';
 import CustomerOverview from './components/CustomerOverview';
 import CreateCustomer from './components/CreateCustomer';

@@ -35,7 +35,7 @@ const CustomerOverview = () => {
     <TwoColumnSB>
       <Title style={{gridColumnStart: '1', gridColumnEnd: '3'}}>Customer overview - {customer.firstName} {customer.lastName}</Title>
       <CustomerDetails customer={customer} />
-      {appointments.length > 0 && <AppointmentsList appointments={appointments} />}
+      <AppointmentsList appointments={appointments} />
     </TwoColumnSB>
   );
 };
