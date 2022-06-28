@@ -8,6 +8,7 @@ import { CustomerDetails } from '../CustomerDetails';
 import { Container, LabelTextLayout, TwoColumnSB } from '../../styles/Layout.styles';
 import { Title, Heading, Text, TextLabel } from '../../styles/Text.styles';
 import { TextButton } from '../../styles/Button.styles';
+import { TextButtonPlacer } from './index.styles';
 
 const AppointmentDetails = () => {
   const { customerId, appointmentId } = useParams();
@@ -39,9 +40,12 @@ const AppointmentDetails = () => {
 
   return (
     <>
-      <Link to={`/customer-overview/${customerId}`}>
-        <TextButton>{'<'} Back to Customer overview</TextButton>
-      </Link>
+      <TextButtonPlacer>
+        <Link to={`/customer-overview/${customerId}`}>
+          <TextButton>{'<'} Back to Customer overview</TextButton>
+        </Link>
+      </TextButtonPlacer>
+
       <TwoColumnSB>
         <Title style={{ gridColumnStart: '1', gridColumnEnd: '3' }}>Appointment details</Title>
         <CustomerDetails customer={customer} />

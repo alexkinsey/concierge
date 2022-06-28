@@ -3,7 +3,7 @@ import { Link } from 'react-router-dom';
 import { TextButton } from '../../../../styles/Button.styles';
 import { LabelTextLayout } from '../../../../styles/Layout.styles';
 import { Text, TextLabel, TextLarger } from '../../../../styles/Text.styles';
-import { Box, ButtonAlignments } from './index.styles';
+import { Box, TextButtonPlacer } from './index.styles';
 
 const AppointmentCard = ({ appointment }) => {
   return (
@@ -20,11 +20,11 @@ const AppointmentCard = ({ appointment }) => {
         <Text>{appointment.location}</Text>
       </LabelTextLayout>
 
-      <ButtonAlignments>
+      <TextButtonPlacer>
         <Link to={`appointment-details/${appointment.appointmentId}`}>
           <TextButton>Appointment details &gt; </TextButton>
         </Link>
-      </ButtonAlignments>
+      </TextButtonPlacer>
     </Box>
   );
 };
