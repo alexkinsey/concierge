@@ -27,6 +27,7 @@ export const Field = styled.input`
   color: var(--medGrey);
 
   border: 1px solid var(--black);
+  max-width: 25rem;
 `;
 
 export const Radio = styled.input`

@@ -6,7 +6,7 @@ import { getAppointmentsByCustomerId } from '../../../../services';
 import {LabelTextLayout} from '../../../../styles/Layout.styles';
 import { Text, TextLabel, TextLarger } from '../../../../styles/Text.styles';
 import { TextButton } from '../../../../styles/Button.styles';
-import { Box, ButtonAlignments } from './index.styles';
+import { Box } from './index.styles';
 
 const ResultCard = ({ customer }) => {
   const [numberOfAppointments, setNumberOfAppointments] = useState('');
@@ -37,11 +37,9 @@ const ResultCard = ({ customer }) => {
         <Text>{numberOfAppointments}</Text>
       </LabelTextLayout>
 
-      <ButtonAlignments>
         <Link to={linkToCustomerOverview}>
-          <TextButton>Customer Overview &gt; </TextButton>
+          <TextButton right>Customer Overview &gt; </TextButton>
         </Link>
-      </ButtonAlignments>
     </Box>
   );
 };
