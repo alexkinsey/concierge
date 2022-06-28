@@ -18,11 +18,22 @@ const CreateCustomer = () => {
     email: '',
     phoneNumber: '',
   });
+  const [formPage, setFormPage] = useState(1);
+
+  const handleFormNextPage = (radio) => {
+    console.log(radio);
+    setFormPage(2);
+    setFormInputs({
+      ...formInputs,
+      businessArea: radio,
+    });
+  };
   return (
     <TwoColumnBS>
       <Title style={{ gridColumnStart: '1', gridColumnEnd: '3' }}>Create a new customer record</Title>
       <Form>
-        <NatureOfCallForm />
+      {formPage === 1 ? (<NatureOfCallForm handleFormNextPage={handleFormNextPage} />) : (null)}
+      
       </Form>
     </TwoColumnBS>
   );

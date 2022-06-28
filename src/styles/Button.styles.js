@@ -17,9 +17,26 @@ export const PrimaryButton = styled.button`
   color: var(--white);
   padding: 0 5rem;
   height: 4rem;
+  width: ${(props) => (props.full ? '100%' : 'auto')};
 
   :hover {
     cursor: pointer;
     background-color: var(--accentDark);
+  }
+`;
+
+export const SecondaryButton = styled.button`
+  background-color: white;
+  border: 0.15rem solid var(--accent);
+
+  font-size: 22px;
+  font-weight: 500;
+  color: var(--accent);
+  padding: 0 5rem;
+  height: 4rem;
+  width: ${(props) => (props.full ? '100%' : 'auto')};
+
+  :hover {
+    cursor: pointer;
   }
 `;

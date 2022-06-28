@@ -1,13 +1,14 @@
 import { useState } from 'react';
+import { Link } from 'react-router-dom';
+
 import { Container } from '../../../styles/Layout.styles';
 import { Heading, Text } from '../../../styles/Text.styles';
 import { FieldGroup, Label, Radio } from '../../../styles/Form.styles';
+import { PrimaryButton, SecondaryButton } from '../../../styles/Button.styles';
 
-const NatureOfCallForm = () => {
+const NatureOfCallForm = ({ handleFormNextPage }) => {
   const [selectedRadioBtn, setSelectedRadioBtn] = useState('');
-  const isRadioSelected = (value) => {
-    return selectedRadioBtn === value;
-  };
+
   const handleRadioClick = (ev) => {
     setSelectedRadioBtn(ev.currentTarget.value);
   };
@@ -22,7 +23,7 @@ const NatureOfCallForm = () => {
           id="banking"
           value="banking"
           name="businessArea"
-          checked={isRadioSelected('banking')}
+          checked={selectedRadioBtn === 'banking'}
           onChange={handleRadioClick}
         />
         <Label htmlFor="banking">Banking</Label>
@@ -34,7 +35,7 @@ const NatureOfCallForm = () => {
           id="insurance"
           value="insurance"
           name="businessArea"
-          checked={isRadioSelected('insurance')}
+          checked={selectedRadioBtn === 'insurance'}
           onChange={handleRadioClick}
         />
         <Label htmlFor="insurance">Insurance</Label>
@@ -46,7 +47,7 @@ const NatureOfCallForm = () => {
           id="mortgage"
           value="mortgage"
           name="businessArea"
-          checked={isRadioSelected('mortgage')}
+          checked={selectedRadioBtn === 'mortgage'}
           onChange={handleRadioClick}
         />
         <Label htmlFor="mortgage">Mortgage</Label>
@@ -58,10 +59,20 @@ const NatureOfCallForm = () => {
           id="pension"
           value="pension"
           name="businessArea"
-          checked={isRadioSelected('pension')}
+          checked={selectedRadioBtn === 'pension'}
           onChange={handleRadioClick}
         />
         <Label htmlFor="pension">Pension</Label>
+      </FieldGroup>
+
+      <FieldGroup row>
+        <Link to="/">
+          <SecondaryButton>Cancel</SecondaryButton>
+        </Link>
+
+        <PrimaryButton full onClick={() => handleFormNextPage(selectedRadioBtn)}>
+          Next
+        </PrimaryButton>
       </FieldGroup>
     </Container>
   );
