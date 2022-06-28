@@ -3,7 +3,7 @@ import { useParams } from 'react-router-dom';
 
 import { getCustomerById, getAppointmentsByCustomerId } from '../../services';
 
-import { CustomerDetails } from './CustomerDetails/index';
+import { CustomerDetails } from '../CustomerDetails/index';
 
 import { TwoColumnSB } from '../../styles/Layout.styles';
 import { Title } from '../../styles/Text.styles';
@@ -13,20 +13,20 @@ import AppointmentsList from './AppointmentsList';
 const CustomerOverview = () => {
   const [customer, setCustomer] = useState({});
   const [appointments, setAppointments] = useState([]);
-  const { id } = useParams();
+  const { customerId } = useParams();
 
   useEffect(() => {
-    setCustomer(getCustomer(id));
-    setAppointments(getAppointments(id));
-  }, [id]);
+    setCustomer(getCustomer(customerId));
+    setAppointments(getAppointments(customerId));
+  }, [customerId]);
 
-  const getCustomer = async (id) => {
-    const customer = await getCustomerById(id);
+  const getCustomer = async (customerId) => {
+    const customer = await getCustomerById(customerId);
     setCustomer(customer);
   };
 
-  const getAppointments = async (id) => {
-    const appointments = await getAppointmentsByCustomerId(id);
+  const getAppointments = async (customerId) => {
+    const appointments = await getAppointmentsByCustomerId(customerId);
     const sortedAppointments = await appointments.sort((a, b) => new Date(b.date) - new Date(a.date));
     setAppointments(sortedAppointments);
   };

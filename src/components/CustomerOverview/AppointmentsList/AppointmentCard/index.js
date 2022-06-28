@@ -21,8 +21,8 @@ const AppointmentCard = ({ appointment }) => {
       </LabelTextLayout>
 
       <ButtonAlignments>
-        <Link to={`appointment-overview/${appointment.appointmentId}`}>
-          <TextButton>Appointment Overview &gt; </TextButton>
+        <Link to={`appointment-details/${appointment.appointmentId}`}>
+          <TextButton>Appointment details &gt; </TextButton>
         </Link>
       </ButtonAlignments>
     </Box>

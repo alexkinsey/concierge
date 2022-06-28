@@ -1,6 +1,6 @@
-import { Container, LabelTextLayout } from '../../../styles/Layout.styles';
-import { Heading, TextLabel, Text } from '../../../styles/Text.styles';
-import { TextButton } from '../../../styles/Button.styles';
+import { Container, LabelTextLayout } from '../../styles/Layout.styles';
+import { Heading, TextLabel, Text } from '../../styles/Text.styles';
+import { TextButton } from '../../styles/Button.styles';
 import { HeadingAligner } from './index.styles';
 
 export const CustomerDetails = ({ customer }) => {

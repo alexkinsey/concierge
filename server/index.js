@@ -30,7 +30,7 @@ app.get('/api/customers', (req, res) => {
     }
     res.json({
       message: 'success',
-      data: rows
+      data: rows,
     });
   });
 });
@@ -46,26 +46,13 @@ app.get('/api/customers/:id', (req, res) => {
     }
     res.json({
       message: 'success',
-      data: row
+      data: row,
     });
   });
 });
 
 // CREATE customer
 app.post('/api/customers/', (req, res) => {
-  // const data = {
-  //   first_name: req.body.first_name,
-  //   last_name: req.body.last_name,
-  //   date_of_birth: req.body.date_of_birth,
-  //   address1: req.body.address1,
-  //   address2: req.body?.address2,
-  //   address3: req.body?.address3,
-  //   city: req.body.city,
-  //   postcode: req.body.postcode,
-  //   email: req.body.email,
-  //   phone_number: req.body.phone_number,
-  //   national_insurance_number: req.body?.national_insurance_number
-  // };
   const sql = `INSERT INTO customers 
                 (firstName, 
                   lastName, 
@@ -90,7 +77,7 @@ app.post('/api/customers/', (req, res) => {
     req.body.postcode,
     req.body.email,
     req.body.phoneNumber,
-    req.body.nationalInsuranceNo
+    req.body.nationalInsuranceNo,
   ];
 
   db.run(sql, params, function (err, result) {
@@ -101,14 +88,13 @@ app.post('/api/customers/', (req, res) => {
     res.json({
       message: 'success',
       data: params,
-      id: this.lastID
+      id: this.lastID,
     });
   });
 });
 
 // UPDATE customer
 app.put('/api/customers/:id', (req, res) => {
-  // console.log(req.body);
   const data = {
     firstName: req.body.firstName,
     lastName: req.body.lastName,
@@ -120,7 +106,7 @@ app.put('/api/customers/:id', (req, res) => {
     postcode: req.body.postcode,
     email: req.body.email,
     phoneNumber: req.body.phoneNumber,
-    nationalInsuranceNo: req.body?.nationalInsuranceNo
+    nationalInsuranceNo: req.body?.nationalInsuranceNo,
   };
   const sql = `UPDATE customers SET
                 firstName = COALESCE(?,firstName),
@@ -147,7 +133,7 @@ app.put('/api/customers/:id', (req, res) => {
     req.body.email,
     req.body.phoneNumber,
     req.body.nationalInsuranceNo,
-    req.params.id
+    req.params.id,
   ];
 
   db.run(sql, params, function (err, result) {
@@ -158,24 +144,20 @@ app.put('/api/customers/:id', (req, res) => {
     res.json({
       message: 'success',
       data: data,
-      changes: this.changes
+      changes: this.changes,
     });
   });
 });
 
 // DELETE customer
 app.delete('/api/customers/:id', (req, res) => {
-  db.run(
-    'DELETE FROM customers WHERE customerId = ?',
-    req.params.id,
-    function (err, result) {
-      if (err) {
-        res.status(400).json({ error: res.message });
-        return;
-      }
-      res.json({ message: 'deleted', changes: this.changes });
+  db.run('DELETE FROM customers WHERE customerId = ?', req.params.id, function (err, result) {
+    if (err) {
+      res.status(400).json({ error: res.message });
+      return;
     }
-  );
+    res.json({ message: 'deleted', changes: this.changes });
+  });
 });
 
 // SEARCH for customer
@@ -184,34 +166,22 @@ app.post('/api/customers/search', (req, res) => {
     firstName: req.body.firstName,
     lastName: req.body.lastName,
     dateOfBirth: req.body.dateOfBirth,
-    postcode: req.body.postcode
+    postcode: req.body.postcode,
   };
 
   var sql = 'SELECT * FROM customers WHERE lastName = ? AND dateOfBirth = ?';
   var params = [data.lastName, data.dateOfBirth];
 
   if (data.firstName && data.postcode) {
-    sql =
-      'SELECT * FROM customers WHERE firstName = ? AND lastName = ? AND dateOfBirth = ? AND postcode = ?';
-    params = [
-      data.firstName,
-      data.lastName,
-      data.dateOfBirth,
-      data.postcode
-    ];
+    sql = 'SELECT * FROM customers WHERE firstName = ? AND lastName = ? AND dateOfBirth = ? AND postcode = ?';
+    params = [data.firstName, data.lastName, data.dateOfBirth, data.postcode];
   } else if (data.firstName) {
-    sql =
-      'SELECT * FROM customers WHERE firstName = ? AND lastName = ? AND dateOfBirth = ?';
+    sql = 'SELECT * FROM customers WHERE firstName = ? AND lastName = ? AND dateOfBirth = ?';
     params = [data.firstName, data.lastName, data.dateOfBirth];
   } else if (data.postcode) {
-    sql =
-      'SELECT * FROM customers WHERE lastName = ? AND dateOfBirth = ? AND postcode = ?';
+    sql = 'SELECT * FROM customers WHERE lastName = ? AND dateOfBirth = ? AND postcode = ?';
     params = [data.lastName, data.dateOfBirth, data.postcode];
   }
-
-  console.log(data);
-  console.log(sql);
-  console.log(params);
 
   db.all(sql, params, (err, row) => {
     if (err) {
@@ -220,7 +190,7 @@ app.post('/api/customers/search', (req, res) => {
     }
     res.json({
       message: 'success',
-      data: row
+      data: row,
     });
   });
 });
@@ -239,12 +209,12 @@ app.get('/api/consultants', (req, res) => {
     }
     res.json({
       message: 'success',
-      data: rows
+      data: rows,
     });
   });
 });
 
-// GET all consultants by department 
+// GET all consultants by department
 app.get('/api/consultants/:department', (req, res) => {
   const sql = 'SELECT * FROM consultants WHERE department = ?';
   const params = [req.params.department];
@@ -255,7 +225,7 @@ app.get('/api/consultants/:department', (req, res) => {
     }
     res.json({
       message: 'success',
-      data: rows
+      data: rows,
     });
   });
 });
@@ -263,9 +233,27 @@ app.get('/api/consultants/:department', (req, res) => {
 // ----------------------------------------------------------------------------
 // -------------------------APPOINTMENTS ENDPOINTS-----------------------------
 // ----------------------------------------------------------------------------
+// GET appointment by id
+app.get('/api/appointments/:id', (req, res) => {
+  const sql = 'SELECT * FROM appointments WHERE appointmentId = ?';
+  const params = [req.params.id];
+  db.get(sql, params, (err, row) => {
+    if (err) {
+      res.status(400).json({ error: err.message });
+      return;
+    }
+    res.json({
+      message: 'success',
+      data: row,
+    });
+  });
+});
+
+
 // GET appointments and consultants by customer ID
 app.get('/api/appointments/customer=:customersId', (req, res) => {
-  const sql = 'SELECT * FROM "appointments" JOIN consultants ON appointments.consultantId = consultants.consultantId WHERE customerId = ?';
+  const sql =
+    'SELECT * FROM "appointments" JOIN consultants ON appointments.consultantId = consultants.consultantId WHERE customerId = ?';
   const params = [req.params.customersId];
   db.all(sql, params, (err, rows) => {
     if (err) {
@@ -274,8 +262,7 @@ app.get('/api/appointments/customer=:customersId', (req, res) => {
     }
     res.json({
       message: 'success',
-      data: rows
+      data: rows,
     });
   });
 });
-

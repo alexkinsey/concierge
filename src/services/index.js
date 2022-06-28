@@ -23,6 +23,18 @@ export const getCustomerById = async (customerId) => {
   return customer;
 };
 
+export const getAppointmentById = async (appointmentId) => {
+  const res = await fetch('http://localhost:3001/api/appointments/' + appointmentId, {
+    method: 'GET',
+    headers: {
+      'Content-Type': 'application/json',
+    },
+  });
+  const data = await res.json();
+  const appointment = data.data;
+  return appointment;
+};
+
 export const getAppointmentsByCustomerId = async (customerId) => {
   const res = await fetch(`http://localhost:3001/api/appointments/customer=${customerId}`, {
     method: 'GET',
