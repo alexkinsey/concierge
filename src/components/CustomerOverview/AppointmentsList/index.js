@@ -1,9 +1,11 @@
+import { Link } from 'react-router-dom';
+
 import AppointmentCard from './AppointmentCard';
+import InfoWarningCard from '../../common/InfoWarningCard';
 
 import { Container, Separator } from '../../../styles/Layout.styles';
 import { Heading } from '../../../styles/Text.styles';
 import { PrimaryButton } from '../../../styles/Button.styles';
-import InfoWarningCard from '../../common/InfoWarningCard';
 
 const AppointmentsList = ({ appointments }) => {
   var appointmentCards;
@@ -22,7 +24,9 @@ const AppointmentsList = ({ appointments }) => {
         <InfoWarningCard type="info" message="Customer has no appointments" />
       )}
       <Separator />
-      <PrimaryButton right>Create a new appointment</PrimaryButton>
+      <Link to="create-appointment">
+        <PrimaryButton right>Create a new appointment</PrimaryButton>
+      </Link>
     </Container>
   );
 };

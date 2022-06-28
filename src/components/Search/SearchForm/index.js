@@ -11,13 +11,13 @@ const SearchForm = ({ findCustomers }) => {
   const [dateOfBirth, setDateOfBirth] = useState('');
   const [postcode, setPostcode] = useState('');
 
-  const handleFirstNameChange = (e) => setFirstName(e.target.value);
-  const handleLastNameChange = (e) => setLastName(e.target.value);
-  const handleDateOfBirthChange = (e) => setDateOfBirth(e.target.value);
-  const handlePostcodeChange = (e) => setPostcode(e.target.value);
+  const handleFirstNameChange = (ev) => setFirstName(ev.target.value);
+  const handleLastNameChange = (ev) => setLastName(ev.target.value);
+  const handleDateOfBirthChange = (ev) => setDateOfBirth(ev.target.value);
+  const handlePostcodeChange = (ev) => setPostcode(ev.target.value);
 
-  const handleSearch = async (e) => {
-    e.preventDefault();
+  const handleSearch = async (ev) => {
+    ev.preventDefault();
 
     findCustomers({
       firstName: firstName,

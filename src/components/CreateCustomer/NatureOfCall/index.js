@@ -21,10 +21,10 @@ const NatureOfCall = ({ handleFormNextPage }) => {
         <Radio
           type="radio"
           id="banking"
-          value="banking"
+          value="Banking"
           name="businessArea"
           required
-          checked={selectedRadioBtn === 'banking'}
+          checked={selectedRadioBtn === 'Banking'}
           onChange={handleRadioClick}
         />
         <Label htmlFor="banking">Banking</Label>
@@ -34,10 +34,10 @@ const NatureOfCall = ({ handleFormNextPage }) => {
         <Radio
           type="radio"
           id="insurance"
-          value="insurance"
+          value="Insurance"
           name="businessArea"
           required
-          checked={selectedRadioBtn === 'insurance'}
+          checked={selectedRadioBtn === 'Insurance'}
           onChange={handleRadioClick}
         />
         <Label htmlFor="insurance">Insurance</Label>
@@ -47,10 +47,10 @@ const NatureOfCall = ({ handleFormNextPage }) => {
         <Radio
           type="radio"
           id="mortgage"
-          value="mortgage"
+          value="Mortgage"
           name="businessArea"
           required
-          checked={selectedRadioBtn === 'mortgage'}
+          checked={selectedRadioBtn === 'Mortgage'}
           onChange={handleRadioClick}
         />
         <Label htmlFor="mortgage">Mortgage</Label>
@@ -60,10 +60,10 @@ const NatureOfCall = ({ handleFormNextPage }) => {
         <Radio
           type="radio"
           id="pension"
-          value="pension"
+          value="Pension"
           name="businessArea"
           required
-          checked={selectedRadioBtn === 'pension'}
+          checked={selectedRadioBtn === 'Pension'}
           onChange={handleRadioClick}
         />
         <Label htmlFor="pension">Pension</Label>

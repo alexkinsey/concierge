@@ -231,7 +231,7 @@ app.get('/api/consultants/:id', (req, res) => {
 });
 
 // GET all consultants by department
-app.get('/api/consultants/:department', (req, res) => {
+app.get('/api/consultants/department=:department', (req, res) => {
   const sql = 'SELECT * FROM consultants WHERE department = ?';
   const params = [req.params.department];
   db.all(sql, params, (err, rows) => {

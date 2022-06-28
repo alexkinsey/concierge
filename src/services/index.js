@@ -59,6 +59,18 @@ export const getConsultantById = async (consultantId) => {
   return consultant;
 }
 
+export const getConsultantsByDepartment = async (department) => {
+  const res = await fetch(`http://localhost:3001/api/consultants/department=${department}`, {
+    method: 'GET',
+    headers: {
+      'Content-Type': 'application/json',
+    },
+  });
+  const data = await res.json();
+  const consultants = data.data;
+  return consultants;
+}
+
 export const addCustomer = async (customer) => {
   const res = await fetch('http://localhost:3001/api/customers', {
     method: 'POST',

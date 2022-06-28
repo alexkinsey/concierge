@@ -30,6 +30,15 @@ export const Field = styled.input`
   max-width: 25rem;
 `;
 
+export const Selector = styled.select`
+  padding: 0.75rem 1rem;
+  font-size: 16px;
+  color: var(--darkGrey);
+
+  border: 1px solid var(--grey);
+  max-width: 27.1rem;
+`;
+
 export const Radio = styled.input`
   accent-color: var(--accent);
   :checked + ${Label} {

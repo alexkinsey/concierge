@@ -8,6 +8,7 @@ import Search from './components/Search';
 import CustomerOverview from './components/CustomerOverview';
 import CreateCustomer from './components/CreateCustomer';
 import AppointmentDetails from './components/AppointmentDetails';
+import CreateAppointment from './components/CreateAppointment';
 
 function App() {
   return (
@@ -23,6 +24,7 @@ function App() {
             element={<AppointmentDetails />}
           />
           <Route path="/create-customer" element={<CreateCustomer />} />
+          <Route path="/customer-overview/:customerId/create-appointment" element={<CreateAppointment />} />
         </Routes>
       </GlobalPageWidth>
     </Router>

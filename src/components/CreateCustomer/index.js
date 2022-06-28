@@ -1,5 +1,5 @@
 import { useState } from 'react';
-import { useNavigate } from "react-router-dom";
+import { useNavigate } from 'react-router-dom';
 
 import AboutTheCaller from './AboutTheCaller';
 import NatureOfCall from './NatureOfCall';
@@ -27,11 +27,13 @@ const CreateCustomer = () => {
   const [formPage, setFormPage] = useState(1);
 
   const handleFormNextPageButton = (radio) => {
-    setFormInputs({
-      ...formInputs,
-      businessArea: radio,
-    });
-    setFormPage(2);
+    if (radio) {
+      setFormInputs({
+        ...formInputs,
+        businessArea: radio,
+      });
+      setFormPage(2);
+    }
   };
 
   const handleFormSubmitButton = (
@@ -61,8 +63,8 @@ const CreateCustomer = () => {
     });
   };
 
-  const handleFormSubmit = async (e) => {
-    e.preventDefault();
+  const handleFormSubmit = async (ev) => {
+    ev.preventDefault();
     const id = await addCustomer(formInputs);
     navigate(`/customer-overview/${id}`);
   };
