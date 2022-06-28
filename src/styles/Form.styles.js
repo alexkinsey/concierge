@@ -24,9 +24,9 @@ export const Label = styled.label`
 export const Field = styled.input`
   padding: 0.75rem 1rem;
   font-size: 16px;
-  color: var(--medGrey);
+  color: var(--darkGrey);
 
-  border: 1px solid var(--black);
+  border: 1px solid var(--grey);
   max-width: 25rem;
 `;
 

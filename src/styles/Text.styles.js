@@ -20,7 +20,7 @@ export const Heading = styled.h2`
 
 export const Text = styled.p`
   font-size: 16px;
-  color: var(--medGrey);
+  color: var(--darkGrey);
   font-weight: 400;
 
   margin: 0;

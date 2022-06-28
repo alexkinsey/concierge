@@ -8,7 +8,7 @@ import { CustomerDetails } from '../CustomerDetails';
 import { Container, LabelTextLayout, TwoColumnSB } from '../../styles/Layout.styles';
 import { Title, Heading, Text, TextLabel } from '../../styles/Text.styles';
 import { TextButton } from '../../styles/Button.styles';
-import { TextButtonPlacer } from './index.styles';
+import { TextButtonPlacer, HeadingAligner, CommentBox } from './index.styles';
 
 const AppointmentDetails = () => {
   const { customerId, appointmentId } = useParams();
@@ -50,7 +50,10 @@ const AppointmentDetails = () => {
         <Title style={{ gridColumnStart: '1', gridColumnEnd: '3' }}>Appointment details</Title>
         <CustomerDetails customer={customer} />
         <Container gap={1.5}>
-          <Heading>{appointment.businessArea}</Heading>
+          <HeadingAligner>
+            <Heading>{appointment.businessArea}</Heading>
+            <TextButton>Edit {'>'}</TextButton>
+          </HeadingAligner>
 
           <LabelTextLayout>
             <TextLabel>Purpose:</TextLabel>
@@ -76,10 +79,10 @@ const AppointmentDetails = () => {
             </Text>
           </LabelTextLayout>
 
-          <LabelTextLayout>
-            <TextLabel>Comments:</TextLabel>
-            <Text>{appointment.comments}</Text>
-          </LabelTextLayout>
+          <TextLabel>Comments:</TextLabel>
+          <CommentBox>
+            <Text>{!appointment.comments ? 'No comments noted' : appointment.comments}</Text>
+          </CommentBox>
         </Container>
       </TwoColumnSB>
     </>

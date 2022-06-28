@@ -8,7 +8,7 @@ export const CustomerDetails = ({ customer }) => {
     <Container gap={1.5}>
       <HeadingAligner>
         <Heading>Customer details</Heading>
-        <TextButton>Edit &gt;</TextButton>
+        <TextButton>Edit {'>'}</TextButton>
       </HeadingAligner>
       <LabelTextLayout>
         <TextLabel>First name:</TextLabel>
