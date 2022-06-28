@@ -3,7 +3,7 @@ import { Link } from 'react-router-dom';
 
 import { Heading, TextAccent } from '../../../styles/Text.styles';
 import { PrimaryButton, SecondaryButton } from '../../../styles/Button.styles';
-import { Container } from '../../../styles/Layout.styles';
+import { Container, Separator } from '../../../styles/Layout.styles';
 import { FieldGroup, Label, Field } from '../../../styles/Form.styles';
 
 const AboutTheCaller = ({ handleFormSubmit }) => {
@@ -48,20 +48,20 @@ const AboutTheCaller = ({ handleFormSubmit }) => {
       </FieldGroup>
 
       <FieldGroup>
-        <Label htmlFor="address1">Address Line 1</Label>
+        <Label htmlFor="address1">Address line 1</Label>
         <Field type="text" id="address1" value={address1} required onChange={handleAddress1Change} />
       </FieldGroup>
 
       <FieldGroup>
         <Label htmlFor="address2">
-          Address Line 2 <TextAccent>(optional)</TextAccent>
+          Address line 2 <TextAccent>(optional)</TextAccent>
         </Label>
         <Field type="text" id="address2" value={address2} onChange={handleAddress2Change} />
       </FieldGroup>
 
       <FieldGroup>
         <Label htmlFor="address3">
-          Address Line 3 <TextAccent>(optional)</TextAccent>
+          Address line 3 <TextAccent>(optional)</TextAccent>
         </Label>
         <Field type="text" id="address3" value={address3} onChange={handleAddress3Change} />
       </FieldGroup>
@@ -85,6 +85,8 @@ const AboutTheCaller = ({ handleFormSubmit }) => {
         <Label htmlFor="phoneNumber">Phone number</Label>
         <Field type="text" id="phoneNumber" value={phoneNumber} required onChange={handlePhoneNumberChange} />
       </FieldGroup>
+
+      <Separator />
 
       <FieldGroup row>
         <Link to="/">

@@ -31,10 +31,17 @@ export const Container = styled.div`
   flex-direction: column;
   background-color: var(--white);
   padding: 2rem;
-  gap: ${(props) => (props.gap ? props.gap + 'rem' : '0rem')}
+  gap: ${(props) => (props.gap ? props.gap + 'rem' : '0rem')};
 `;
 
 export const LabelTextLayout = styled.div`
   display: grid;
   grid-template-columns: 1.2fr 2fr;
+`;
+
+export const Separator = styled.div`
+  width: 100%;
+  border-bottom: 1px solid var(--lightGrey);
+
+  margin: 1rem 0;
 `;

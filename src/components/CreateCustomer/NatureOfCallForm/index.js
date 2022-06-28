@@ -1,7 +1,7 @@
 import { useState } from 'react';
 import { Link } from 'react-router-dom';
 
-import { Container } from '../../../styles/Layout.styles';
+import { Container, Separator } from '../../../styles/Layout.styles';
 import { Heading, Text } from '../../../styles/Text.styles';
 import { FieldGroup, Label, Radio } from '../../../styles/Form.styles';
 import { PrimaryButton, SecondaryButton } from '../../../styles/Button.styles';
@@ -64,6 +64,8 @@ const NatureOfCallForm = ({ handleFormNextPage }) => {
         />
         <Label htmlFor="pension">Pension</Label>
       </FieldGroup>
+
+      <Separator />
 
       <FieldGroup row>
         <Link to="/">
