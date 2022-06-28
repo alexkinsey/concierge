@@ -3,8 +3,8 @@ import { useParams } from 'react-router-dom';
 
 import { getCustomerById, getAppointmentById } from '../../services';
 
-import { Container, TwoColumnSB } from '../../styles/Layout.styles';
-import { Title, Heading } from '../../styles/Text.styles';
+import { Container, LabelTextLayout, TwoColumnSB } from '../../styles/Layout.styles';
+import { Title, Heading, Text, TextLabel } from '../../styles/Text.styles';
 import { CustomerDetails } from '../CustomerDetails';
 
 const AppointmentDetails = () => {
@@ -14,16 +14,16 @@ const AppointmentDetails = () => {
 
   useEffect(() => {
     setCustomer(getCustomer(customerId));
-    setAppointment(getAppointment(customerId));
-  }, [customerId, appointmentId]);
+    setAppointment(getAppointment(appointmentId));
+  }, []);
 
-  const getCustomer = async (customerId) => {
-    const customer = await getCustomerById(customerId);
+  const getCustomer = async (id) => {
+    const customer = await getCustomerById(id);
     setCustomer(customer);
   };
 
-  const getAppointment = async (appointmentId) => {
-    const appointment = await getAppointmentById(appointmentId);
+  const getAppointment = async (id) => {
+    const appointment = await getAppointmentById(id);
     setAppointment(appointment);
   };
 
@@ -33,6 +33,10 @@ const AppointmentDetails = () => {
       <CustomerDetails customer={customer} />
       <Container>
         <Heading>{appointment.businessArea}</Heading>
+        <LabelTextLayout>
+          <TextLabel>Purpose:</TextLabel>
+          <Text>{appointment.purpose}</Text>
+        </LabelTextLayout>
       </Container>
     </TwoColumnSB>
   );

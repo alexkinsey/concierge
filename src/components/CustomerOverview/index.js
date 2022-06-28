@@ -20,13 +20,13 @@ const CustomerOverview = () => {
     setAppointments(getAppointments(customerId));
   }, [customerId]);
 
-  const getCustomer = async (customerId) => {
-    const customer = await getCustomerById(customerId);
+  const getCustomer = async (id) => {
+    const customer = await getCustomerById(id);
     setCustomer(customer);
   };
 
-  const getAppointments = async (customerId) => {
-    const appointments = await getAppointmentsByCustomerId(customerId);
+  const getAppointments = async (id) => {
+    const appointments = await getAppointmentsByCustomerId(id);
     const sortedAppointments = await appointments.sort((a, b) => new Date(b.date) - new Date(a.date));
     setAppointments(sortedAppointments);
   };

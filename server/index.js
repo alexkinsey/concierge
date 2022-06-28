@@ -233,23 +233,6 @@ app.get('/api/consultants/:department', (req, res) => {
 // ----------------------------------------------------------------------------
 // -------------------------APPOINTMENTS ENDPOINTS-----------------------------
 // ----------------------------------------------------------------------------
-// GET appointment by id
-app.get('/api/appointments/:id', (req, res) => {
-  const sql = 'SELECT * FROM appointments WHERE appointmentId = ?';
-  const params = [req.params.id];
-  db.get(sql, params, (err, row) => {
-    if (err) {
-      res.status(400).json({ error: err.message });
-      return;
-    }
-    res.json({
-      message: 'success',
-      data: row,
-    });
-  });
-});
-
-
 // GET appointments and consultants by customer ID
 app.get('/api/appointments/customer=:customersId', (req, res) => {
   const sql =
@@ -263,6 +246,22 @@ app.get('/api/appointments/customer=:customersId', (req, res) => {
     res.json({
       message: 'success',
       data: rows,
+    });
+  });
+});
+
+// GET appointment by id
+app.get('/api/appointments/:id', (req, res) => {
+  const sql = 'SELECT * FROM appointments WHERE appointmentId = ?';
+  const params = [req.params.id];
+  db.get(sql, params, (err, row) => {
+    if (err) {
+      res.status(400).json({ error: err.message });
+      return;
+    }
+    res.json({
+      message: 'success',
+      data: row,
     });
   });
 });
