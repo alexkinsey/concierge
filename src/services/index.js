@@ -60,7 +60,7 @@ export const getConsultantById = async (consultantId) => {
 }
 
 export const getConsultantsByDepartment = async (department) => {
-  const res = await fetch(`http://localhost:3001/api/consultants/department=${department}`, {
+  const res = await fetch('http://localhost:3001/api/consultants/department/' + department, {
     method: 'GET',
     headers: {
       'Content-Type': 'application/json',
@@ -68,6 +68,9 @@ export const getConsultantsByDepartment = async (department) => {
   });
   const data = await res.json();
   const consultants = data.data;
+  console.log('====================================');
+  console.log(res);
+  console.log('====================================');
   return consultants;
 }
 

@@ -16,6 +16,7 @@ const CreateAppointment = () => {
     purpose: '',
     location: '',
     branch: '',
+    consultant: '',
     date: '',
     time: '',
     comments: '',
@@ -32,12 +33,13 @@ const CreateAppointment = () => {
     }
   };
 
-  const handleFormSubmitButton = (purpose, location, branch, date, time, comments) => {
+  const handleFormSubmitButton = (purpose, location, branch, consultant, date, time, comments) => {
     setFormInputs({
       ...formInputs,
       purpose: purpose,
       location: location,
       branch: branch,
+      consultant: consultant,
       date: date,
       time: time,
       comments: comments,

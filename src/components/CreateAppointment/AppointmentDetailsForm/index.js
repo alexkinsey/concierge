@@ -1,11 +1,12 @@
 import React, { useState, useEffect } from 'react';
 import { Link } from 'react-router-dom';
 
+import { getConsultantsByDepartment } from '../../../services';
+
 import { Heading, TextAccent } from '../../../styles/Text.styles';
 import { PrimaryButton, SecondaryButton } from '../../../styles/Button.styles';
 import { Container, Separator } from '../../../styles/Layout.styles';
 import { FieldGroup, Label, Field, Radio, Selector } from '../../../styles/Form.styles';
-import { getConsultantsByDepartment } from '../../../services';
 
 const AppointmentDetailsForm = ({ department, handleFormSubmitButton }) => {
   const [purpose, setPurpose] = useState('');
@@ -18,18 +19,19 @@ const AppointmentDetailsForm = ({ department, handleFormSubmitButton }) => {
   const [consultant, setConsultant] = useState([]);
 
   useEffect(() => {
-    setConsultants(getConsultantsList(department));
+    getConsultantsList(department);
   }, [department]);
   const getConsultantsList = async (department) => {
-    return await getConsultantsByDepartment(department);
+    const consultantsList = await getConsultantsByDepartment(department);
+    setConsultants(consultantsList);
   };
-  var consultantsList = [];
-  if (consultants.length > 0) {
-    consultantsList = consultants.map((consultant) => {
-      return <option key={consultant.consultantId}>{consultant.firstName} {consultant.lastName}</option>;
-    });
-  }
-
+  const consultantsList = consultants.map((consultant) => {
+    return (
+      <option key={consultant.consultantId} value={consultant.consultantId}>
+        {consultant.firstName} {consultant.lastName}
+      </option>
+    );
+  });
 
   const handlePurposeChange = (e) => setPurpose(e.target.value);
   const handleRadioClick = (ev) => {
@@ -43,8 +45,6 @@ const AppointmentDetailsForm = ({ department, handleFormSubmitButton }) => {
   const handleDateChange = (e) => setDate(e.target.value);
   const handleTimeChange = (e) => setTime(e.target.value);
   const handleCommentsChange = (e) => setComments(e.target.value);
-
-  
 
   return (
     <Container gap={1}>
@@ -155,7 +155,7 @@ const AppointmentDetailsForm = ({ department, handleFormSubmitButton }) => {
           <SecondaryButton>Cancel</SecondaryButton>
         </Link>
 
-        <PrimaryButton full onClick={() => handleFormSubmitButton(purpose, location, branch, date, time, comments)}>
+        <PrimaryButton full onClick={() => handleFormSubmitButton(purpose, location, branch, consultant, date, time, comments)}>
           Add appointment
         </PrimaryButton>
       </FieldGroup>
