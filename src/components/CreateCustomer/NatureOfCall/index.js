@@ -6,7 +6,7 @@ import { Heading, Text } from '../../../styles/Text.styles';
 import { FieldGroup, Label, Radio } from '../../../styles/Form.styles';
 import { PrimaryButton, SecondaryButton } from '../../../styles/Button.styles';
 
-const NatureOfCallForm = ({ handleFormNextPage }) => {
+const NatureOfCall = ({ handleFormNextPage }) => {
   const [selectedRadioBtn, setSelectedRadioBtn] = useState('');
 
   const handleRadioClick = (ev) => {
@@ -86,4 +86,4 @@ const NatureOfCallForm = ({ handleFormNextPage }) => {
   );
 };
 
-export default NatureOfCallForm;
+export default NatureOfCall;

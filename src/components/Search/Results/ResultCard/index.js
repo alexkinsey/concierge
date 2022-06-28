@@ -1,7 +1,7 @@
 import { useEffect, useState } from 'react';
 import { Link } from 'react-router-dom';
 
-import { getAppointments } from '../../../../services';
+import { getAppointmentsByCustomerId } from '../../../../services';
 
 import {LabelTextLayout} from '../../../../styles/Layout.styles';
 import { Text, TextLabel, TextLarger } from '../../../../styles/Text.styles';
@@ -16,7 +16,7 @@ const ResultCard = ({ customer }) => {
   }, [customer.customerId]);
 
   const getNumberOfAppointments = async (customerId) => {
-    const appointments = await getAppointments(customerId);
+    const appointments = await getAppointmentsByCustomerId(customerId);
     setNumberOfAppointments(appointments.length);
   };
 

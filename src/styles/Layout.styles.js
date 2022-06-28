@@ -30,6 +30,7 @@ export const Container = styled.div`
   display: flex;
   flex-direction: column;
   background-color: var(--white);
+  height: fit-content;
   padding: 2rem;
   gap: ${(props) => (props.gap ? props.gap + 'rem' : '0rem')};
 `;

@@ -11,8 +11,8 @@ export const searchCustomersAPI = async (customerSearch) => {
   return customers;
 };
 
-export const getCustomerById = async (id) => {
-  const res = await fetch('http://localhost:3001/api/customers/' + id, {
+export const getCustomerById = async (customerId) => {
+  const res = await fetch('http://localhost:3001/api/customers/' + customerId, {
     method: 'GET',
     headers: {
       'Content-Type': 'application/json',
@@ -23,7 +23,7 @@ export const getCustomerById = async (id) => {
   return customer;
 };
 
-export const getAppointments = async (customerId) => {
+export const getAppointmentsByCustomerId = async (customerId) => {
   const res = await fetch(`http://localhost:3001/api/appointments/customer=${customerId}`, {
     method: 'GET',
     headers: {

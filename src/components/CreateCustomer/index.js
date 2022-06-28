@@ -2,7 +2,7 @@ import { useState } from 'react';
 import { useNavigate } from "react-router-dom";
 
 import AboutTheCaller from './AboutTheCaller';
-import NatureOfCallForm from './NatureOfCallForm';
+import NatureOfCall from './NatureOfCall';
 
 import { Form } from '../../styles/Form.styles';
 import { TwoColumnBS } from '../../styles/Layout.styles';
@@ -72,7 +72,7 @@ const CreateCustomer = () => {
       <Title style={{ gridColumnStart: '1', gridColumnEnd: '3' }}>Create a new customer record</Title>
       <Form onSubmit={handleFormSubmit}>
         {formPage === 1 ? (
-          <NatureOfCallForm handleFormNextPage={handleFormNextPageButton} />
+          <NatureOfCall handleFormNextPage={handleFormNextPageButton} />
         ) : (
           <AboutTheCaller handleFormSubmit={handleFormSubmitButton} />
         )}

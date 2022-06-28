@@ -9,7 +9,7 @@ import { PrimaryButton } from '../../../styles/Button.styles';
 
 const Results = ({ customers, numberOfFoundCustomers }) => {
   const resultCards = customers.map((customer) => {
-    return <ResultCard customer={customer} />;
+    return <ResultCard key={customer.customerId} customer={customer} />;
   });
 
   return (
