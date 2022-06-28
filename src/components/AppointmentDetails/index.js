@@ -1,11 +1,13 @@
 import { useState, useEffect } from 'react';
-import { useParams } from 'react-router-dom';
+import { useParams, Link } from 'react-router-dom';
 
 import { getCustomerById, getAppointmentById, getConsultantById } from '../../services';
 
+import { CustomerDetails } from '../CustomerDetails';
+
 import { Container, LabelTextLayout, TwoColumnSB } from '../../styles/Layout.styles';
 import { Title, Heading, Text, TextLabel } from '../../styles/Text.styles';
-import { CustomerDetails } from '../CustomerDetails';
+import { TextButton } from '../../styles/Button.styles';
 
 const AppointmentDetails = () => {
   const { customerId, appointmentId } = useParams();
@@ -16,6 +18,7 @@ const AppointmentDetails = () => {
   useEffect(() => {
     setCustomer(getCustomer(customerId));
     setAppointment(getAppointment(appointmentId));
+    // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [appointmentId, customerId]);
 
   const getCustomer = async (id) => {
@@ -35,42 +38,47 @@ const AppointmentDetails = () => {
   };
 
   return (
-    <TwoColumnSB>
-      <Title style={{ gridColumnStart: '1', gridColumnEnd: '3' }}>Appointment details</Title>
-      <CustomerDetails customer={customer} />
-      <Container gap={1.5}>
-        <Heading>{appointment.businessArea}</Heading>
+    <>
+      <Link to={`/customer-overview/${customerId}`}>
+        <TextButton>{'<'} Back to Customer overview</TextButton>
+      </Link>
+      <TwoColumnSB>
+        <Title style={{ gridColumnStart: '1', gridColumnEnd: '3' }}>Appointment details</Title>
+        <CustomerDetails customer={customer} />
+        <Container gap={1.5}>
+          <Heading>{appointment.businessArea}</Heading>
 
-        <LabelTextLayout>
-          <TextLabel>Purpose:</TextLabel>
-          <Text>{appointment.purpose}</Text>
-        </LabelTextLayout>
+          <LabelTextLayout>
+            <TextLabel>Purpose:</TextLabel>
+            <Text>{appointment.purpose}</Text>
+          </LabelTextLayout>
 
-        <LabelTextLayout>
-          <TextLabel>Date:</TextLabel>
-          <Text>{appointment.date}</Text>
-          <TextLabel>Time:</TextLabel>
-          <Text>{appointment.time}</Text>
-        </LabelTextLayout>
+          <LabelTextLayout>
+            <TextLabel>Date:</TextLabel>
+            <Text>{appointment.date}</Text>
+            <TextLabel>Time:</TextLabel>
+            <Text>{appointment.time}</Text>
+          </LabelTextLayout>
 
-        <LabelTextLayout>
-          <TextLabel>Location:</TextLabel>
-          <Text>{appointment.location}</Text>
-        </LabelTextLayout>
+          <LabelTextLayout>
+            <TextLabel>Location:</TextLabel>
+            <Text>{appointment.location}</Text>
+          </LabelTextLayout>
 
-        <LabelTextLayout>
-          <TextLabel>Consultant:</TextLabel>
-          <Text>
-            {consultant.firstName} {consultant.lastName}
-          </Text>
-        </LabelTextLayout>
+          <LabelTextLayout>
+            <TextLabel>Consultant:</TextLabel>
+            <Text>
+              {consultant.firstName} {consultant.lastName}
+            </Text>
+          </LabelTextLayout>
 
-        <LabelTextLayout>
-          <TextLabel>Comments:</TextLabel>
-          <Text>{appointment.comments}</Text>
-        </LabelTextLayout>
-      </Container>
-    </TwoColumnSB>
+          <LabelTextLayout>
+            <TextLabel>Comments:</TextLabel>
+            <Text>{appointment.comments}</Text>
+          </LabelTextLayout>
+        </Container>
+      </TwoColumnSB>
+    </>
   );
 };
 
