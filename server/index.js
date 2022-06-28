@@ -214,6 +214,22 @@ app.get('/api/consultants', (req, res) => {
   });
 });
 
+// GET consultants by id
+app.get('/api/consultants/:id', (req, res) => {
+  const sql = 'SELECT * FROM consultants WHERE consultantId = ?';
+  const params = [req.params.id];
+  db.get(sql, params, (err, row) => {
+    if (err) {
+      res.status(400).json({ error: err.message });
+      return;
+    }
+    res.json({
+      message: 'success',
+      data: row,
+    });
+  });
+});
+
 // GET all consultants by department
 app.get('/api/consultants/:department', (req, res) => {
   const sql = 'SELECT * FROM consultants WHERE department = ?';
