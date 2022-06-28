@@ -11,7 +11,7 @@ import { Box, ButtonAlignments } from './index.styles';
 const ResultCard = ({ customer }) => {
   const [numberOfAppointments, setNumberOfAppointments] = useState('');
   useEffect(() => {
-    // TODO - BUG useEffect is hit twice on render
+    // BUG - useEffect is hit twice on render
     getNumberOfAppointments(customer.customerId);
   }, [customer.customerId]);
 

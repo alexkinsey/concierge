@@ -23,6 +23,7 @@ const NatureOfCallForm = ({ handleFormNextPage }) => {
           id="banking"
           value="banking"
           name="businessArea"
+          required
           checked={selectedRadioBtn === 'banking'}
           onChange={handleRadioClick}
         />
@@ -35,6 +36,7 @@ const NatureOfCallForm = ({ handleFormNextPage }) => {
           id="insurance"
           value="insurance"
           name="businessArea"
+          required
           checked={selectedRadioBtn === 'insurance'}
           onChange={handleRadioClick}
         />
@@ -47,6 +49,7 @@ const NatureOfCallForm = ({ handleFormNextPage }) => {
           id="mortgage"
           value="mortgage"
           name="businessArea"
+          required
           checked={selectedRadioBtn === 'mortgage'}
           onChange={handleRadioClick}
         />
@@ -59,6 +62,7 @@ const NatureOfCallForm = ({ handleFormNextPage }) => {
           id="pension"
           value="pension"
           name="businessArea"
+          required
           checked={selectedRadioBtn === 'pension'}
           onChange={handleRadioClick}
         />
@@ -71,6 +75,8 @@ const NatureOfCallForm = ({ handleFormNextPage }) => {
         <Link to="/">
           <SecondaryButton>Cancel</SecondaryButton>
         </Link>
+
+        {/* BUG - can continue without radio selection */}
 
         <PrimaryButton full onClick={() => handleFormNextPage(selectedRadioBtn)}>
           Next
