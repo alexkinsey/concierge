@@ -1,17 +1,19 @@
 import { useState, useEffect } from 'react';
-import { useParams, Link } from 'react-router-dom';
+import { useParams, Link, useNavigate } from 'react-router-dom';
 
-import { getCustomerById, getAppointmentById, getConsultantById } from '../../services';
+import { getCustomerById, getAppointmentById, getConsultantById, deleteAppointment } from '../../services';
 
 import { CustomerDetails } from '../CustomerDetails';
 
 import { Container, LabelTextLayout, TwoColumnSB } from '../../styles/Layout.styles';
 import { Title, Heading, Text, TextLabel } from '../../styles/Text.styles';
-import { TextButton } from '../../styles/Button.styles';
+import { SecondaryButton, TextButton } from '../../styles/Button.styles';
 import { TextButtonPlacer, HeadingAligner, CommentBox } from './index.styles';
 
 const AppointmentDetails = () => {
+  const navigate = useNavigate();
   const { customerId, appointmentId } = useParams();
+
   const [customer, setCustomer] = useState({});
   const [appointment, setAppointment] = useState({});
   const [consultant, setConsult] = useState({});
@@ -30,6 +32,11 @@ const AppointmentDetails = () => {
 
     const consult = await getConsultantById(appointment.consultantId);
     setConsult(consult);
+  };
+
+  const handleCancelAppointment = async () => {
+    deleteAppointment(appointmentId);
+    navigate(`/customer-overview/${customerId}`);
   };
 
   return (
@@ -83,6 +90,7 @@ const AppointmentDetails = () => {
           <CommentBox>
             <Text>{!appointment.comments ? 'No comments noted' : appointment.comments}</Text>
           </CommentBox>
+          <SecondaryButton onClick={handleCancelAppointment}>Cancel appointment</SecondaryButton>
         </Container>
       </TwoColumnSB>
     </>

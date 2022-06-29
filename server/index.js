@@ -282,6 +282,7 @@ app.get('/api/appointments/:id', (req, res) => {
   });
 });
 
+// CREATE new appointment
 app.post('/api/appointments', (req, res) => {
   const sql =
     'INSERT INTO appointments (businessArea, purpose, location, branch, date, time, comments, customerId, consultantId) VALUES (?,?,?,?,?,?,?,?,?)';
@@ -307,5 +308,16 @@ app.post('/api/appointments', (req, res) => {
       data: params,
       changes: this.changes,
     });
+  });
+});
+
+// DELETE appointment
+app.delete('/api/appointments/:id', (req, res) => {
+  db.run('DELETE FROM appointments WHERE appointmentId = ?', req.params.id, function (err, result) {
+    if (err) {
+      res.status(400).json({ error: res.message });
+      return;
+    }
+    res.json({ message: 'deleted', changes: this.changes });
   });
 });

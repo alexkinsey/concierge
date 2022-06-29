@@ -97,3 +97,14 @@ export const addAppointment = async (appointment) => {
   const id = data.id;
   return id;
 };
+
+export const deleteAppointment = async (appointmentId) => {
+  const res = await fetch(`http://localhost:3001/api/appointments/${appointmentId}`, {
+    method: 'DELETE',
+    headers: {
+      'Content-Type': 'application/json',
+    },
+  });
+  const data = await res.json();
+  return data;
+}
