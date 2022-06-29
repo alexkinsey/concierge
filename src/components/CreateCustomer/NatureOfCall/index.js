@@ -1,5 +1,5 @@
 import { useState } from 'react';
-import { Link } from 'react-router-dom';
+import { Link, useNavigate } from 'react-router-dom';
 
 import { Container, Separator } from '../../../styles/Layout.styles';
 import { Heading, Text } from '../../../styles/Text.styles';
@@ -7,6 +7,8 @@ import { FieldGroup, Label, Radio } from '../../../styles/Form.styles';
 import { PrimaryButton, SecondaryButton } from '../../../styles/Button.styles';
 
 const NatureOfCall = ({ handleFormNextPage }) => {
+  const navigate = useNavigate();
+
   const [selectedRadioBtn, setSelectedRadioBtn] = useState('');
 
   const handleRadioClick = (ev) => {
@@ -72,9 +74,9 @@ const NatureOfCall = ({ handleFormNextPage }) => {
       <Separator />
 
       <FieldGroup row>
-        <Link to="/">
-          <SecondaryButton>Cancel</SecondaryButton>
-        </Link>
+        <SecondaryButton full onClick={() => navigate(-1)}>
+          Cancel
+        </SecondaryButton>
 
         {/* BUG - can continue without radio selection */}
 

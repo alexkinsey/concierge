@@ -1,5 +1,5 @@
 import React, { useState } from 'react';
-import { Link } from 'react-router-dom';
+import { useNavigate } from 'react-router-dom';
 
 import { Heading, TextAccent } from '../../../styles/Text.styles';
 import { PrimaryButton, SecondaryButton } from '../../../styles/Button.styles';
@@ -7,6 +7,8 @@ import { Container, Separator } from '../../../styles/Layout.styles';
 import { FieldGroup, Label, Field } from '../../../styles/Form.styles';
 
 const AboutTheCaller = ({ handleFormSubmit }) => {
+  const navigate = useNavigate();
+
   const [firstName, setFirstName] = useState('');
   const [lastName, setLastName] = useState('');
   const [dateOfBirth, setDateOfBirth] = useState('');
@@ -89,11 +91,27 @@ const AboutTheCaller = ({ handleFormSubmit }) => {
       <Separator />
 
       <FieldGroup row>
-        <Link to="/">
-          <SecondaryButton>Cancel</SecondaryButton>
-        </Link>
+        <SecondaryButton full onClick={() => navigate(-1)}>
+          Cancel
+        </SecondaryButton>
 
-        <PrimaryButton full onClick={() => handleFormSubmit(firstName, lastName, dateOfBirth, address1, address2, address3, city, postcode, email, phoneNumber)}>
+        <PrimaryButton
+          full
+          onClick={() =>
+            handleFormSubmit(
+              firstName,
+              lastName,
+              dateOfBirth,
+              address1,
+              address2,
+              address3,
+              city,
+              postcode,
+              email,
+              phoneNumber
+            )
+          }
+        >
           Add customer
         </PrimaryButton>
       </FieldGroup>

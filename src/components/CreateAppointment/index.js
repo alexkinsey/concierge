@@ -52,7 +52,7 @@ const CreateAppointment = () => {
   const handleFormSubmit = async (ev) => {
     ev.preventDefault();
     await addAppointment(formInputs);
-    // navigate(`/customer-overview/${customerId}`);
+    navigate(`/customer-overview/${customerId}`);
   };
 
   return (

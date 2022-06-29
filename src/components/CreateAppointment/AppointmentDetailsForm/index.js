@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from 'react';
-import { Link } from 'react-router-dom';
+import { useNavigate } from 'react-router-dom';
 
 import { getConsultantsByDepartment } from '../../../services';
 
@@ -9,6 +9,8 @@ import { Container, Separator } from '../../../styles/Layout.styles';
 import { FieldGroup, Label, Field, Radio, Selector } from '../../../styles/Form.styles';
 
 const AppointmentDetailsForm = ({ department, handleFormSubmitButton }) => {
+  const navigate = useNavigate();
+
   const [purpose, setPurpose] = useState('');
   const [location, setLocation] = useState('');
   const [branch, setBranch] = useState('');
@@ -18,6 +20,7 @@ const AppointmentDetailsForm = ({ department, handleFormSubmitButton }) => {
   const [consultants, setConsultants] = useState([]);
   const [consultantId, setConsultantId] = useState([]);
 
+  // Load consultant list
   useEffect(() => {
     getConsultantsList(department);
   }, [department]);
@@ -33,6 +36,7 @@ const AppointmentDetailsForm = ({ department, handleFormSubmitButton }) => {
     );
   });
 
+  // form input to state
   const handlePurposeChange = (e) => setPurpose(e.target.value);
   const handleRadioClick = (ev) => {
     setLocation(ev.currentTarget.value);
@@ -127,9 +131,9 @@ const AppointmentDetailsForm = ({ department, handleFormSubmitButton }) => {
       <FieldGroup>
         <Label htmlFor="consultant">Consultant</Label>
         <Selector type="text" id="consultant" required onChange={handleConsultantChange}>
-        <option selected disabled value="Choose a consultant...">
-              Choose a consultant...
-            </option>
+          <option selected disabled value="Choose a consultant...">
+            Choose a consultant...
+          </option>
           {consultantsList}
         </Selector>
       </FieldGroup>
@@ -154,11 +158,14 @@ const AppointmentDetailsForm = ({ department, handleFormSubmitButton }) => {
       <Separator />
 
       <FieldGroup row>
-        <Link to="/">
-          <SecondaryButton>Cancel</SecondaryButton>
-        </Link>
+        <SecondaryButton full onClick={() => navigate(-1)}>
+          Cancel
+        </SecondaryButton>
 
-        <PrimaryButton full onClick={() => handleFormSubmitButton(purpose, location, branch, consultantId, date, time, comments)}>
+        <PrimaryButton
+          full
+          onClick={() => handleFormSubmitButton(purpose, location, branch, consultantId, date, time, comments)}
+        >
           Add appointment
         </PrimaryButton>
       </FieldGroup>

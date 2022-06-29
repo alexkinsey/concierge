@@ -17,24 +17,18 @@ const AppointmentDetails = () => {
   const [consultant, setConsult] = useState({});
 
   useEffect(() => {
-    setCustomer(getCustomer(customerId));
-    setAppointment(getAppointment(appointmentId));
+    fetchData();
     // eslint-disable-next-line react-hooks/exhaustive-deps
-  }, [appointmentId, customerId]);
+  }, []);
 
-  const getCustomer = async (id) => {
-    const customer = await getCustomerById(id);
+  const fetchData = async () => {
+    const customer = await getCustomerById(customerId);
     setCustomer(customer);
-  };
 
-  const getAppointment = async (id) => {
-    const appointment = await getAppointmentById(id);
+    const appointment = await getAppointmentById(appointmentId);
     setAppointment(appointment);
-    setConsult(getConsultant(appointment.consultantId));
-  };
 
-  const getConsultant = async (id) => {
-    const consult = await getConsultantById(id);
+    const consult = await getConsultantById(appointment.consultantId);
     setConsult(consult);
   };
 
@@ -70,6 +64,12 @@ const AppointmentDetails = () => {
           <LabelTextLayout>
             <TextLabel>Location:</TextLabel>
             <Text>{appointment.location}</Text>
+            {appointment.location === 'branch' && (
+              <>
+                <TextLabel>Branch:</TextLabel>
+                <Text>{appointment.branch}</Text>
+              </>
+            )}
           </LabelTextLayout>
 
           <LabelTextLayout>
