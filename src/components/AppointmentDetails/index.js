@@ -10,12 +10,15 @@ import { Title, Heading, Text, TextLabel } from '../../styles/Text.styles';
 import { SecondaryButton, TextButton } from '../../styles/Button.styles';
 import { TextButtonPlacer, HeadingAligner, CommentBox } from './index.styles';
 
-const AppointmentDetails = ({ getAppointment, getConsultant, appointment, customer, consultant }) => {
+const AppointmentDetails = ({ getAppointmentData, getCustomer, appointment, customer, consultant }) => {
   const navigate = useNavigate();
   const { customerId, appointmentId } = useParams();
 
   useEffect(() => {
-    getAppointment(appointmentId);
+    getAppointmentData(appointmentId);
+    if (!customer.firstName) {
+      getCustomer(customerId);
+    }
   // eslint-disable-next-line react-hooks/exhaustive-deps
   }, []);
 
@@ -24,7 +27,9 @@ const AppointmentDetails = ({ getAppointment, getConsultant, appointment, custom
     navigate(`/customer-overview/${customerId}`);
   };
 
-  console.log('component', consultant);
+  const handleEditButton = () => {
+    navigate(`/customer-overview/${customer.customerId}/appointment-details/${appointmentId}/edit`);
+  };
 
   return (
     <>
@@ -40,7 +45,7 @@ const AppointmentDetails = ({ getAppointment, getConsultant, appointment, custom
         <Container gap={1.5}>
           <HeadingAligner>
             <Heading>{appointment.businessArea}</Heading>
-            <TextButton>Edit {'>'}</TextButton>
+            <TextButton onClick={handleEditButton}>Edit {'>'}</TextButton>
           </HeadingAligner>
 
           <LabelTextLayout>

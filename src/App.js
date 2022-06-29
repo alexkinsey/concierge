@@ -48,16 +48,11 @@ function App() {
     setAppointments(sortedAppointments);
   };
 
-  const getAppointment = async (id) => {
+  const getAppointmentData = async (id) => {
     const appointment = await getAppointmentById(id);
     setAppointment(appointment);
     const consultant = await getConsultantById(id);
     console.log(consultant);
-    setConsultant(consultant);
-  };
-
-  const getConsultant = async (id) => {
-    const consultant = await getConsultantById(id);
     setConsultant(consultant);
   };
 
@@ -89,24 +84,33 @@ function App() {
               />
             }
           />
+
+          <Route path="/create-customer" element={<CreateEditCustomer type="create" />} />
           <Route
             path="/customer-overview/:customerId/edit"
             element={<CreateEditCustomer type="edit" customer={customer} />}
           />
+
           <Route
             path="/customer-overview/:customerId/appointment-details/:appointmentId"
             element={
               <AppointmentDetails
-                getAppointment={getAppointment}
-                getConsultant={getConsultant}
+                getAppointmentData={getAppointmentData}
+                getCustomer={getCustomer}
                 appointment={appointment}
                 customer={customer}
                 consultant={consultant}
               />
             }
           />
-          <Route path="/create-customer" element={<CreateEditCustomer type="create" />} />
-          <Route path="/customer-overview/:customerId/create-appointment" element={<CreateEditAppointment />} />
+          <Route
+            path="/customer-overview/:customerId/create-appointment"
+            element={<CreateEditAppointment type="create" />}
+          />
+          <Route
+            path="/customer-overview/:customerId/appointment-details/:appointmentId/edit"
+            element={<CreateEditAppointment type="edit" appointment={appointment}/>}
+          />
         </Routes>
       </GlobalPageWidth>
     </Router>

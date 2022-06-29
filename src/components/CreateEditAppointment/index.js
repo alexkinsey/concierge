@@ -9,12 +9,14 @@ import { Title } from '../../styles/Text.styles';
 import { addAppointment } from '../../services';
 import AppointmentDetailsForm from './AppointmentDetailsForm';
 
-const CreateEditAppointment = () => {
+const CreateEditAppointment = (type, appointment) => {
   const navigate = useNavigate();
   const { customerId } = useParams();
 
+  console.log('appointment', appointment);
+
   const [formInputs, setFormInputs] = useState({
-    businessArea: '',
+    businessArea: appointment?.businessArea,
     purpose: '',
     location: '',
     branch: null,
@@ -57,12 +59,20 @@ const CreateEditAppointment = () => {
 
   return (
     <TwoColumnBS>
-      <Title style={{ gridColumnStart: '1', gridColumnEnd: '3' }}>Create a new appointment</Title>
+      {type === 'create' ? (
+        <Title style={{ gridColumnStart: '1', gridColumnEnd: '3' }}>Create a new appointment</Title>
+      ) : (
+        <Title style={{ gridColumnStart: '1', gridColumnEnd: '3' }}>Edit appointment</Title>
+      )}
+
       <Form onSubmit={handleFormSubmit}>
         {formPage === 1 ? (
-          <NatureOfCall handleFormNextPage={handleFormNextPageButton} />
+          <NatureOfCall handleFormNextPage={handleFormNextPageButton} businessArea={appointment.businessArea} />
         ) : (
-          <AppointmentDetailsForm department={formInputs.businessArea} handleFormSubmitButton={handleFormSubmitButton}/>
+          <AppointmentDetailsForm
+            department={formInputs.businessArea}
+            handleFormSubmitButton={handleFormSubmitButton}
+          />
         )}
       </Form>
     </TwoColumnBS>

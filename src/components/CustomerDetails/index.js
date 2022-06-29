@@ -8,8 +8,9 @@ import { HeadingAligner } from './index.styles';
 export const CustomerDetails = ({ customer }) => {
   const navigate = useNavigate();
   const handleEditButton = () => {
-    navigate('edit');
+    navigate(`/customer-overview/${customer.customerId}/edit`);
   };
+  
   return (
     <Container gap={1.5}>
       <HeadingAligner>

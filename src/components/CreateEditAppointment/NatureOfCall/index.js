@@ -1,5 +1,5 @@
 import { useState } from 'react';
-import { Link, useNavigate } from 'react-router-dom';
+import { useNavigate } from 'react-router-dom';
 
 import { Container, Separator } from '../../../styles/Layout.styles';
 import { Heading, Text } from '../../../styles/Text.styles';
