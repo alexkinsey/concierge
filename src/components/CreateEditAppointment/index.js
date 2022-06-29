@@ -9,7 +9,7 @@ import { Title } from '../../styles/Text.styles';
 import { addAppointment } from '../../services';
 import AppointmentDetailsForm from './AppointmentDetailsForm';
 
-const CreateAppointment = () => {
+const CreateEditAppointment = () => {
   const navigate = useNavigate();
   const { customerId } = useParams();
 
@@ -69,4 +69,4 @@ const CreateAppointment = () => {
   );
 };
 
-export default CreateAppointment;
+export default CreateEditAppointment;

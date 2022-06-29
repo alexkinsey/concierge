@@ -1,7 +1,7 @@
-import { useState, useEffect } from 'react';
+import { useEffect } from 'react';
 import { useParams, Link, useNavigate } from 'react-router-dom';
 
-import { getCustomerById, getAppointmentById, getConsultantById, deleteAppointment } from '../../services';
+import { deleteAppointment } from '../../services';
 
 import { CustomerDetails } from '../CustomerDetails';
 
@@ -10,34 +10,21 @@ import { Title, Heading, Text, TextLabel } from '../../styles/Text.styles';
 import { SecondaryButton, TextButton } from '../../styles/Button.styles';
 import { TextButtonPlacer, HeadingAligner, CommentBox } from './index.styles';
 
-const AppointmentDetails = () => {
+const AppointmentDetails = ({ getAppointment, getConsultant, appointment, customer, consultant }) => {
   const navigate = useNavigate();
   const { customerId, appointmentId } = useParams();
 
-  const [customer, setCustomer] = useState({});
-  const [appointment, setAppointment] = useState({});
-  const [consultant, setConsult] = useState({});
-
   useEffect(() => {
-    fetchData();
-    // eslint-disable-next-line react-hooks/exhaustive-deps
+    getAppointment(appointmentId);
+  // eslint-disable-next-line react-hooks/exhaustive-deps
   }, []);
-
-  const fetchData = async () => {
-    const customer = await getCustomerById(customerId);
-    setCustomer(customer);
-
-    const appointment = await getAppointmentById(appointmentId);
-    setAppointment(appointment);
-
-    const consult = await getConsultantById(appointment.consultantId);
-    setConsult(consult);
-  };
 
   const handleCancelAppointment = async () => {
     deleteAppointment(appointmentId);
     navigate(`/customer-overview/${customerId}`);
   };
+
+  console.log('component', consultant);
 
   return (
     <>

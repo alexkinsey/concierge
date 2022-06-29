@@ -12,16 +12,16 @@ const CreateEditCustomer = ({ type, customer }) => {
   const navigate = useNavigate();
 
   const [formInputs, setFormInputs] = useState({
-    firstName: '',
-    lastName: '',
-    dateOfBirth: '',
-    address1: '',
-    address2: '',
-    address3: '',
-    city: '',
-    postcode: '',
-    email: '',
-    phoneNumber: '',
+    firstName: customer?.firstName,
+    lastName: customer?.lastName,
+    dateOfBirth: customer?.dateOfBirth,
+    address1: customer?.address1,
+    address2: customer?.address2,
+    address3: customer?.address3,
+    city: customer?.city,
+    postcode: customer?.postcode,
+    email: customer?.email,
+    phoneNumber: customer?.phoneNumber,
   });
 
   const handleFormSubmitButton = (

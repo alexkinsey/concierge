@@ -9,22 +9,29 @@ import Search from './components/Search';
 import CustomerOverview from './components/CustomerOverview';
 import CreateEditCustomer from './components/CreateEditCustomer';
 import AppointmentDetails from './components/AppointmentDetails';
-import CreateAppointment from './components/CreateAppointment';
+import CreateEditAppointment from './components/CreateEditAppointment';
 
-import { searchCustomersAPI, getAppointmentsByCustomerId, getCustomerById } from './services';
+import {
+  searchCustomersAPI,
+  getAppointmentsByCustomerId,
+  getCustomerById,
+  getAppointmentById,
+  getConsultantById,
+} from './services';
 
 function App() {
   const [foundCustomers, setFoundCustomers] = useState([]);
   const [numberOfFoundCustomers, setNumberOfFoundCustomers] = useState('start');
   const [customer, setCustomer] = useState({});
   const [appointments, setAppointments] = useState([]);
+  const [appointment, setAppointment] = useState({});
+  const [consultant, setConsultant] = useState({});
 
   const searchForCustomers = async (criteria) => {
     const customers = await searchCustomersAPI(criteria);
     setFoundCustomers(customers);
     setNumberOfFoundCustomers(customers.length);
   };
-
   const resetFoundCustomers = () => {
     setFoundCustomers([]);
     setNumberOfFoundCustomers('start');
@@ -39,6 +46,19 @@ function App() {
     const appointments = await getAppointmentsByCustomerId(id);
     const sortedAppointments = await appointments.sort((a, b) => new Date(b.date) - new Date(a.date));
     setAppointments(sortedAppointments);
+  };
+
+  const getAppointment = async (id) => {
+    const appointment = await getAppointmentById(id);
+    setAppointment(appointment);
+    const consultant = await getConsultantById(id);
+    console.log(consultant);
+    setConsultant(consultant);
+  };
+
+  const getConsultant = async (id) => {
+    const consultant = await getConsultantById(id);
+    setConsultant(consultant);
   };
 
   return (
@@ -69,13 +89,24 @@ function App() {
               />
             }
           />
-          <Route path="/customer-overview/:customerId/edit" element={<CreateEditCustomer type="edit" customer={customer} />} />
+          <Route
+            path="/customer-overview/:customerId/edit"
+            element={<CreateEditCustomer type="edit" customer={customer} />}
+          />
           <Route
             path="/customer-overview/:customerId/appointment-details/:appointmentId"
-            element={<AppointmentDetails />}
+            element={
+              <AppointmentDetails
+                getAppointment={getAppointment}
+                getConsultant={getConsultant}
+                appointment={appointment}
+                customer={customer}
+                consultant={consultant}
+              />
+            }
           />
           <Route path="/create-customer" element={<CreateEditCustomer type="create" />} />
-          <Route path="/customer-overview/:customerId/create-appointment" element={<CreateAppointment />} />
+          <Route path="/customer-overview/:customerId/create-appointment" element={<CreateEditAppointment />} />
         </Routes>
       </GlobalPageWidth>
     </Router>
