@@ -36,7 +36,7 @@ export const getAppointmentById = async (appointmentId) => {
 };
 
 export const getAppointmentsByCustomerId = async (customerId) => {
-  const res = await fetch(`http://localhost:3001/api/appointments/customer=${customerId}`, {
+  const res = await fetch(`http://localhost:3001/api/appointments/customer/${customerId}`, {
     method: 'GET',
     headers: {
       'Content-Type': 'application/json',
@@ -57,7 +57,7 @@ export const getConsultantById = async (consultantId) => {
   const data = await res.json();
   const consultant = data.data;
   return consultant;
-}
+};
 
 export const getConsultantsByDepartment = async (department) => {
   const res = await fetch('http://localhost:3001/api/consultants/department/' + department, {
@@ -68,16 +68,27 @@ export const getConsultantsByDepartment = async (department) => {
   });
   const data = await res.json();
   const consultants = data.data;
-  console.log('====================================');
-  console.log(res);
-  console.log('====================================');
   return consultants;
-}
+};
 
 export const addCustomer = async (customer) => {
   const res = await fetch('http://localhost:3001/api/customers', {
     method: 'POST',
     body: JSON.stringify(customer),
+    headers: {
+      'Content-Type': 'application/json',
+    },
+  });
+  const data = await res.json();
+  const id = data.id;
+  return id;
+};
+
+export const addAppointment = async (appointment) => {
+  console.log(appointment);
+  const res = await fetch('http://localhost:3001/api/appointments', {
+    method: 'POST',
+    body: JSON.stringify(appointment),
     headers: {
       'Content-Type': 'application/json',
     },

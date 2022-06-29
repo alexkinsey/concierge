@@ -250,7 +250,7 @@ app.get('/api/consultants/department/:department', (req, res) => {
 // -------------------------APPOINTMENTS ENDPOINTS-----------------------------
 // ----------------------------------------------------------------------------
 // GET appointments and consultants by customer ID
-app.get('/api/appointments/customer=:customersId', (req, res) => {
+app.get('/api/appointments/customer/:customersId', (req, res) => {
   const sql =
     'SELECT * FROM "appointments" JOIN consultants ON appointments.consultantId = consultants.consultantId WHERE customerId = ?';
   const params = [req.params.customersId];
@@ -278,6 +278,34 @@ app.get('/api/appointments/:id', (req, res) => {
     res.json({
       message: 'success',
       data: row,
+    });
+  });
+});
+
+app.post('/api/appointments', (req, res) => {
+  const sql =
+    'INSERT INTO appointments (businessArea, purpose, location, branch, date, time, comments, customerId, consultantId) VALUES (?,?,?,?,?,?,?,?,?)';
+  const params = [
+    req.body.businessArea,
+    req.body.purpose,
+    req.body.location,
+    req.body.branch,
+    req.body.date,
+    req.body.time,
+    req.body.comments,
+    req.body.customerId,
+    req.body.consultantId,
+  ];
+
+  db.run(sql, params, function (err, result) {
+    if (err) {
+      res.status(400).json({ error: res.message });
+      return;
+    }
+    res.json({
+      message: 'success',
+      data: params,
+      changes: this.changes,
     });
   });
 });

@@ -16,7 +16,7 @@ const AppointmentDetailsForm = ({ department, handleFormSubmitButton }) => {
   const [time, setTime] = useState('');
   const [comments, setComments] = useState('');
   const [consultants, setConsultants] = useState([]);
-  const [consultant, setConsultant] = useState([]);
+  const [consultantId, setConsultantId] = useState([]);
 
   useEffect(() => {
     getConsultantsList(department);
@@ -41,7 +41,7 @@ const AppointmentDetailsForm = ({ department, handleFormSubmitButton }) => {
     }
   };
   const handleBranchChange = (e) => setBranch(e.target.value);
-  const handleConsultantChange = (e) => setConsultant(e.target.value);
+  const handleConsultantChange = (e) => setConsultantId(e.target.value);
   const handleDateChange = (e) => setDate(e.target.value);
   const handleTimeChange = (e) => setTime(e.target.value);
   const handleCommentsChange = (e) => setComments(e.target.value);
@@ -127,6 +127,9 @@ const AppointmentDetailsForm = ({ department, handleFormSubmitButton }) => {
       <FieldGroup>
         <Label htmlFor="consultant">Consultant</Label>
         <Selector type="text" id="consultant" required onChange={handleConsultantChange}>
+        <option selected disabled value="Choose a consultant...">
+              Choose a consultant...
+            </option>
           {consultantsList}
         </Selector>
       </FieldGroup>
@@ -155,7 +158,7 @@ const AppointmentDetailsForm = ({ department, handleFormSubmitButton }) => {
           <SecondaryButton>Cancel</SecondaryButton>
         </Link>
 
-        <PrimaryButton full onClick={() => handleFormSubmitButton(purpose, location, branch, consultant, date, time, comments)}>
+        <PrimaryButton full onClick={() => handleFormSubmitButton(purpose, location, branch, consultantId, date, time, comments)}>
           Add appointment
         </PrimaryButton>
       </FieldGroup>

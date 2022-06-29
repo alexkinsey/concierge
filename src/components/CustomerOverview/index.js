@@ -11,13 +11,16 @@ import { Title } from '../../styles/Text.styles';
 import AppointmentsList from './AppointmentsList';
 
 const CustomerOverview = () => {
-  const [customer, setCustomer] = useState({});
-  const [appointments, setAppointments] = useState([]);
   const { customerId } = useParams();
 
+  const [customer, setCustomer] = useState({});
+  const [appointments, setAppointments] = useState([]);
+  const [loaded, setLoaded] = useState(false);
+
   useEffect(() => {
-    setCustomer(getCustomer(customerId));
-    setAppointments(getAppointments(customerId));
+    getCustomer(customerId);
+    getAppointments(customerId);
+    setLoaded(true);
   }, [customerId]);
 
   const getCustomer = async (id) => {
@@ -32,11 +35,17 @@ const CustomerOverview = () => {
   };
 
   return (
-    <TwoColumnSB>
-      <Title style={{gridColumnStart: '1', gridColumnEnd: '3'}}>Customer overview - {customer.firstName} {customer.lastName}</Title>
-      <CustomerDetails customer={customer} />
-      <AppointmentsList appointments={appointments} />
-    </TwoColumnSB>
+    <>
+      {loaded && (
+        <TwoColumnSB>
+          <Title style={{ gridColumnStart: '1', gridColumnEnd: '3' }}>
+            Customer overview - {customer.firstName} {customer.lastName}
+          </Title>
+          <CustomerDetails customer={customer} />
+          <AppointmentsList appointments={appointments} />
+        </TwoColumnSB>
+      )}
+    </>
   );
 };
 

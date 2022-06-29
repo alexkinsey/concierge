@@ -1,25 +1,28 @@
 import { useState } from 'react';
-import { useNavigate } from 'react-router-dom';
+import { useNavigate, useParams } from 'react-router-dom';
 
 import NatureOfCall from '../CreateCustomer/NatureOfCall';
 
 import { Form } from '../../styles/Form.styles';
 import { TwoColumnBS } from '../../styles/Layout.styles';
 import { Title } from '../../styles/Text.styles';
-import {} from '../../services';
+import { addAppointment } from '../../services';
 import AppointmentDetailsForm from './AppointmentDetailsForm';
 
 const CreateAppointment = () => {
   const navigate = useNavigate();
+  const { customerId } = useParams();
+
   const [formInputs, setFormInputs] = useState({
     businessArea: '',
     purpose: '',
     location: '',
-    branch: '',
-    consultant: '',
+    branch: null,
     date: '',
     time: '',
     comments: '',
+    consultantId: '',
+    customerId: customerId,
   });
   const [formPage, setFormPage] = useState(1);
 
@@ -39,7 +42,7 @@ const CreateAppointment = () => {
       purpose: purpose,
       location: location,
       branch: branch,
-      consultant: consultant,
+      consultantId: consultant,
       date: date,
       time: time,
       comments: comments,
@@ -48,11 +51,8 @@ const CreateAppointment = () => {
 
   const handleFormSubmit = async (ev) => {
     ev.preventDefault();
-    console.log('====================================');
-    console.log(formInputs);
-    console.log('====================================');
-    // const id = await addCustomer(formInputs);
-    // navigate(`/customer-overview/${id}`);
+    await addAppointment(formInputs);
+    // navigate(`/customer-overview/${customerId}`);
   };
 
   return (
