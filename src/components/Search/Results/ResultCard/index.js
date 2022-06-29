@@ -1,14 +1,16 @@
 import { useEffect, useState } from 'react';
-import { Link } from 'react-router-dom';
+import { useNavigate } from 'react-router-dom';
 
 import { getAppointmentsByCustomerId } from '../../../../services';
 
-import {LabelTextLayout} from '../../../../styles/Layout.styles';
+import { LabelTextLayout } from '../../../../styles/Layout.styles';
 import { Text, TextLabel, TextLarger } from '../../../../styles/Text.styles';
 import { TextButton } from '../../../../styles/Button.styles';
 import { Box } from './index.styles';
 
-const ResultCard = ({ customer }) => {
+const ResultCard = ({ customer, resetFoundCustomers }) => {
+  const navigate = useNavigate();
+
   const [numberOfAppointments, setNumberOfAppointments] = useState('');
   useEffect(() => {
     // BUG - useEffect is hit twice on render
@@ -20,7 +22,10 @@ const ResultCard = ({ customer }) => {
     setNumberOfAppointments(appointments.length);
   };
 
-  const linkToCustomerOverview = "/customer-overview/" + customer.customerId;
+  const handelCustomerOverviewButton = () => {
+    resetFoundCustomers();
+    navigate(`/customer-overview/${customer.customerId}`);
+  };
 
   return (
     <Box>
@@ -37,9 +42,9 @@ const ResultCard = ({ customer }) => {
         <Text>{numberOfAppointments}</Text>
       </LabelTextLayout>
 
-        <Link to={linkToCustomerOverview}>
-          <TextButton right>Customer Overview &gt; </TextButton>
-        </Link>
+      <TextButton right onClick={handelCustomerOverviewButton}>
+        Customer Overview {'>'}
+      </TextButton>
     </Box>
   );
 };

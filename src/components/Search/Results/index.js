@@ -1,4 +1,4 @@
-import { Link } from 'react-router-dom';
+import { useNavigate } from 'react-router-dom';
 
 import ResultCard from './ResultCard';
 import InfoWarningCard from '../../common/InfoWarningCard';
@@ -7,14 +7,21 @@ import { Heading } from '../../../styles/Text.styles';
 import { Container } from '../../../styles/Layout.styles';
 import { PrimaryButton } from '../../../styles/Button.styles';
 
-const Results = ({ customers, numberOfFoundCustomers }) => {
+const Results = ({ customers, numberOfFoundCustomers, resetFoundCustomers }) => {
+  const navigate = useNavigate();
+
   const resultCards = customers.map((customer) => {
-    return <ResultCard key={customer.customerId} customer={customer} />;
+    return <ResultCard key={customer.customerId} customer={customer} resetFoundCustomers={resetFoundCustomers} />;
   });
 
   const foundCustomerMessage = `${numberOfFoundCustomers} customer ${
     numberOfFoundCustomers > 1 ? 'records ' : 'record '
   } match your search`;
+
+  const handelCreateCustomerButton = () => {
+    resetFoundCustomers()
+    navigate('/create-customer');
+  }
 
   return (
     <Container gap={2}>
@@ -28,9 +35,9 @@ const Results = ({ customers, numberOfFoundCustomers }) => {
       )}
       {resultCards}
       {numberOfFoundCustomers === 0 && (
-        <Link to="/create-customer">
-          <PrimaryButton>Create a new customer record</PrimaryButton>
-        </Link>
+        <PrimaryButton onClick={handelCreateCustomerButton}>
+          Create a new customer record
+        </PrimaryButton>
       )}
     </Container>
   );

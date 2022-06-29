@@ -6,19 +6,19 @@ import { PrimaryButton, SecondaryButton } from '../../../styles/Button.styles';
 import { Container, Separator } from '../../../styles/Layout.styles';
 import { FieldGroup, Label, Field } from '../../../styles/Form.styles';
 
-const AboutTheCaller = ({ handleFormSubmit }) => {
+const AboutTheCaller = ({ handleFormSubmit, customer }) => {
   const navigate = useNavigate();
 
-  const [firstName, setFirstName] = useState('');
-  const [lastName, setLastName] = useState('');
-  const [dateOfBirth, setDateOfBirth] = useState('');
-  const [address1, setAddress1] = useState('');
-  const [address2, setAddress2] = useState('');
-  const [address3, setAddress3] = useState('');
-  const [city, setCity] = useState('');
-  const [postcode, setPostcode] = useState('');
-  const [email, setEmail] = useState('');
-  const [phoneNumber, setPhoneNumber] = useState('');
+  const [firstName, setFirstName] = useState(customer?.firstName);
+  const [lastName, setLastName] = useState(customer?.lastName);
+  const [dateOfBirth, setDateOfBirth] = useState(customer?.dateOfBirth);
+  const [address1, setAddress1] = useState(customer?.address1);
+  const [address2, setAddress2] = useState(customer?.address2);
+  const [address3, setAddress3] = useState(customer?.address3);
+  const [city, setCity] = useState(customer?.city);
+  const [postcode, setPostcode] = useState(customer?.postcode);
+  const [email, setEmail] = useState(customer?.email);
+  const [phoneNumber, setPhoneNumber] = useState(customer?.phoneNumber);
 
   const handleFirstNameChange = (e) => setFirstName(e.target.value);
   const handleLastNameChange = (e) => setLastName(e.target.value);

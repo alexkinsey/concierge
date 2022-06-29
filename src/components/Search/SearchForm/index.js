@@ -5,7 +5,7 @@ import { PrimaryButton } from '../../../styles/Button.styles';
 import { Container } from '../../../styles/Layout.styles';
 import { Form, FieldGroup, Label, Field } from '../../../styles/Form.styles';
 
-const SearchForm = ({ findCustomers }) => {
+const SearchForm = ({ searchForCustomers }) => {
   const [firstName, setFirstName] = useState('');
   const [lastName, setLastName] = useState('');
   const [dateOfBirth, setDateOfBirth] = useState('');
@@ -19,7 +19,7 @@ const SearchForm = ({ findCustomers }) => {
   const handleSearch = async (ev) => {
     ev.preventDefault();
 
-    findCustomers({
+    searchForCustomers({
       firstName: firstName,
       lastName: lastName,
       dateOfBirth: dateOfBirth,

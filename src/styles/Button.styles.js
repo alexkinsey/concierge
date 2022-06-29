@@ -2,8 +2,20 @@ import styled from 'styled-components';
 
 import { TextLarger } from './Text.styles';
 
-export const TextButton = styled(TextLarger)`
+// export const TextButton = styled(TextLarger)`
+//   color: var(--accent);
+//   margin: ${props => props.right? '0 0 0 auto' : '0'};
+//   width: fit-content;
+//   padding: 0;
+// `;
+
+export const TextButton = styled.button`
   color: var(--accent);
+  background-color: transparent;
+  border: none;
+  font-size: 22px;
+  font-weight: 600;
+  
   margin: ${props => props.right? '0 0 0 auto' : '0'};
   width: fit-content;
   padding: 0;

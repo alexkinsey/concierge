@@ -1,14 +1,20 @@
+import { useNavigate } from 'react-router-dom';
+
 import { Container, LabelTextLayout } from '../../styles/Layout.styles';
 import { Heading, TextLabel, Text } from '../../styles/Text.styles';
 import { TextButton } from '../../styles/Button.styles';
 import { HeadingAligner } from './index.styles';
 
 export const CustomerDetails = ({ customer }) => {
+  const navigate = useNavigate();
+  const handleEditButton = () => {
+    navigate('edit');
+  };
   return (
     <Container gap={1.5}>
       <HeadingAligner>
         <Heading>Customer details</Heading>
-        <TextButton>Edit {'>'}</TextButton>
+        <TextButton onClick={handleEditButton}>Edit {'>'}</TextButton>
       </HeadingAligner>
       <LabelTextLayout>
         <TextLabel>First name:</TextLabel>

@@ -2,17 +2,16 @@ import { useState } from 'react';
 import { useNavigate } from 'react-router-dom';
 
 import AboutTheCaller from './AboutTheCaller';
-import NatureOfCall from './NatureOfCall';
 
 import { Form } from '../../styles/Form.styles';
 import { TwoColumnBS } from '../../styles/Layout.styles';
 import { Title } from '../../styles/Text.styles';
-import { addCustomer } from '../../services';
+import { addCustomer, editCustomer } from '../../services';
 
-const CreateCustomer = () => {
+const CreateEditCustomer = ({ type, customer }) => {
   const navigate = useNavigate();
+
   const [formInputs, setFormInputs] = useState({
-    businessArea: '',
     firstName: '',
     lastName: '',
     dateOfBirth: '',
@@ -24,17 +23,6 @@ const CreateCustomer = () => {
     email: '',
     phoneNumber: '',
   });
-  const [formPage, setFormPage] = useState(1);
-
-  const handleFormNextPageButton = (radio) => {
-    if (radio) {
-      setFormInputs({
-        ...formInputs,
-        businessArea: radio,
-      });
-      setFormPage(2);
-    }
-  };
 
   const handleFormSubmitButton = (
     firstName,
@@ -65,22 +53,28 @@ const CreateCustomer = () => {
 
   const handleFormSubmit = async (ev) => {
     ev.preventDefault();
-    const id = await addCustomer(formInputs);
-    navigate(`/customer-overview/${id}`);
+    if (type === 'create') {
+      const id = await addCustomer(formInputs);
+      navigate(`/customer-overview/${id}`);
+    } else if (type === 'edit') {
+      await editCustomer(formInputs, customer.customerId);
+      navigate(`/customer-overview/${customer.customerId}`);
+    }
   };
 
   return (
     <TwoColumnBS>
-      <Title style={{ gridColumnStart: '1', gridColumnEnd: '3' }}>Create a new customer record</Title>
+      {type === 'create' ? (
+        <Title style={{ gridColumnStart: '1', gridColumnEnd: '3' }}>Create a new customer record</Title>
+      ) : (
+        <Title style={{ gridColumnStart: '1', gridColumnEnd: '3' }}>Edit customer record</Title>
+      )}
+
       <Form onSubmit={handleFormSubmit}>
-        {formPage === 1 ? (
-          <NatureOfCall handleFormNextPage={handleFormNextPageButton} />
-        ) : (
-          <AboutTheCaller handleFormSubmit={handleFormSubmitButton} />
-        )}
+        <AboutTheCaller handleFormSubmit={handleFormSubmitButton} customer={customer} />
       </Form>
     </TwoColumnBS>
   );
 };
 
-export default CreateCustomer;
+export default CreateEditCustomer;

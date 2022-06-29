@@ -10,11 +10,11 @@ import { Title } from '../../styles/Text.styles';
 
 import AppointmentsList from './AppointmentsList';
 
-const CustomerOverview = () => {
+const CustomerOverview = ({getCustomer, getAppointments, customer, appointments}) => {
   const { customerId } = useParams();
 
-  const [customer, setCustomer] = useState({});
-  const [appointments, setAppointments] = useState([]);
+  // const [customer, setCustomer] = useState({});
+  // const [appointments, setAppointments] = useState([]);
   const [loaded, setLoaded] = useState(false);
 
   useEffect(() => {
@@ -23,16 +23,16 @@ const CustomerOverview = () => {
     setLoaded(true);
   }, [customerId]);
 
-  const getCustomer = async (id) => {
-    const customer = await getCustomerById(id);
-    setCustomer(customer);
-  };
+  // const getCustomer = async (id) => {
+  //   const customer = await getCustomerById(id);
+  //   setCustomer(customer);
+  // };
 
-  const getAppointments = async (id) => {
-    const appointments = await getAppointmentsByCustomerId(id);
-    const sortedAppointments = await appointments.sort((a, b) => new Date(b.date) - new Date(a.date));
-    setAppointments(sortedAppointments);
-  };
+  // const getAppointments = async (id) => {
+  //   const appointments = await getAppointmentsByCustomerId(id);
+  //   const sortedAppointments = await appointments.sort((a, b) => new Date(b.date) - new Date(a.date));
+  //   setAppointments(sortedAppointments);
+  // };
 
   return (
     <>

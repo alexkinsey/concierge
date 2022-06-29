@@ -1,7 +1,7 @@
 import { useState } from 'react';
 import { useNavigate, useParams } from 'react-router-dom';
 
-import NatureOfCall from '../CreateCustomer/NatureOfCall';
+import NatureOfCall from './NatureOfCall';
 
 import { Form } from '../../styles/Form.styles';
 import { TwoColumnBS } from '../../styles/Layout.styles';

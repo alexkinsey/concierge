@@ -84,6 +84,21 @@ export const addCustomer = async (customer) => {
   return id;
 };
 
+export const editCustomer = async (customer, customerId) => {
+  console.log(customer, customerId);
+  const res = await fetch(`http://localhost:3001/api/customers/${customerId}`, {
+    method: 'PUT',
+    body: JSON.stringify(customer),
+    headers: {
+      'Content-Type': 'application/json',
+    },
+  });
+  const data = await res.json();
+  console.log(data);
+  const id = data.id;
+  return id;
+}
+
 export const addAppointment = async (appointment) => {
   console.log(appointment);
   const res = await fetch('http://localhost:3001/api/appointments', {
