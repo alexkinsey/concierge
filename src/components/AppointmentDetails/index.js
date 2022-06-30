@@ -9,7 +9,7 @@ import { CustomerDetails } from '../CustomerDetails';
 import { Container, LabelTextLayout, TwoColumnSB } from '../../styles/Layout.styles';
 import { Title, Heading, Text, TextLabel } from '../../styles/Text.styles';
 import { SecondaryButton, TextButton } from '../../styles/Button.styles';
-import { TextButtonPlacer, HeadingAligner, CommentBox } from './index.styles';
+import { TextButtonPlacer, HeadingAligner, TextArea } from './index.styles';
 
 const AppointmentDetails = ({ getAppointmentData, getCustomer, appointment, customer, consultant }) => {
   const navigate = useNavigate();
@@ -80,12 +80,7 @@ const AppointmentDetails = ({ getAppointmentData, getCustomer, appointment, cust
           </LabelTextLayout>
 
           <TextLabel>Comments:</TextLabel>
-          {/* <CommentBox>
-            <Text>{!appointment.comments ? 'No comments noted' : appointment.comments}</Text>
-          </CommentBox> */}
-          <CommentBox>
-            <textarea>{!appointment.comments ? 'No comments noted' : appointment.comments}</textarea>
-          </CommentBox>
+            <TextArea rows="10">{!appointment.comments ? 'No comments noted.' : appointment.comments}</TextArea>
           <SecondaryButton onClick={handleCancelAppointment}>Cancel appointment</SecondaryButton>
         </Container>
       </TwoColumnSB>

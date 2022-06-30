@@ -16,7 +16,7 @@ import {
   getAppointmentsByCustomerId,
   getCustomerById,
   getAppointmentById,
-  getConsultantById,
+  getConsultantById
 } from './services';
 
 function App() {
@@ -32,9 +32,13 @@ function App() {
     setFoundCustomers(customers);
     setNumberOfFoundCustomers(customers.length);
   };
-  const resetFoundCustomers = () => {
+  const resetData = () => {
     setFoundCustomers([]);
     setNumberOfFoundCustomers('start');
+    setCustomer({});
+    setAppointments([]);
+    setAppointment({});
+    setConsultant({});
   };
 
   const getCustomer = async (id) => {
@@ -44,7 +48,9 @@ function App() {
 
   const getAppointments = async (id) => {
     const appointments = await getAppointmentsByCustomerId(id);
-    const sortedAppointments = await appointments.sort((a, b) => new Date(b.date) - new Date(a.date));
+    const sortedAppointments = await appointments.sort(
+      (a, b) => new Date(b.date) - new Date(a.date)
+    );
     setAppointments(sortedAppointments);
   };
 
@@ -69,7 +75,7 @@ function App() {
                 searchForCustomers={searchForCustomers}
                 foundCustomers={foundCustomers}
                 numberOfFoundCustomers={numberOfFoundCustomers}
-                resetFoundCustomers={resetFoundCustomers}
+                resetFoundCustomers={resetData}
               />
             }
           />
@@ -81,11 +87,15 @@ function App() {
                 getAppointments={getAppointments}
                 customer={customer}
                 appointments={appointments}
+                resetData={resetData}
               />
             }
           />
 
-          <Route path="/create-customer" element={<CreateEditCustomer type="create" />} />
+          <Route
+            path="/create-customer"
+            element={<CreateEditCustomer type="create" />}
+          />
           <Route
             path="/customer-overview/:customerId/edit"
             element={<CreateEditCustomer type="edit" customer={customer} />}
@@ -109,7 +119,9 @@ function App() {
           />
           <Route
             path="/customer-overview/:customerId/appointment-details/:appointmentId/edit"
-            element={<CreateEditAppointment type="edit" appointment={appointment} />}
+            element={
+              <CreateEditAppointment type="edit" appointment={appointment} />
+            }
           />
         </Routes>
       </GlobalPageWidth>

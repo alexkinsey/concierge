@@ -11,9 +11,13 @@ export const HeadingAligner = styled.div`
   align-items: baseline;
 `;
 
-export const CommentBox = styled.div`
+export const TextArea = styled.textarea`
   border: 1px solid var(--grey);
   padding: 1.5rem;
   margin-top: -1rem;
   margin-bottom: 1rem;
+
+  font-family: 'Avenir Next';
+  font-size: 16px;
+  color: var(--darkGrey);
 `;
