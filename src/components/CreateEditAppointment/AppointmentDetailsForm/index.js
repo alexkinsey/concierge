@@ -7,7 +7,7 @@ import { Heading, TextAccent } from '../../../styles/Text.styles';
 import { PrimaryButton, SecondaryButton } from '../../../styles/Button.styles';
 import { Container, Separator } from '../../../styles/Layout.styles';
 import { FieldGroup, Label, Field, Radio, Selector } from '../../../styles/Form.styles';
-import {CommentBox} from './index.styles'
+import {CommentBox, TextArea} from './index.styles'
 
 const AppointmentDetailsForm = ({ department, appointment, handleFormSubmitButton }) => {
   const navigate = useNavigate();
@@ -153,7 +153,8 @@ const AppointmentDetailsForm = ({ department, appointment, handleFormSubmitButto
         <Label htmlFor="comments">
           Comments <TextAccent>(optional)</TextAccent>
         </Label>
-        <CommentBox type="text" id="comments" value={comments} onChange={handleCommentsChange} />
+        {/* <CommentBox type="text" id="comments" value={comments} onChange={handleCommentsChange} /> */}
+        <TextArea rows="10" id="comments" value={comments} onChange={handleCommentsChange} />
       </FieldGroup>
 
       <Separator />

@@ -80,8 +80,11 @@ const AppointmentDetails = ({ getAppointmentData, getCustomer, appointment, cust
           </LabelTextLayout>
 
           <TextLabel>Comments:</TextLabel>
-          <CommentBox>
+          {/* <CommentBox>
             <Text>{!appointment.comments ? 'No comments noted' : appointment.comments}</Text>
+          </CommentBox> */}
+          <CommentBox>
+            <textarea>{!appointment.comments ? 'No comments noted' : appointment.comments}</textarea>
           </CommentBox>
           <SecondaryButton onClick={handleCancelAppointment}>Cancel appointment</SecondaryButton>
         </Container>

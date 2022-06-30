@@ -4,7 +4,7 @@ export const GlobalPageWidth = styled.div`
   max-width: var(--maxPageWidth);
   min-width: var(--minPageWidth);
   margin: auto;
-  padding: 0 3rem;
+  padding: 0 3rem 5rem 3rem;
 `;
 
 export const TwoColumnSB = styled.div`
