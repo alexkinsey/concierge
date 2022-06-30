@@ -49,19 +49,19 @@ const AppointmentDetails = ({ getAppointmentData, getCustomer, appointment, cust
             <TextButton onClick={handleEditButton}>Edit {'>'}</TextButton>
           </HeadingAligner>
 
-          <LabelTextLayout>
+          <LabelTextLayout close>
             <TextLabel>Purpose:</TextLabel>
             <Text>{appointment.purpose}</Text>
           </LabelTextLayout>
 
-          <LabelTextLayout>
+          <LabelTextLayout close>
             <TextLabel>Date:</TextLabel>
             <Text>{appointment.date}</Text>
             <TextLabel>Time:</TextLabel>
             <Text>{appointment.time}</Text>
           </LabelTextLayout>
 
-          <LabelTextLayout>
+          <LabelTextLayout close>
             <TextLabel>Location:</TextLabel>
             <Text>{capitaliseFirstLetter(appointment.location)}</Text>
             {appointment.location === 'branch' && (
@@ -72,7 +72,7 @@ const AppointmentDetails = ({ getAppointmentData, getCustomer, appointment, cust
             )}
           </LabelTextLayout>
 
-          <LabelTextLayout>
+          <LabelTextLayout close>
             <TextLabel>Consultant:</TextLabel>
             <Text>
               {consultant.firstName} {consultant.lastName}

@@ -38,7 +38,7 @@ export const Container = styled.div`
 
 export const LabelTextLayout = styled.div`
   display: grid;
-  grid-template-columns: 1.2fr 2fr;
+  grid-template-columns: ${(props) => (props.close ?  '1fr 5fr' : '1.2fr 2fr')};
 `;
 
 export const Separator = styled.div`
