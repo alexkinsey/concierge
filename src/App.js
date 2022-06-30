@@ -54,9 +54,6 @@ function App() {
     const consultant = await getConsultantById(appointment.consultantId);
     console.log(consultant);
     setConsultant(consultant);
-    console.log('====================================');
-    console.log('appointment APP', appointment);
-    console.log('====================================');
   };
 
   return (

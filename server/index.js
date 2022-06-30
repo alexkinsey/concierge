@@ -95,19 +95,6 @@ app.post('/api/customers/', (req, res) => {
 
 // UPDATE customer
 app.put('/api/customers/:id', (req, res) => {
-  const data = {
-    firstName: req.body.firstName,
-    lastName: req.body.lastName,
-    dateOfBirth: req.body.dateOfBirth,
-    address1: req.body.address1,
-    address2: req.body?.address2,
-    address3: req.body?.address3,
-    city: req.body.city,
-    postcode: req.body.postcode,
-    email: req.body.email,
-    phoneNumber: req.body.phoneNumber,
-    nationalInsuranceNo: req.body?.nationalInsuranceNo,
-  };
   const sql = `UPDATE customers SET
                 firstName = COALESCE(?,firstName),
                 lastName = COALESCE(?,lastName),
@@ -143,7 +130,7 @@ app.put('/api/customers/:id', (req, res) => {
     }
     res.json({
       message: 'success',
-      data: data,
+      data: params,
       changes: this.changes,
     });
   });
@@ -313,44 +300,38 @@ app.post('/api/appointments', (req, res) => {
 
 // UPDATE appointment
 app.put('/api/appointments/:id', (req, res) => {
-  const data = {
-    firstName: req.body.firstName,
-    lastName: req.body.lastName,
-    dateOfBirth: req.body.dateOfBirth,
-    address1: req.body.address1,
-    address2: req.body?.address2,
-    address3: req.body?.address3,
-    city: req.body.city,
-    postcode: req.body.postcode,
-    email: req.body.email,
-    phoneNumber: req.body.phoneNumber,
-    nationalInsuranceNo: req.body?.nationalInsuranceNo,
-  };
-  const sql = `UPDATE customers SET
-                firstName = COALESCE(?,firstName),
-                lastName = COALESCE(?,lastName),
-                dateOfBirth = COALESCE(?,dateOfBirth),
-                address1 = COALESCE(?,address1),
-                address2 = COALESCE(?,address2),
-                address3 = COALESCE(?,address3),
-                city = COALESCE(?,city),
-                postcode = COALESCE(?,postcode),
-                email = COALESCE(?,email),
-                phoneNumber = COALESCE(?,phoneNumber),
-                nationalInsuranceNo = COALESCE(?,nationalInsuranceNo)
-              WHERE customerId = ?`;
+  // const data = {
+  //   businessArea: req.body.businessArea,
+  //   purpose: req.body.purpose,
+  //   location: req.body.location,
+  //   branch: req.body.branch,
+  //   date: req.body.date,
+  //   time: req.body.time,
+  //   comments: req.body.comments,
+  //   customerId: req.body.customerId,
+  //   consultantId: req.body.consultantId,
+  // };
+  const sql = `UPDATE appointments SET
+                businessArea = COALESCE(?,businessArea),
+                purpose = COALESCE(?,purpose),
+                location = COALESCE(?,location),
+                branch = COALESCE(?,branch),
+                date = COALESCE(?,date),
+                time = COALESCE(?,time),
+                comments = COALESCE(?,comments),
+                customerId = COALESCE(?,customerId),
+                consultantId = COALESCE(?,consultantId)
+              WHERE appointmentId = ?`;
   const params = [
-    req.body.firstName,
-    req.body.lastName,
-    req.body.dateOfBirth,
-    req.body.address1,
-    req.body.address2,
-    req.body.address3,
-    req.body.city,
-    req.body.postcode,
-    req.body.email,
-    req.body.phoneNumber,
-    req.body.nationalInsuranceNo,
+    req.body.businessArea,
+    req.body.purpose,
+    req.body.location,
+    req.body.branch,
+    req.body.date,
+    req.body.time,
+    req.body.comments,
+    req.body.customerId,
+    req.body.consultantId,
     req.params.id,
   ];
 
@@ -361,7 +342,7 @@ app.put('/api/appointments/:id', (req, res) => {
     }
     res.json({
       message: 'success',
-      data: data,
+      data: params,
       changes: this.changes,
     });
   });

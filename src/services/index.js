@@ -125,6 +125,9 @@ export const deleteAppointment = async (appointmentId) => {
 }
 
 export const editAppointment = async (appointment, appointmentId) => {
+  console.log('====================================');
+  console.log("API Helper", appointment, appointmentId);
+  console.log('====================================');
   const res = await fetch(`http://localhost:3001/api/appointments/${appointmentId}`, {
     method: 'PUT',
     body: JSON.stringify(appointment),

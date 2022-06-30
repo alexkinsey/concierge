@@ -1,17 +1,18 @@
 import { useState } from 'react';
 import { useNavigate, useParams } from 'react-router-dom';
 
+import { addAppointment, editAppointment } from '../../services';
+
+import AppointmentDetailsForm from './AppointmentDetailsForm';
 import NatureOfCall from './NatureOfCall';
 
 import { Form } from '../../styles/Form.styles';
 import { TwoColumnBS } from '../../styles/Layout.styles';
 import { Title } from '../../styles/Text.styles';
-import { addAppointment } from '../../services';
-import AppointmentDetailsForm from './AppointmentDetailsForm';
 
 const CreateEditAppointment = ({ type, appointment, consultant }) => {
   const navigate = useNavigate();
-  const { customerId } = useParams();
+  const { customerId, appointmentId } = useParams();
 
   const [formInputs, setFormInputs] = useState({
     businessArea: '',
@@ -51,8 +52,16 @@ const CreateEditAppointment = ({ type, appointment, consultant }) => {
 
   const handleFormSubmit = async (ev) => {
     ev.preventDefault();
-    await addAppointment(formInputs);
-    navigate(`/customer-overview/${customerId}`);
+    if (type === 'create') {
+      await addAppointment(formInputs);
+      navigate(`/customer-overview/${customerId}`);
+    } else if (type === 'edit') {
+      console.log('====================================');
+      console.log("formInputs: ", formInputs);
+      console.log('====================================');
+      await editAppointment(formInputs, appointmentId);
+      navigate(`/customer-overview/${customerId}/appointment-details/${appointmentId}`);
+    }
   };
 
   return (
@@ -65,7 +74,7 @@ const CreateEditAppointment = ({ type, appointment, consultant }) => {
 
       <Form onSubmit={handleFormSubmit}>
         {formPage === 1 ? (
-          <NatureOfCall handleFormNextPage={handleFormNextPageButton}  />
+          <NatureOfCall handleFormNextPage={handleFormNextPageButton} />
         ) : (
           <AppointmentDetailsForm
             department={formInputs.businessArea}
