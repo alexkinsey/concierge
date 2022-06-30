@@ -1,5 +1,7 @@
 import { Link } from 'react-router-dom';
 
+import { capitaliseFirstLetter } from '../../../common/helpers';
+
 import { TextButton } from '../../../../styles/Button.styles';
 import { LabelTextLayout } from '../../../../styles/Layout.styles';
 import { Text, TextLabel, TextLarger } from '../../../../styles/Text.styles';
@@ -17,7 +19,7 @@ const AppointmentCard = ({ appointment }) => {
         <TextLabel>Time:</TextLabel>
         <Text>{appointment.time}</Text>
         <TextLabel>Location:</TextLabel>
-        <Text>{appointment.location}</Text>
+        <Text>{capitaliseFirstLetter(appointment.location)}</Text>
       </LabelTextLayout>
 
       <Link to={`appointment-details/${appointment.appointmentId}`}>

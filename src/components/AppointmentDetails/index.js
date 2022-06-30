@@ -2,6 +2,7 @@ import { useEffect } from 'react';
 import { useParams, Link, useNavigate } from 'react-router-dom';
 
 import { deleteAppointment } from '../../services';
+import { capitaliseFirstLetter } from '../common/helpers';
 
 import { CustomerDetails } from '../CustomerDetails';
 
@@ -62,7 +63,7 @@ const AppointmentDetails = ({ getAppointmentData, getCustomer, appointment, cust
 
           <LabelTextLayout>
             <TextLabel>Location:</TextLabel>
-            <Text>{appointment.location}</Text>
+            <Text>{capitaliseFirstLetter(appointment.location)}</Text>
             {appointment.location === 'branch' && (
               <>
                 <TextLabel>Branch:</TextLabel>
