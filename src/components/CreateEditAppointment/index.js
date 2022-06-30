@@ -9,21 +9,19 @@ import { Title } from '../../styles/Text.styles';
 import { addAppointment } from '../../services';
 import AppointmentDetailsForm from './AppointmentDetailsForm';
 
-const CreateEditAppointment = (type, appointment) => {
+const CreateEditAppointment = ({ type, appointment, consultant }) => {
   const navigate = useNavigate();
   const { customerId } = useParams();
 
-  console.log('appointment', appointment);
-
   const [formInputs, setFormInputs] = useState({
-    businessArea: appointment?.businessArea,
-    purpose: '',
-    location: '',
-    branch: null,
-    date: '',
-    time: '',
-    comments: '',
-    consultantId: '',
+    businessArea: '',
+    purpose: appointment?.purpose,
+    location: appointment?.location,
+    branch: appointment?.branch | null,
+    date: appointment?.date,
+    time: appointment?.time,
+    comments: appointment?.comments,
+    consultantId: appointment?.consultantId,
     customerId: customerId,
   });
   const [formPage, setFormPage] = useState(1);
@@ -67,10 +65,11 @@ const CreateEditAppointment = (type, appointment) => {
 
       <Form onSubmit={handleFormSubmit}>
         {formPage === 1 ? (
-          <NatureOfCall handleFormNextPage={handleFormNextPageButton} businessArea={appointment.businessArea} />
+          <NatureOfCall handleFormNextPage={handleFormNextPageButton}  />
         ) : (
           <AppointmentDetailsForm
             department={formInputs.businessArea}
+            appointment={appointment}
             handleFormSubmitButton={handleFormSubmitButton}
           />
         )}

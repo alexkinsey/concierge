@@ -311,6 +311,62 @@ app.post('/api/appointments', (req, res) => {
   });
 });
 
+// UPDATE appointment
+app.put('/api/appointments/:id', (req, res) => {
+  const data = {
+    firstName: req.body.firstName,
+    lastName: req.body.lastName,
+    dateOfBirth: req.body.dateOfBirth,
+    address1: req.body.address1,
+    address2: req.body?.address2,
+    address3: req.body?.address3,
+    city: req.body.city,
+    postcode: req.body.postcode,
+    email: req.body.email,
+    phoneNumber: req.body.phoneNumber,
+    nationalInsuranceNo: req.body?.nationalInsuranceNo,
+  };
+  const sql = `UPDATE customers SET
+                firstName = COALESCE(?,firstName),
+                lastName = COALESCE(?,lastName),
+                dateOfBirth = COALESCE(?,dateOfBirth),
+                address1 = COALESCE(?,address1),
+                address2 = COALESCE(?,address2),
+                address3 = COALESCE(?,address3),
+                city = COALESCE(?,city),
+                postcode = COALESCE(?,postcode),
+                email = COALESCE(?,email),
+                phoneNumber = COALESCE(?,phoneNumber),
+                nationalInsuranceNo = COALESCE(?,nationalInsuranceNo)
+              WHERE customerId = ?`;
+  const params = [
+    req.body.firstName,
+    req.body.lastName,
+    req.body.dateOfBirth,
+    req.body.address1,
+    req.body.address2,
+    req.body.address3,
+    req.body.city,
+    req.body.postcode,
+    req.body.email,
+    req.body.phoneNumber,
+    req.body.nationalInsuranceNo,
+    req.params.id,
+  ];
+
+  db.run(sql, params, function (err, result) {
+    if (err) {
+      res.status(400).json({ error: res.message });
+      return;
+    }
+    res.json({
+      message: 'success',
+      data: data,
+      changes: this.changes,
+    });
+  });
+});
+
 // DELETE appointment
 app.delete('/api/appointments/:id', (req, res) => {
   db.run('DELETE FROM appointments WHERE appointmentId = ?', req.params.id, function (err, result) {

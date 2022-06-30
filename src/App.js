@@ -51,9 +51,12 @@ function App() {
   const getAppointmentData = async (id) => {
     const appointment = await getAppointmentById(id);
     setAppointment(appointment);
-    const consultant = await getConsultantById(id);
+    const consultant = await getConsultantById(appointment.consultantId);
     console.log(consultant);
     setConsultant(consultant);
+    console.log('====================================');
+    console.log('appointment APP', appointment);
+    console.log('====================================');
   };
 
   return (
@@ -109,7 +112,7 @@ function App() {
           />
           <Route
             path="/customer-overview/:customerId/appointment-details/:appointmentId/edit"
-            element={<CreateEditAppointment type="edit" appointment={appointment}/>}
+            element={<CreateEditAppointment type="edit" appointment={appointment} />}
           />
         </Routes>
       </GlobalPageWidth>

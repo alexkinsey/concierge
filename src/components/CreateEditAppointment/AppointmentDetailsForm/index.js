@@ -9,17 +9,17 @@ import { Container, Separator } from '../../../styles/Layout.styles';
 import { FieldGroup, Label, Field, Radio, Selector } from '../../../styles/Form.styles';
 import {CommentBox} from './index.styles'
 
-const AppointmentDetailsForm = ({ department, handleFormSubmitButton }) => {
+const AppointmentDetailsForm = ({ department, appointment, handleFormSubmitButton }) => {
   const navigate = useNavigate();
 
-  const [purpose, setPurpose] = useState('');
-  const [location, setLocation] = useState('');
-  const [branch, setBranch] = useState('');
-  const [date, setDate] = useState('');
-  const [time, setTime] = useState('');
-  const [comments, setComments] = useState('');
+  const [purpose, setPurpose] = useState(appointment?.purpose);
+  const [location, setLocation] = useState(appointment?.location);
+  const [branch, setBranch] = useState(appointment?.branch);
+  const [date, setDate] = useState(appointment?.date);
+  const [time, setTime] = useState(appointment?.time);
+  const [comments, setComments] = useState(appointment?.comments);
   const [consultants, setConsultants] = useState([]);
-  const [consultantId, setConsultantId] = useState([]);
+  const [consultantId, setConsultantId] = useState(appointment?.consultantId);
 
   // Load consultant list
   useEffect(() => {
