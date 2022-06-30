@@ -19,7 +19,6 @@ export const TwoColumnBS = styled.div`
   max-width: var(--maxPageWidth);
   min-width: var(--minPageWidth);
   margin: auto;
-  padding: 0 3rem;
 
   display: grid;
   grid-template-columns: 2fr 1fr;

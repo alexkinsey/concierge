@@ -15,7 +15,7 @@ export const TextButton = styled.button`
   color: var(--accent);
   background-color: transparent;
   border: none;
-  font-size: 22px;
+  font-size: 18px;
   font-weight: 600;
 
   margin: ${(props) => (props.right ? '0 0 0 auto' : '0')};
@@ -30,8 +30,8 @@ export const TextButton = styled.button`
 export const PrimaryButton = styled.button`
   background-color: var(--accent);
   border: none;
-  font-size: 22px;
-  font-weight: 500;
+  font-size: 18px;
+  font-weight: 600;
   color: var(--white);
 
   padding: 0 5rem;
@@ -49,8 +49,8 @@ export const SecondaryButton = styled.button`
   background-color: white;
   border: 0.15rem solid var(--accent);
 
-  font-size: 22px;
-  font-weight: 500;
+  font-size: 18px;
+  font-weight: 600;
   color: var(--accent);
   padding: 0 5rem;
   height: 4rem;

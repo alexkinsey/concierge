@@ -16,8 +16,8 @@ export const GlobalStyles = createGlobalStyle`
     --warning: #F8EED5;
     --warningDark: #C6962A;
 
-    --maxPageWidth: 1480px;
-    --minPageWidth: 1000px;
+    --maxPageWidth: 1300px;
+    --minPageWidth: 1100px;
   }
 
   button:focus,

@@ -13,7 +13,7 @@ export const FieldGroup = styled.div`
 `;
 
 export const Label = styled.label`
-  font-size: 16px;
+  font-size: 15px;
   color: var(--black);
   font-weight: 500;
 
@@ -23,7 +23,7 @@ export const Label = styled.label`
 
 export const Field = styled.input`
   padding: 0.75rem 1rem;
-  font-size: 16px;
+  font-size: 15px;
   color: var(--darkGrey);
 
   border: 1px solid var(--grey);
@@ -32,7 +32,7 @@ export const Field = styled.input`
 
 export const Selector = styled.select`
   padding: 0.75rem 1rem;
-  font-size: 16px;
+  font-size: 15px;
   color: var(--darkGrey);
 
   border: 1px solid var(--grey);

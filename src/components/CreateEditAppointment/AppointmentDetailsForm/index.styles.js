@@ -5,6 +5,6 @@ export const TextArea = styled.textarea`
   padding: 1.5rem;
 
   font-family: 'Avenir Next';
-  font-size: 16px;
+  font-size: 15px;
   color: var(--darkGrey);
 `;

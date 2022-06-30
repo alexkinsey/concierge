@@ -30,7 +30,7 @@ export const Title = styled.div`
   color: var(--white);
   font-family: 'Avenir Next Condensed';
   font-weight: 500;
-  font-size: 38px;
+  font-size: 32px;
   margin-top: 5px;
 `;
 
@@ -39,10 +39,8 @@ export const LogoImage = styled.img`
 `;
 
 export const AccountIcon = styled.svg`
-  border-left: 1px solid rgba(255, 255, 255, 0.3);
-  border-right: 1px solid rgba(255, 255, 255, 0.3);
-  padding: 0 .75rem;
-  height: 90%;
+  padding: 0 1rem;
+  height: 95%;
 
   :hover {
     background-color: rgba(255, 255, 255, 0.2);

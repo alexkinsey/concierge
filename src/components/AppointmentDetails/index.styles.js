@@ -18,6 +18,6 @@ export const TextArea = styled.textarea`
   margin-bottom: 1rem;
 
   font-family: 'Avenir Next';
-  font-size: 16px;
+  font-size: 15px;
   color: var(--darkGrey);
 `;
