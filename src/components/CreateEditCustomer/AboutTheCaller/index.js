@@ -6,7 +6,7 @@ import { PrimaryButton, SecondaryButton } from '../../../styles/Button.styles';
 import { Container, Separator } from '../../../styles/Layout.styles';
 import { FieldGroup, Label, Field } from '../../../styles/Form.styles';
 
-const AboutTheCaller = ({ handleFormSubmit, customer }) => {
+const AboutTheCaller = ({ handleFormSubmit, customer, type }) => {
   const navigate = useNavigate();
 
   const [firstName, setFirstName] = useState(customer?.firstName);
@@ -112,7 +112,7 @@ const AboutTheCaller = ({ handleFormSubmit, customer }) => {
             )
           }
         >
-          Add customer
+          {type === 'create' ? 'Add customer' : 'Save changes'}
         </PrimaryButton>
       </FieldGroup>
     </Container>

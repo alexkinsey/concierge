@@ -71,7 +71,7 @@ const CreateEditCustomer = ({ type, customer }) => {
       )}
 
       <Form onSubmit={handleFormSubmit}>
-        <AboutTheCaller handleFormSubmit={handleFormSubmitButton} customer={customer} />
+        <AboutTheCaller handleFormSubmit={handleFormSubmitButton} customer={customer} type={type}/>
       </Form>
     </TwoColumnBS>
   );
