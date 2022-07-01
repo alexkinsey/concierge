@@ -58,7 +58,6 @@ function App() {
     const appointment = await getAppointmentById(id);
     setAppointment(appointment);
     const consultant = await getConsultantById(appointment.consultantId);
-    console.log(consultant);
     setConsultant(consultant);
   };
 

@@ -56,9 +56,6 @@ const CreateEditAppointment = ({ type, appointment, consultant }) => {
       await addAppointment(formInputs);
       navigate(`/customer-overview/${customerId}`);
     } else if (type === 'edit') {
-      console.log('====================================');
-      console.log("formInputs: ", formInputs);
-      console.log('====================================');
       await editAppointment(formInputs, appointmentId);
       navigate(`/customer-overview/${customerId}/appointment-details/${appointmentId}`);
     }
@@ -78,7 +75,9 @@ const CreateEditAppointment = ({ type, appointment, consultant }) => {
         ) : (
           <AppointmentDetailsForm
             department={formInputs.businessArea}
+            consultant={consultant}
             appointment={appointment}
+            type={type}
             handleFormSubmitButton={handleFormSubmitButton}
           />
         )}

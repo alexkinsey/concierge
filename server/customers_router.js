@@ -109,7 +109,6 @@ const customersRouter =  () => {
 
   // UPDATE customer
   router.put('/:id', (req, res) => {
-    console.log(req.body);
     const data = {
       first_name: req.body.first_name,
       last_name: req.body.last_name,

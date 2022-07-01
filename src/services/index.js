@@ -85,7 +85,6 @@ export const addCustomer = async (customer) => {
 };
 
 export const editCustomer = async (customer, customerId) => {
-  console.log(customer, customerId);
   const res = await fetch(`http://localhost:3001/api/customers/${customerId}`, {
     method: 'PUT',
     body: JSON.stringify(customer),
@@ -94,13 +93,11 @@ export const editCustomer = async (customer, customerId) => {
     },
   });
   const data = await res.json();
-  console.log(data);
   const id = data.id;
   return id;
 }
 
 export const addAppointment = async (appointment) => {
-  console.log(appointment);
   const res = await fetch('http://localhost:3001/api/appointments', {
     method: 'POST',
     body: JSON.stringify(appointment),
@@ -125,9 +122,6 @@ export const deleteAppointment = async (appointmentId) => {
 }
 
 export const editAppointment = async (appointment, appointmentId) => {
-  console.log('====================================');
-  console.log("API Helper", appointment, appointmentId);
-  console.log('====================================');
   const res = await fetch(`http://localhost:3001/api/appointments/${appointmentId}`, {
     method: 'PUT',
     body: JSON.stringify(appointment),

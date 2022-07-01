@@ -9,7 +9,7 @@ import { Container, Separator } from '../../../styles/Layout.styles';
 import { FieldGroup, Label, Field, Radio, Selector } from '../../../styles/Form.styles';
 import { TextArea} from './index.styles'
 
-const AppointmentDetailsForm = ({ department, appointment, handleFormSubmitButton }) => {
+const AppointmentDetailsForm = ({ department, appointment, handleFormSubmitButton, consultant, type }) => {
   const navigate = useNavigate();
 
   const [purpose, setPurpose] = useState(appointment?.purpose);
@@ -91,7 +91,7 @@ const AppointmentDetailsForm = ({ department, appointment, handleFormSubmitButto
         <FieldGroup>
           <Label htmlFor="branch">Branch</Label>
           <Selector id="branch" required onChange={handleBranchChange}>
-            <option selected disabled value="Choose a branch...">
+            <option disabled defaultValue="Choose a branch...">
               Choose a branch...
             </option>
             <optgroup label="Scotland">
@@ -132,7 +132,7 @@ const AppointmentDetailsForm = ({ department, appointment, handleFormSubmitButto
       <FieldGroup>
         <Label htmlFor="consultant">Consultant</Label>
         <Selector type="text" id="consultant" required onChange={handleConsultantChange}>
-          <option selected disabled value="Choose a consultant...">
+          <option disabled defaultValue="Choose a consultant...">
             Choose a consultant...
           </option>
           {consultantsList}
@@ -167,7 +167,7 @@ const AppointmentDetailsForm = ({ department, appointment, handleFormSubmitButto
           full
           onClick={() => handleFormSubmitButton(purpose, location, branch, consultantId, date, time, comments)}
         >
-          Add appointment
+          {type === 'create' ? 'Add appointment' : 'Save changes'}
         </PrimaryButton>
       </FieldGroup>
     </Container>
