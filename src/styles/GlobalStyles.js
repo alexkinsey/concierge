@@ -8,6 +8,7 @@ export const GlobalStyles = createGlobalStyle`
     --darkGrey: #5b5b5b;
     --black: #333;
 
+    --accentLight: #ED8285;
     --accent: #d73e42;
     --accentDark: rgb(180, 30, 30);
 

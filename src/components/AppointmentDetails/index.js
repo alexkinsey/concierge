@@ -6,22 +6,12 @@ import { capitaliseFirstLetter } from '../common/helpers';
 
 import { CustomerDetails } from '../CustomerDetails';
 
-import {
-  Container,
-  LabelTextLayout,
-  TwoColumnSB
-} from '../../styles/Layout.styles';
+import { Container, LabelTextLayout, TwoColumnSB } from '../../styles/Layout.styles';
 import { Title, Heading, Text, TextLabel } from '../../styles/Text.styles';
 import { SecondaryButton, TextButton } from '../../styles/Button.styles';
 import { TextButtonPlacer, HeadingAligner, TextArea } from './index.styles';
 
-const AppointmentDetails = ({
-  getAppointmentData,
-  getCustomer,
-  appointment,
-  customer,
-  consultant
-}) => {
+const AppointmentDetails = ({ getAppointmentData, getCustomer, appointment, customer, consultant }) => {
   const navigate = useNavigate();
   const { customerId, appointmentId } = useParams();
   const [loaded, setLoaded] = useState(false);
@@ -45,9 +35,7 @@ const AppointmentDetails = ({
   };
 
   const handleEditButton = () => {
-    navigate(
-      `/customer-overview/${customer.customerId}/appointment-details/${appointmentId}/edit`
-    );
+    navigate(`/customer-overview/${customer.customerId}/appointment-details/${appointmentId}/edit`);
   };
 
   console.log(appointment);
@@ -63,9 +51,7 @@ const AppointmentDetails = ({
           </TextButtonPlacer>
 
           <TwoColumnSB>
-            <Title style={{ gridColumnStart: '1', gridColumnEnd: '3' }}>
-              Appointment details
-            </Title>
+            <Title style={{ gridColumnStart: '1', gridColumnEnd: '3' }}>Appointment details</Title>
             <CustomerDetails customer={customer} />
             <Container gap={1.5}>
               <HeadingAligner>
@@ -104,18 +90,8 @@ const AppointmentDetails = ({
               </LabelTextLayout>
 
               <TextLabel>Comments:</TextLabel>
-              <TextArea
-                rows="10"
-                defaultValue={
-                  !appointment.comments
-                    ? 'No comments noted.'
-                    : appointment.comments
-                }
-              ></TextArea>
-              {/* <TextArea rows="10" defaultValue={comment}/> */}
-              <SecondaryButton onClick={handleCancelAppointment}>
-                Cancel appointment
-              </SecondaryButton>
+              <TextArea rows="10" defaultValue={!appointment.comments ? 'No comments noted.' : appointment.comments} />
+              <SecondaryButton onClick={handleCancelAppointment}>Cancel appointment</SecondaryButton>
             </Container>
           </TwoColumnSB>
         </>

@@ -43,6 +43,9 @@ export const PrimaryButton = styled.button`
     cursor: pointer;
     background-color: var(--accentDark);
   }
+  :active {
+    filter: brightness(85%);
+  }
 `;
 
 export const SecondaryButton = styled.button`
@@ -58,5 +61,9 @@ export const SecondaryButton = styled.button`
 
   :hover {
     cursor: pointer;
+    background-color: rgba(214, 62, 66, 0.1);
+  }
+  :active {
+    filter: brightness(85%);
   }
 `;
