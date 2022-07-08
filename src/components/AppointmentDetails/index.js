@@ -38,8 +38,6 @@ const AppointmentDetails = ({ getAppointmentData, getCustomer, appointment, cust
     navigate(`/customer-overview/${customer.customerId}/appointment-details/${appointmentId}/edit`);
   };
 
-  console.log(appointment);
-
   return (
     <>
       {loaded && (

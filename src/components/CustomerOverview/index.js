@@ -1,5 +1,5 @@
 import { useEffect, useState } from 'react';
-import { useParams, Link, useNavigate } from 'react-router-dom';
+import { useParams, useNavigate } from 'react-router-dom';
 
 import { CustomerDetails } from '../CustomerDetails/index';
 import AppointmentsList from './AppointmentsList';
@@ -25,6 +25,7 @@ const CustomerOverview = ({
     getCustomer(customerId);
     getAppointments(customerId);
     setLoaded(true);
+  // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [customerId]);
 
   const handelBackButton = () => {
