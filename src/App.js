@@ -12,7 +12,7 @@ import AppointmentDetails from './components/AppointmentDetails';
 import CreateEditAppointment from './components/CreateEditAppointment';
 
 import {
-  searchCustomersAPI,
+  getCustomersByCustomerSearch,
   getAppointmentsByCustomerId,
   getCustomerById,
   getAppointmentById,
@@ -28,7 +28,7 @@ function App() {
   const [consultant, setConsultant] = useState({});
 
   const searchForCustomers = async (criteria) => {
-    const customers = await searchCustomersAPI(criteria);
+    const customers = await getCustomersByCustomerSearch(criteria);
     setFoundCustomers(customers);
     setNumberOfFoundCustomers(customers.length);
   };

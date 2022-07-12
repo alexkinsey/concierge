@@ -1,32 +1,5 @@
 import styled from 'styled-components';
 
-import { TextLarger } from './Text.styles';
-
-// export const TextButton = styled(TextLarger)`
-//   color: var(--accent);
-//   margin: ${props => props.right? '0 0 0 auto' : '0'};
-//   width: fit-content;
-//   padding: 0;
-// `;
-
-export const TextButton = styled.button`
-  display: block;
-
-  color: var(--accent);
-  background-color: transparent;
-  border: none;
-  font-size: 18px;
-  font-weight: 600;
-
-  margin: ${(props) => (props.right ? '0 0 0 auto' : '0')};
-  width: fit-content;
-  padding: 0;
-
-  :hover {
-    cursor: pointer;
-  }
-`;
-
 export const PrimaryButton = styled.button`
   background-color: var(--accent);
   border: none;
@@ -65,5 +38,23 @@ export const SecondaryButton = styled.button`
   }
   :active {
     filter: brightness(85%);
+  }
+`;
+
+export const TextButton = styled.button`
+  display: block;
+
+  color: var(--accent);
+  background-color: transparent;
+  border: none;
+  font-size: 18px;
+  font-weight: 600;
+
+  margin: ${(props) => (props.right ? '0 0 0 auto' : '0')};
+  width: fit-content;
+  padding: 0;
+
+  :hover {
+    cursor: pointer;
   }
 `;

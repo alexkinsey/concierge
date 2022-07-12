@@ -1,4 +1,4 @@
-export const searchCustomersAPI = async (customerSearch) => {
+export const getCustomersByCustomerSearch = async (customerSearch) => {
   const res = await fetch('http://localhost:3001/api/customers/search', {
     method: 'POST',
     body: JSON.stringify(customerSearch),
