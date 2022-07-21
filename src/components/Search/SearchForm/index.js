@@ -55,7 +55,9 @@ const SearchForm = ({ searchForCustomers }) => {
           <Field type="text" id="postcode" value={postcode} onChange={handlePostcodeChange} />
         </FieldGroup>
 
-        <PrimaryButton full type="submit" value="Search">Search</PrimaryButton>
+        <PrimaryButton full type="submit" value="Search">
+          Search
+        </PrimaryButton>
       </Form>
     </Container>
   );
