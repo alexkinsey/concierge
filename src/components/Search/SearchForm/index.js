@@ -4,6 +4,7 @@ import { TextAccent } from '../../../styles/Text.styles';
 import { PrimaryButton } from '../../../styles/Button.styles';
 import { Container } from '../../../styles/Layout.styles';
 import { Form, FieldGroup, Label, Field } from '../../../styles/Form.styles';
+import { capitaliseFirstLetter, formatPostcode } from '../../common/helpers';
 
 const SearchForm = ({ searchForCustomers }) => {
   const [firstName, setFirstName] = useState('');
@@ -11,10 +12,10 @@ const SearchForm = ({ searchForCustomers }) => {
   const [dateOfBirth, setDateOfBirth] = useState('');
   const [postcode, setPostcode] = useState('');
 
-  const handleFirstNameChange = (ev) => setFirstName(ev.target.value);
-  const handleLastNameChange = (ev) => setLastName(ev.target.value);
+  const handleFirstNameChange = (ev) => setFirstName(capitaliseFirstLetter(ev.target.value));
+  const handleLastNameChange = (ev) => setLastName(capitaliseFirstLetter(ev.target.value));
   const handleDateOfBirthChange = (ev) => setDateOfBirth(ev.target.value);
-  const handlePostcodeChange = (ev) => setPostcode(ev.target.value);
+  const handlePostcodeChange = (ev) => setPostcode(formatPostcode(ev.target.value));
 
   const handleSearch = async (ev) => {
     ev.preventDefault();

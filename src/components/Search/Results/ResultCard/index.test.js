@@ -20,7 +20,7 @@ const mockData = {
   },
 };
 
-test('ResultCard can render with props', () => {
+test('should render ResultCard with props', () => {
   render(
     <Router>
       <ResultCard customer={mockData.customer} />
@@ -45,7 +45,7 @@ test('ResultCard can render with props', () => {
 test('link should exist on Customer Overview button', () => {
   render(
     <Router>
-      <ResultCard customer={mockData.customer} resetFoundCustomers={()=>{}}/>
+      <ResultCard customer={mockData.customer} resetFoundCustomers={jest.fn()}/>
     </Router>
   );
 
