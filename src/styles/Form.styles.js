@@ -1,4 +1,13 @@
 import styled from 'styled-components';
+import PhoneInput from 'react-phone-input-2';
+import 'react-phone-input-2/lib/plain.css';
+
+export const PhoneField = styled(PhoneInput)`
+  .form-control {
+    width: 27.14rem;
+    height: 2.7rem;
+  }
+`;
 
 export const Form = styled.form`
   display: flex;

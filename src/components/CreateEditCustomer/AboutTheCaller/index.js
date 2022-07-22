@@ -4,7 +4,8 @@ import { useNavigate } from 'react-router-dom';
 import { Heading, TextAccent } from '../../../styles/Text.styles';
 import { PrimaryButton, SecondaryButton } from '../../../styles/Button.styles';
 import { Container, Separator } from '../../../styles/Layout.styles';
-import { FieldGroup, Label, Field } from '../../../styles/Form.styles';
+import { FieldGroup, Label, Field, PhoneField } from '../../../styles/Form.styles';
+import { capitaliseFirstLetter, formatPostcode } from '../../common/helpers';
 
 const AboutTheCaller = ({ handleFormSubmit, customer, type }) => {
   const navigate = useNavigate();
@@ -21,29 +22,28 @@ const AboutTheCaller = ({ handleFormSubmit, customer, type }) => {
   const [phoneNumber, setPhoneNumber] = useState(customer?.phoneNumber);
   const [nationalInsuranceNo, setNationalInsuranceNo] = useState(customer?.nationalInsuranceNo);
 
-  const handleFirstNameChange = (e) => setFirstName(e.target.value);
-  const handleLastNameChange = (e) => setLastName(e.target.value);
+  const handleFirstNameChange = (e) => setFirstName(capitaliseFirstLetter(e.target.value));
+  const handleLastNameChange = (e) => setLastName(capitaliseFirstLetter(e.target.value));
   const handleDateOfBirthChange = (e) => setDateOfBirth(e.target.value);
-  const handleAddress1Change = (e) => setAddress1(e.target.value);
-  const handleAddress2Change = (e) => setAddress2(e.target.value);
-  const handleAddress3Change = (e) => setAddress3(e.target.value);
-  const handleCityChange = (e) => setCity(e.target.value);
-  const handlePostcodeChange = (e) => setPostcode(e.target.value);
-  const handleEmailChange = (e) => setEmail(e.target.value);
-  const handlePhoneNumberChange = (e) => setPhoneNumber(e.target.value);
-  const handleNationalInsuranceNoChange = (e) => setNationalInsuranceNo(e.target.value);
+  const handleAddress1Change = (e) => setAddress1(capitaliseFirstLetter(e.target.value));
+  const handleAddress2Change = (e) => setAddress2(capitaliseFirstLetter(e.target.value));
+  const handleAddress3Change = (e) => setAddress3(capitaliseFirstLetter(e.target.value));
+  const handleCityChange = (e) => setCity(capitaliseFirstLetter(e.target.value.trim()));
+  const handlePostcodeChange = (e) => setPostcode(formatPostcode(e.target.value));
+  const handleEmailChange = (e) => setEmail(e.target.value.trim());
+  const handleNationalInsuranceNoChange = (e) => setNationalInsuranceNo(e.target.value.toUpperCase().trim());
 
   return (
     <Container gap={1}>
       <Heading>About the caller</Heading>
       <FieldGroup>
         <Label htmlFor="firstName">First name</Label>
-        <Field type="text" id="firstName" value={firstName} required onChange={handleFirstNameChange} />
+        <Field type="text" id="firstName" value={firstName} maxLength="25" required onChange={handleFirstNameChange} />
       </FieldGroup>
 
       <FieldGroup>
         <Label htmlFor="lastName">Last name</Label>
-        <Field type="text" id="lastName" value={lastName} required onChange={handleLastNameChange} />
+        <Field type="text" id="lastName" value={lastName} maxLength="25" required onChange={handleLastNameChange} />
       </FieldGroup>
 
       <FieldGroup>
@@ -53,46 +53,59 @@ const AboutTheCaller = ({ handleFormSubmit, customer, type }) => {
 
       <FieldGroup>
         <Label htmlFor="address1">Address line 1</Label>
-        <Field type="text" id="address1" value={address1} required onChange={handleAddress1Change} />
+        <Field type="text" id="address1" value={address1} maxLength="80" required onChange={handleAddress1Change} />
       </FieldGroup>
 
       <FieldGroup>
         <Label htmlFor="address2">
           Address line 2 <TextAccent>(optional)</TextAccent>
         </Label>
-        <Field type="text" id="address2" value={address2} onChange={handleAddress2Change} />
+        <Field type="text" id="address2" value={address2} maxLength="80" onChange={handleAddress2Change} />
       </FieldGroup>
 
       <FieldGroup>
         <Label htmlFor="address3">
           Address line 3 <TextAccent>(optional)</TextAccent>
         </Label>
-        <Field type="text" id="address3" value={address3} onChange={handleAddress3Change} />
+        <Field type="text" id="address3" value={address3} maxLength="80" onChange={handleAddress3Change} />
       </FieldGroup>
 
       <FieldGroup>
         <Label htmlFor="city">City</Label>
-        <Field type="text" id="city" value={city} required onChange={handleCityChange} />
+        <Field type="text" id="city" value={city} maxLength="50" required onChange={handleCityChange} />
       </FieldGroup>
 
       <FieldGroup>
         <Label htmlFor="postcode">Postcode</Label>
-        <Field type="text" id="postcode" value={postcode} required onChange={handlePostcodeChange} />
+        <Field type="text" id="postcode" value={postcode} maxLength="8" required onChange={handlePostcodeChange} />
       </FieldGroup>
 
       <FieldGroup>
         <Label htmlFor="email">Email</Label>
-        <Field type="email" id="email" value={email} required onChange={handleEmailChange} />
+        <Field type="email" id="email" value={email} maxLength="50" required onChange={handleEmailChange} />
       </FieldGroup>
 
       <FieldGroup>
         <Label htmlFor="phoneNumber">Phone number</Label>
-        <Field type="tel" pattern="[0-9]{3}-[0-9]{3}-[0-9]{4}" id="phoneNumber" value={phoneNumber} required onChange={handlePhoneNumberChange} />
+        <PhoneField
+          country="gb"
+          id="phoneNumber"
+          value={phoneNumber}
+          required
+          onChange={(value) => setPhoneNumber('+' + value)}
+        />
       </FieldGroup>
 
       <FieldGroup>
-        <Label htmlFor="nationalInsuranceNo">National Insurance Number</Label>
-        <Field type="text" id="nationalInsuranceNo" value={nationalInsuranceNo} required onChange={handleNationalInsuranceNoChange} />
+        <Label htmlFor="nationalInsuranceNo">National Insurance Number <TextAccent>(optional)</TextAccent></Label>
+        <Field
+          type="text"
+          id="nationalInsuranceNo"
+          value={nationalInsuranceNo}
+          maxLength="9"
+          placeholder="e.g. LS123456S"
+          onChange={handleNationalInsuranceNoChange}
+        />
       </FieldGroup>
 
       <Separator />
@@ -116,7 +129,7 @@ const AboutTheCaller = ({ handleFormSubmit, customer, type }) => {
               postcode,
               email,
               phoneNumber,
-              nationalInsuranceNo,
+              nationalInsuranceNo
             )
           }
         >
