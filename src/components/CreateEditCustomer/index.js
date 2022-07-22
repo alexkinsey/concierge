@@ -22,6 +22,7 @@ const CreateEditCustomer = ({ type, customer }) => {
     postcode: customer?.postcode,
     email: customer?.email,
     phoneNumber: customer?.phoneNumber,
+    nationalInsuranceNo: customer?.nationalInsuranceNo,
   });
 
   const handleFormSubmitButton = (
@@ -34,7 +35,8 @@ const CreateEditCustomer = ({ type, customer }) => {
     city,
     postcode,
     email,
-    phoneNumber
+    phoneNumber,
+    nationalInsuranceNo
   ) => {
     setFormInputs({
       ...formInputs,
@@ -48,6 +50,7 @@ const CreateEditCustomer = ({ type, customer }) => {
       postcode: postcode,
       email: email,
       phoneNumber: phoneNumber,
+      nationalInsuranceNo: nationalInsuranceNo,
     });
   };
 

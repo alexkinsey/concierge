@@ -19,6 +19,7 @@ const AboutTheCaller = ({ handleFormSubmit, customer, type }) => {
   const [postcode, setPostcode] = useState(customer?.postcode);
   const [email, setEmail] = useState(customer?.email);
   const [phoneNumber, setPhoneNumber] = useState(customer?.phoneNumber);
+  const [nationalInsuranceNo, setNationalInsuranceNo] = useState(customer?.nationalInsuranceNo);
 
   const handleFirstNameChange = (e) => setFirstName(e.target.value);
   const handleLastNameChange = (e) => setLastName(e.target.value);
@@ -30,6 +31,7 @@ const AboutTheCaller = ({ handleFormSubmit, customer, type }) => {
   const handlePostcodeChange = (e) => setPostcode(e.target.value);
   const handleEmailChange = (e) => setEmail(e.target.value);
   const handlePhoneNumberChange = (e) => setPhoneNumber(e.target.value);
+  const handleNationalInsuranceNoChange = (e) => setNationalInsuranceNo(e.target.value);
 
   return (
     <Container gap={1}>
@@ -85,7 +87,12 @@ const AboutTheCaller = ({ handleFormSubmit, customer, type }) => {
 
       <FieldGroup>
         <Label htmlFor="phoneNumber">Phone number</Label>
-        <Field type="text" id="phoneNumber" value={phoneNumber} required onChange={handlePhoneNumberChange} />
+        <Field type="tel" pattern="[0-9]{3}-[0-9]{3}-[0-9]{4}" id="phoneNumber" value={phoneNumber} required onChange={handlePhoneNumberChange} />
+      </FieldGroup>
+
+      <FieldGroup>
+        <Label htmlFor="nationalInsuranceNo">National Insurance Number</Label>
+        <Field type="text" id="nationalInsuranceNo" value={nationalInsuranceNo} required onChange={handleNationalInsuranceNoChange} />
       </FieldGroup>
 
       <Separator />
@@ -108,7 +115,8 @@ const AboutTheCaller = ({ handleFormSubmit, customer, type }) => {
               city,
               postcode,
               email,
-              phoneNumber
+              phoneNumber,
+              nationalInsuranceNo,
             )
           }
         >

@@ -43,7 +43,7 @@ const ResultCard = ({ customer, resetFoundCustomers }) => {
       </LabelTextLayout>
 
       <TextButton right onClick={handelCustomerOverviewButton}>
-        Customer Overview {'>'}
+        Customer overview {'>'}
       </TextButton>
     </Box>
   );
