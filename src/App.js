@@ -10,6 +10,7 @@ import CustomerOverview from './components/CustomerOverview';
 import CreateEditCustomer from './components/CreateEditCustomer';
 import AppointmentDetails from './components/AppointmentDetails';
 import CreateEditAppointment from './components/CreateEditAppointment';
+import PageNotFound from './components/PageNotFound';
 
 import {
   getCustomersByCustomerSearch,
@@ -122,6 +123,7 @@ function App() {
               <CreateEditAppointment type="edit" appointment={appointment} />
             }
           />
+          <Route path="/*" element={<PageNotFound />} />
         </Routes>
       </GlobalPageWidth>
     </Router>
