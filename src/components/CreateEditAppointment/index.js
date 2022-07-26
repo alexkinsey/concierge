@@ -18,7 +18,7 @@ const CreateEditAppointment = ({ type, appointment, consultant }) => {
     businessArea: appointment?.businessArea,
     purpose: appointment?.purpose,
     location: appointment?.location,
-    branch: appointment?.branch | null,
+    branch: appointment?.branch,
     date: appointment?.date,
     time: appointment?.time,
     comments: appointment?.comments,
@@ -26,6 +26,15 @@ const CreateEditAppointment = ({ type, appointment, consultant }) => {
     customerId: customerId,
   });
   const [formPage, setFormPage] = useState(1);
+
+  const handleCancelButton = (e) => {
+    e.preventDefault();
+    if( type === 'create' ) {
+      navigate(`/customer-overview/${customerId}`)
+    } else {
+      navigate(`/customer-overview/${appointment.customerId}/appointment-details/${appointment.appointmentId}`)
+    }
+  }
 
   const handleFormNextPageButton = (radio) => {
     if (radio) {
@@ -71,12 +80,13 @@ const CreateEditAppointment = ({ type, appointment, consultant }) => {
 
       <Form onSubmit={handleFormSubmit}>
         {formPage === 1 ? (
-          <NatureOfCall businessArea={formInputs.businessArea} handleFormNextPage={handleFormNextPageButton} />
+          <NatureOfCall businessArea={formInputs.businessArea} handleCancelButton={handleCancelButton} handleFormNextPage={handleFormNextPageButton} />
         ) : (
           <AppointmentDetailsForm
             department={formInputs.businessArea}
             appointment={appointment}
             type={type}
+            handleCancelButton={handleCancelButton}
             handleFormSubmitButton={handleFormSubmitButton}
           />
         )}

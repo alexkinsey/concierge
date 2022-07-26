@@ -1,5 +1,4 @@
 import React, { useState, useEffect } from 'react';
-import { useNavigate } from 'react-router-dom';
 
 import { getConsultantsByDepartment } from '../../../services';
 
@@ -9,9 +8,7 @@ import { Container, Separator } from '../../../styles/Layout.styles';
 import { FieldGroup, Label, Field, Radio, Selector } from '../../../styles/Form.styles';
 import { TextArea } from './index.styles';
 
-const AppointmentDetailsForm = ({ department, appointment, handleFormSubmitButton, type }) => {
-  const navigate = useNavigate();
-
+const AppointmentDetailsForm = ({ department, appointment, handleCancelButton, handleFormSubmitButton, type }) => {
   const [purpose, setPurpose] = useState(appointment?.purpose);
   const [location, setLocation] = useState(appointment?.location);
   const [branch, setBranch] = useState(appointment?.branch);
@@ -180,7 +177,7 @@ const AppointmentDetailsForm = ({ department, appointment, handleFormSubmitButto
       <Separator />
 
       <FieldGroup row>
-        <SecondaryButton full onClick={() => navigate(-1)}>
+        <SecondaryButton full onClick={handleCancelButton}>
           Cancel
         </SecondaryButton>
 
