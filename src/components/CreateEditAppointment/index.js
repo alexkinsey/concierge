@@ -15,7 +15,7 @@ const CreateEditAppointment = ({ type, appointment, consultant }) => {
   const { customerId, appointmentId } = useParams();
 
   const [formInputs, setFormInputs] = useState({
-    businessArea: '',
+    businessArea: appointment?.businessArea,
     purpose: appointment?.purpose,
     location: appointment?.location,
     branch: appointment?.branch | null,
@@ -71,11 +71,10 @@ const CreateEditAppointment = ({ type, appointment, consultant }) => {
 
       <Form onSubmit={handleFormSubmit}>
         {formPage === 1 ? (
-          <NatureOfCall handleFormNextPage={handleFormNextPageButton} />
+          <NatureOfCall businessArea={formInputs.businessArea} handleFormNextPage={handleFormNextPageButton} />
         ) : (
           <AppointmentDetailsForm
             department={formInputs.businessArea}
-            consultant={consultant}
             appointment={appointment}
             type={type}
             handleFormSubmitButton={handleFormSubmitButton}

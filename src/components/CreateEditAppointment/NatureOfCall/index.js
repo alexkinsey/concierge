@@ -6,10 +6,10 @@ import { Heading, Text } from '../../../styles/Text.styles';
 import { FieldGroup, Label, Radio } from '../../../styles/Form.styles';
 import { PrimaryButton, SecondaryButton } from '../../../styles/Button.styles';
 
-const NatureOfCall = ({ handleFormNextPage }) => {
+const NatureOfCall = ({ businessArea, handleFormNextPage }) => {
   const navigate = useNavigate();
 
-  const [selectedRadioBtn, setSelectedRadioBtn] = useState('');
+  const [selectedRadioBtn, setSelectedRadioBtn] = useState(businessArea);
 
   const handleRadioClick = (ev) => {
     setSelectedRadioBtn(ev.currentTarget.value);

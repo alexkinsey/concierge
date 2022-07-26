@@ -7,9 +7,9 @@ import { Heading, TextAccent } from '../../../styles/Text.styles';
 import { PrimaryButton, SecondaryButton } from '../../../styles/Button.styles';
 import { Container, Separator } from '../../../styles/Layout.styles';
 import { FieldGroup, Label, Field, Radio, Selector } from '../../../styles/Form.styles';
-import { TextArea} from './index.styles'
+import { TextArea } from './index.styles';
 
-const AppointmentDetailsForm = ({ department, appointment, handleFormSubmitButton, consultant, type }) => {
+const AppointmentDetailsForm = ({ department, appointment, handleFormSubmitButton, type }) => {
   const navigate = useNavigate();
 
   const [purpose, setPurpose] = useState(appointment?.purpose);
@@ -51,6 +51,21 @@ const AppointmentDetailsForm = ({ department, appointment, handleFormSubmitButto
   const handleTimeChange = (e) => setTime(e.target.value);
   const handleCommentsChange = (e) => setComments(e.target.value);
 
+  const handleSubmitButton = (e) => {
+    if (!consultantId && location === 'branch' && !branch) {
+      e.preventDefault();
+      alert('Please choose a consultant and branch');
+    } else if (location === 'branch' && !branch) {
+      e.preventDefault();
+      alert('Please choose a branch');
+    } else if (!consultantId) {
+      e.preventDefault();
+      alert('Please choose a consultant');
+    } else {
+      handleFormSubmitButton(purpose, location, branch, consultantId, date, time, comments);
+    }
+  };
+
   return (
     <Container gap={1}>
       <Heading>Appointment details</Heading>
@@ -90,8 +105,8 @@ const AppointmentDetailsForm = ({ department, appointment, handleFormSubmitButto
       {location === 'branch' && (
         <FieldGroup>
           <Label htmlFor="branch">Branch</Label>
-          <Selector id="branch" required onChange={handleBranchChange}>
-            <option disabled defaultValue="Choose a branch...">
+          <Selector id="branch" defaultValue={'Choose a branch...'} required onChange={handleBranchChange}>
+            <option disabled value={'Choose a branch...'}>
               Choose a branch...
             </option>
             <optgroup label="Scotland">
@@ -131,8 +146,14 @@ const AppointmentDetailsForm = ({ department, appointment, handleFormSubmitButto
 
       <FieldGroup>
         <Label htmlFor="consultant">Consultant</Label>
-        <Selector type="text" id="consultant" required onChange={handleConsultantChange}>
-          <option disabled defaultValue="Choose a consultant...">
+        <Selector
+          type="text"
+          id="consultant"
+          defaultValue="Choose a consultant..."
+          required
+          onChange={handleConsultantChange}
+        >
+          <option disabled value="Choose a consultant...">
             Choose a consultant...
           </option>
           {consultantsList}
@@ -163,10 +184,7 @@ const AppointmentDetailsForm = ({ department, appointment, handleFormSubmitButto
           Cancel
         </SecondaryButton>
 
-        <PrimaryButton
-          full
-          onClick={() => handleFormSubmitButton(purpose, location, branch, consultantId, date, time, comments)}
-        >
+        <PrimaryButton full onClick={handleSubmitButton}>
           {type === 'create' ? 'Add appointment' : 'Save changes'}
         </PrimaryButton>
       </FieldGroup>
