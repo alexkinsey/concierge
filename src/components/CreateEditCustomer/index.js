@@ -4,7 +4,7 @@ import { useNavigate } from 'react-router-dom';
 import AboutTheCaller from './AboutTheCaller';
 
 import { Form } from '../../styles/Form.styles';
-import { TwoColumnBS } from '../../styles/Layout.styles';
+import { TwoColumn } from '../../styles/Layout.styles';
 import { Title } from '../../styles/Text.styles';
 import { addCustomer, editCustomer } from '../../services';
 
@@ -66,7 +66,7 @@ const CreateEditCustomer = ({ type, customer }) => {
   };
 
   return (
-    <TwoColumnBS>
+    <TwoColumn large>
       {type === 'create' ? (
         <Title style={{ gridColumnStart: '1', gridColumnEnd: '3' }}>Create a new customer record</Title>
       ) : (
@@ -76,7 +76,7 @@ const CreateEditCustomer = ({ type, customer }) => {
       <Form onSubmit={handleFormSubmit}>
         <AboutTheCaller handleFormSubmit={handleFormSubmitButton} customer={customer} type={type}/>
       </Form>
-    </TwoColumnBS>
+    </TwoColumn>
   );
 };
 

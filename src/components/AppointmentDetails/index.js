@@ -6,7 +6,7 @@ import { capitaliseFirstLetter } from '../common/helpers';
 
 import { CustomerDetails } from '../CustomerDetails';
 
-import { Container, LabelTextLayout, TwoColumnSB } from '../../styles/Layout.styles';
+import { Container, LabelTextLayout, TwoColumn } from '../../styles/Layout.styles';
 import { Title, Heading, Text, TextLabel } from '../../styles/Text.styles';
 import { SecondaryButton, TextButton } from '../../styles/Button.styles';
 import { TextButtonPlacer, HeadingAligner, TextArea } from './index.styles';
@@ -48,7 +48,7 @@ const AppointmentDetails = ({ getAppointmentData, getCustomer, appointment, cust
             </Link>
           </TextButtonPlacer>
 
-          <TwoColumnSB>
+          <TwoColumn>
             <Title style={{ gridColumnStart: '1', gridColumnEnd: '3' }}>Appointment details</Title>
             <CustomerDetails customer={customer} />
             <Container gap={1.5}>
@@ -91,7 +91,7 @@ const AppointmentDetails = ({ getAppointmentData, getCustomer, appointment, cust
               <TextArea rows="10" defaultValue={!appointment.comments ? 'No comments noted.' : appointment.comments} />
               <SecondaryButton onClick={handleCancelAppointment}>Cancel appointment</SecondaryButton>
             </Container>
-          </TwoColumnSB>
+          </TwoColumn>
         </>
       )}
     </>

@@ -7,21 +7,13 @@ export const GlobalPageWidth = styled.div`
   padding: 0 3rem 5rem 3rem;
 `;
 
-export const TwoColumnSB = styled.div`
-  display: grid;
-  grid-template-columns: 1fr 2fr;
-  grid-template-rows: 75px 1fr;
-
-  gap: 1rem 1rem;
-`;
-
-export const TwoColumnBS = styled.div`
+export const TwoColumn = styled.div`
   max-width: var(--maxPageWidth);
   min-width: var(--minPageWidth);
   margin: auto;
 
   display: grid;
-  grid-template-columns: 2fr 1fr;
+  grid-template-columns: ${(props) => (props.large ? '2fr 1fr' : '1fr 2fr')};
   grid-template-rows: 75px 1fr;
 
   gap: 1rem 1rem;

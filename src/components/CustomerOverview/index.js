@@ -4,7 +4,7 @@ import { useParams, useNavigate } from 'react-router-dom';
 import { CustomerDetails } from '../CustomerDetails/index';
 import AppointmentsList from './AppointmentsList';
 
-import { TwoColumnSB } from '../../styles/Layout.styles';
+import { TwoColumn } from '../../styles/Layout.styles';
 import { Title } from '../../styles/Text.styles';
 import { TextButton } from '../../styles/Button.styles';
 import { TextButtonPlacer } from './index.styles';
@@ -42,13 +42,13 @@ const CustomerOverview = ({
       </TextButtonPlacer>
 
       {loaded && (
-        <TwoColumnSB>
+        <TwoColumn>
           <Title style={{ gridColumnStart: '1', gridColumnEnd: '3' }}>
             Customer overview - {customer.firstName} {customer.lastName}
           </Title>
           <CustomerDetails customer={customer} />
           <AppointmentsList appointments={appointments} />
-        </TwoColumnSB>
+        </TwoColumn>
       )}
     </>
   );

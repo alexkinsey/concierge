@@ -7,7 +7,7 @@ import AppointmentDetailsForm from './AppointmentDetailsForm';
 import NatureOfCall from './NatureOfCall';
 
 import { Form } from '../../styles/Form.styles';
-import { TwoColumnBS } from '../../styles/Layout.styles';
+import { TwoColumn } from '../../styles/Layout.styles';
 import { Title } from '../../styles/Text.styles';
 
 const CreateEditAppointment = ({ type, appointment }) => {
@@ -71,7 +71,7 @@ const CreateEditAppointment = ({ type, appointment }) => {
   };
 
   return (
-    <TwoColumnBS>
+    <TwoColumn large>
       {type === 'create' ? (
         <Title style={{ gridColumnStart: '1', gridColumnEnd: '3' }}>Create a new appointment</Title>
       ) : (
@@ -95,7 +95,7 @@ const CreateEditAppointment = ({ type, appointment }) => {
           />
         )}
       </Form>
-    </TwoColumnBS>
+    </TwoColumn>
   );
 };
 
