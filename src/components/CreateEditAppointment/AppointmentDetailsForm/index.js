@@ -11,12 +11,12 @@ import { TextArea } from './index.styles';
 const AppointmentDetailsForm = ({ department, appointment, handleCancelButton, handleFormSubmitButton, type }) => {
   const [purpose, setPurpose] = useState(appointment?.purpose);
   const [location, setLocation] = useState(appointment?.location);
-  const [branch, setBranch] = useState(appointment?.branch);
+  const [branch, setBranch] = useState('');
   const [date, setDate] = useState(appointment?.date);
   const [time, setTime] = useState(appointment?.time);
   const [comments, setComments] = useState(appointment?.comments);
   const [consultants, setConsultants] = useState([]);
-  const [consultantId, setConsultantId] = useState(appointment?.consultantId);
+  const [consultantId, setConsultantId] = useState('');
 
   // Load consultant list
   useEffect(() => {

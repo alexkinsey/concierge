@@ -10,7 +10,7 @@ import { Form } from '../../styles/Form.styles';
 import { TwoColumnBS } from '../../styles/Layout.styles';
 import { Title } from '../../styles/Text.styles';
 
-const CreateEditAppointment = ({ type, appointment, consultant }) => {
+const CreateEditAppointment = ({ type, appointment }) => {
   const navigate = useNavigate();
   const { customerId, appointmentId } = useParams();
 
@@ -18,23 +18,23 @@ const CreateEditAppointment = ({ type, appointment, consultant }) => {
     businessArea: appointment?.businessArea,
     purpose: appointment?.purpose,
     location: appointment?.location,
-    branch: appointment?.branch,
+    branch: '',
     date: appointment?.date,
     time: appointment?.time,
     comments: appointment?.comments,
-    consultantId: appointment?.consultantId,
+    consultantId: '',
     customerId: customerId,
   });
   const [formPage, setFormPage] = useState(1);
 
   const handleCancelButton = (e) => {
     e.preventDefault();
-    if( type === 'create' ) {
-      navigate(`/customer-overview/${customerId}`)
+    if (type === 'create') {
+      navigate(`/customer-overview/${customerId}`);
     } else {
-      navigate(`/customer-overview/${appointment.customerId}/appointment-details/${appointment.appointmentId}`)
+      navigate(`/customer-overview/${appointment.customerId}/appointment-details/${appointment.appointmentId}`);
     }
-  }
+  };
 
   const handleFormNextPageButton = (radio) => {
     if (radio) {
@@ -80,7 +80,11 @@ const CreateEditAppointment = ({ type, appointment, consultant }) => {
 
       <Form onSubmit={handleFormSubmit}>
         {formPage === 1 ? (
-          <NatureOfCall businessArea={formInputs.businessArea} handleCancelButton={handleCancelButton} handleFormNextPage={handleFormNextPageButton} />
+          <NatureOfCall
+            businessArea={formInputs.businessArea}
+            handleCancelButton={handleCancelButton}
+            handleFormNextPage={handleFormNextPageButton}
+          />
         ) : (
           <AppointmentDetailsForm
             department={formInputs.businessArea}
