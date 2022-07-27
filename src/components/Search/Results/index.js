@@ -1,8 +1,10 @@
 import { useNavigate } from 'react-router-dom';
 
+// COMPONENTS
 import ResultCard from './ResultCard';
 import InfoWarningCard from '../../common/InfoWarningCard';
 
+// STYLES
 import { Heading } from '../../../styles/Text.styles';
 import { Container } from '../../../styles/Layout.styles';
 import { PrimaryButton } from '../../../styles/Button.styles';
@@ -19,9 +21,9 @@ const Results = ({ customers, numberOfFoundCustomers, resetFoundCustomers }) => 
   } match your search`;
 
   const handelCreateCustomerButton = () => {
-    resetFoundCustomers()
+    resetFoundCustomers();
     navigate('/create-customer');
-  }
+  };
 
   return (
     <Container gap={2}>
@@ -35,9 +37,7 @@ const Results = ({ customers, numberOfFoundCustomers, resetFoundCustomers }) => 
       )}
       {resultCards}
       {numberOfFoundCustomers === 0 && (
-        <PrimaryButton onClick={handelCreateCustomerButton}>
-          Create a new customer record
-        </PrimaryButton>
+        <PrimaryButton onClick={handelCreateCustomerButton}>Create a new customer record</PrimaryButton>
       )}
     </Container>
   );

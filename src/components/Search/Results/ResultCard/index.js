@@ -1,8 +1,10 @@
 import { useEffect, useState } from 'react';
 import { useNavigate } from 'react-router-dom';
 
+// API call to get appointments by customerId
 import { getAppointmentsByCustomerId } from '../../../../services';
 
+// STYLES
 import { LabelTextLayout } from '../../../../styles/Layout.styles';
 import { Text, TextLabel, TextLarger } from '../../../../styles/Text.styles';
 import { TextButton } from '../../../../styles/Button.styles';
@@ -12,8 +14,8 @@ const ResultCard = ({ customer, resetFoundCustomers }) => {
   const navigate = useNavigate();
 
   const [numberOfAppointments, setNumberOfAppointments] = useState('');
+
   useEffect(() => {
-    // BUG - useEffect is hit twice on render
     getNumberOfAppointments(customer.customerId);
   }, [customer.customerId]);
 

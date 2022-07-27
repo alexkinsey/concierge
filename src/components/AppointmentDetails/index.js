@@ -1,11 +1,16 @@
 import { useEffect, useState } from 'react';
 import { useParams, Link, useNavigate } from 'react-router-dom';
 
+// COMPONENTS
+import CustomerDetails from '../CustomerDetails';
+
+// API call to delete an appointment
 import { deleteAppointment } from '../../services';
+
+// HELPER FUNCTIONS
 import { capitaliseFirstLetter } from '../common/helpers';
 
-import { CustomerDetails } from '../CustomerDetails';
-
+// STYLES
 import { Container, LabelTextLayout, TwoColumn } from '../../styles/Layout.styles';
 import { Title, Heading, Text, TextLabel } from '../../styles/Text.styles';
 import { SecondaryButton, TextButton } from '../../styles/Button.styles';

@@ -1,8 +1,10 @@
 import { Link } from 'react-router-dom';
 
+// COMPONENTS
 import AppointmentCard from './AppointmentCard';
 import InfoWarningCard from '../../common/InfoWarningCard';
 
+// STYLES
 import { Container, Separator } from '../../../styles/Layout.styles';
 import { Heading } from '../../../styles/Text.styles';
 import { PrimaryButton } from '../../../styles/Button.styles';

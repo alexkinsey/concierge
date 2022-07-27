@@ -1,11 +1,14 @@
 import React, { useState } from 'react';
 import { useNavigate } from 'react-router-dom';
 
+// HELPER FUNCTIONS
+import { capitaliseFirstLetter, formatPostcode } from '../../common/helpers';
+
+// STYLES
 import { Heading, TextAccent } from '../../../styles/Text.styles';
 import { PrimaryButton, SecondaryButton } from '../../../styles/Button.styles';
 import { Container, Separator } from '../../../styles/Layout.styles';
 import { FieldGroup, Label, Field, PhoneField } from '../../../styles/Form.styles';
-import { capitaliseFirstLetter, formatPostcode } from '../../common/helpers';
 
 const AboutTheCaller = ({ handleFormSubmit, customer, type }) => {
   const navigate = useNavigate();
@@ -97,7 +100,9 @@ const AboutTheCaller = ({ handleFormSubmit, customer, type }) => {
       </FieldGroup>
 
       <FieldGroup>
-        <Label htmlFor="nationalInsuranceNo">National Insurance Number <TextAccent>(optional)</TextAccent></Label>
+        <Label htmlFor="nationalInsuranceNo">
+          National Insurance Number <TextAccent>(optional)</TextAccent>
+        </Label>
         <Field
           type="text"
           id="nationalInsuranceNo"

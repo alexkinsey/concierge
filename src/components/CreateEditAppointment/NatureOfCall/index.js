@@ -1,5 +1,6 @@
 import { useState } from 'react';
 
+// STYLES
 import { Container, Separator } from '../../../styles/Layout.styles';
 import { Heading, Text } from '../../../styles/Text.styles';
 import { FieldGroup, Label, Radio } from '../../../styles/Form.styles';

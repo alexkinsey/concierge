@@ -1,11 +1,14 @@
 import { useState } from 'react';
 import { useNavigate, useParams } from 'react-router-dom';
 
-import { addAppointment, editAppointment } from '../../services';
-
+// COMPONENTS
 import AppointmentDetailsForm from './AppointmentDetailsForm';
 import NatureOfCall from './NatureOfCall';
 
+// API CALLS
+import { addAppointment, editAppointment } from '../../services';
+
+// STYLES
 import { Form } from '../../styles/Form.styles';
 import { TwoColumn } from '../../styles/Layout.styles';
 import { Title } from '../../styles/Text.styles';
@@ -39,7 +42,7 @@ const CreateEditAppointment = ({ type, appointment }) => {
   const handleBackButton = (e) => {
     e.preventDefault();
     setFormPage(formPage - 1);
-  }
+  };
 
   const handleFormNextPageButton = (radio) => {
     if (radio) {

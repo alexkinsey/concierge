@@ -1,4 +1,6 @@
-import React, { useState } from 'react';
+import { useState } from 'react';
+
+// STYLES
 import { PrimaryButton, SecondaryButton } from '../../../styles/Button.styles';
 import { Field, FieldGroup, Form, Label } from '../../../styles/Form.styles';
 import { TwoColumn, Container, Separator } from '../../../styles/Layout.styles';

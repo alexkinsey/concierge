@@ -1,12 +1,16 @@
 import { useState } from 'react';
 import { useNavigate } from 'react-router-dom';
 
+// COMPONENTS
 import AboutTheCaller from './AboutTheCaller';
 
+// API CALLS
+import { addCustomer, editCustomer } from '../../services';
+
+// STYLES
 import { Form } from '../../styles/Form.styles';
 import { TwoColumn } from '../../styles/Layout.styles';
 import { Title } from '../../styles/Text.styles';
-import { addCustomer, editCustomer } from '../../services';
 
 const CreateEditCustomer = ({ type, customer }) => {
   const navigate = useNavigate();
@@ -74,7 +78,7 @@ const CreateEditCustomer = ({ type, customer }) => {
       )}
 
       <Form onSubmit={handleFormSubmit}>
-        <AboutTheCaller handleFormSubmit={handleFormSubmitButton} customer={customer} type={type}/>
+        <AboutTheCaller handleFormSubmit={handleFormSubmitButton} customer={customer} type={type} />
       </Form>
     </TwoColumn>
   );

@@ -1,7 +1,9 @@
-import React, { useState, useEffect } from 'react';
+import { useState, useEffect } from 'react';
 
+// API call to get consultant list by department
 import { getConsultantsByDepartment } from '../../../services';
 
+// STYLES
 import { Heading, TextAccent } from '../../../styles/Text.styles';
 import { PrimaryButton, SecondaryButton } from '../../../styles/Button.styles';
 import { Container, Separator } from '../../../styles/Layout.styles';

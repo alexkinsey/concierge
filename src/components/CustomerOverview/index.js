@@ -1,21 +1,17 @@
 import { useEffect, useState } from 'react';
 import { useParams, useNavigate } from 'react-router-dom';
 
-import { CustomerDetails } from '../CustomerDetails/index';
+// COMPONENTS
+import CustomerDetails from '../CustomerDetails/index';
 import AppointmentsList from './AppointmentsList';
 
+// STYLES
 import { TwoColumn } from '../../styles/Layout.styles';
 import { Title } from '../../styles/Text.styles';
 import { TextButton } from '../../styles/Button.styles';
 import { TextButtonPlacer } from './index.styles';
 
-const CustomerOverview = ({
-  getCustomer,
-  getAppointments,
-  customer,
-  appointments,
-  resetData
-}) => {
+const CustomerOverview = ({ getCustomer, getAppointments, customer, appointments, resetData }) => {
   const { customerId } = useParams();
   const navigate = useNavigate();
 
@@ -25,7 +21,7 @@ const CustomerOverview = ({
     getCustomer(customerId);
     getAppointments(customerId);
     setLoaded(true);
-  // eslint-disable-next-line react-hooks/exhaustive-deps
+    // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [customerId]);
 
   const handelBackButton = () => {
@@ -36,9 +32,7 @@ const CustomerOverview = ({
   return (
     <>
       <TextButtonPlacer>
-        <TextButton onClick={handelBackButton}>
-          {'<'} Back to Customer search
-        </TextButton>
+        <TextButton onClick={handelBackButton}>{'<'} Back to Customer search</TextButton>
       </TextButtonPlacer>
 
       {loaded && (

@@ -1,16 +1,17 @@
 import { useNavigate } from 'react-router-dom';
 
+// STYLES
 import { Container, LabelTextLayout } from '../../styles/Layout.styles';
 import { Heading, TextLabel, Text } from '../../styles/Text.styles';
 import { TextButton } from '../../styles/Button.styles';
 import { HeadingAligner } from './index.styles';
 
-export const CustomerDetails = ({ customer }) => {
+const CustomerDetails = ({ customer }) => {
   const navigate = useNavigate();
   const handleEditButton = () => {
     navigate(`/customer-overview/${customer.customerId}/edit`);
   };
-  
+
   return (
     <Container gap={1.5}>
       <HeadingAligner>
@@ -48,3 +49,5 @@ export const CustomerDetails = ({ customer }) => {
     </Container>
   );
 };
+
+export default CustomerDetails;

@@ -1,3 +1,4 @@
+// STYLES
 import { Container, Aligner } from './index.styles';
 import { TextLarger } from '../../../styles/Text.styles';
 

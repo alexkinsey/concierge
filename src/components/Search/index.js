@@ -1,8 +1,10 @@
-import { Title } from '../../styles/Text.styles';
-import { TwoColumn } from '../../styles/Layout.styles';
-
+// COMPONENTS
 import SearchForm from './SearchForm';
 import Results from './Results';
+
+// STYLES
+import { Title } from '../../styles/Text.styles';
+import { TwoColumn } from '../../styles/Layout.styles';
 
 const Search = ({searchForCustomers, foundCustomers, numberOfFoundCustomers, resetFoundCustomers}) => {
   return (

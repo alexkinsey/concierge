@@ -1,7 +1,9 @@
 import { Link } from 'react-router-dom';
 
+// HELPER FUNCTIONS
 import { capitaliseFirstLetter } from '../../../common/helpers';
 
+// STYLES
 import { TextButton } from '../../../../styles/Button.styles';
 import { LabelTextLayout } from '../../../../styles/Layout.styles';
 import { Text, TextLabel, TextLarger } from '../../../../styles/Text.styles';
