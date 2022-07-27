@@ -1,16 +1,23 @@
-import React from 'react';
-import { PrimaryButton } from '../../../styles/Button.styles';
+import React, { useState } from 'react';
+import { PrimaryButton, SecondaryButton } from '../../../styles/Button.styles';
 import { Field, FieldGroup, Form, Label } from '../../../styles/Form.styles';
 import { TwoColumn, Container, Separator } from '../../../styles/Layout.styles';
 import { Heading, Text, TextLarger, Title, TextAccent } from '../../../styles/Text.styles';
 
 const MockLogin = () => {
+  const [showPassword, setShowPassword] = useState(false);
+
+  const handleShowPassword = (e) => {
+    e.preventDefault();
+    setShowPassword(!showPassword);
+  };
   const handleLoginSubmit = (e) => {
     e.preventDefault();
     window.location.href = '/';
   };
+
   return (
-    <TwoColumn large>
+    <TwoColumn style={{ width: '1300px' }} large>
       <Title style={{ gridColumnStart: '1', gridColumnEnd: '3' }}>Banking Group employee login</Title>
 
       <Container
@@ -45,8 +52,27 @@ const MockLogin = () => {
           <FieldGroup>
             <Label>Password</Label>
             <div>
-              <Field style={{ width: '252px' }} type="password" placeholder="Please enter your password" required />
-              <Field style={{ width: '40px', textAlign: 'center' }} placeholder="show" disabled />
+              <Field
+                style={{ width: '255px' }}
+                type={showPassword ? 'text' : 'password'}
+                placeholder="Please enter your password"
+                required
+              />
+              <SecondaryButton
+                style={{
+                  width: '75px',
+                  height: '43px',
+                  padding: '0',
+                  fontSize: '15px',
+                  borderStyle: 'solid solid solid none',
+                  borderColor: 'var(--grey)',
+                  borderWidth: '1px',
+                  color: 'var(--darkGrey)',
+                }}
+                onClick={handleShowPassword}
+              >
+                show
+              </SecondaryButton>
             </div>
           </FieldGroup>
           <PrimaryButton>Log in</PrimaryButton>

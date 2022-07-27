@@ -8,7 +8,7 @@ import { Container, Separator } from '../../../styles/Layout.styles';
 import { FieldGroup, Label, Field, Radio, Selector } from '../../../styles/Form.styles';
 import { TextArea } from './index.styles';
 
-const AppointmentDetailsForm = ({ department, appointment, handleCancelButton, handleFormSubmitButton, type }) => {
+const AppointmentDetailsForm = ({ department, appointment, handleBackButton, handleFormSubmitButton, type }) => {
   const [purpose, setPurpose] = useState(appointment?.purpose);
   const [location, setLocation] = useState(appointment?.location);
   const [branch, setBranch] = useState('');
@@ -177,8 +177,8 @@ const AppointmentDetailsForm = ({ department, appointment, handleCancelButton, h
       <Separator />
 
       <FieldGroup row>
-        <SecondaryButton full onClick={handleCancelButton}>
-          Cancel
+        <SecondaryButton full onClick={handleBackButton}>
+          Back
         </SecondaryButton>
 
         <PrimaryButton full onClick={handleSubmitButton}>

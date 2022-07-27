@@ -36,6 +36,11 @@ const CreateEditAppointment = ({ type, appointment }) => {
     }
   };
 
+  const handleBackButton = (e) => {
+    e.preventDefault();
+    setFormPage(formPage - 1);
+  }
+
   const handleFormNextPageButton = (radio) => {
     if (radio) {
       setFormInputs({
@@ -90,7 +95,7 @@ const CreateEditAppointment = ({ type, appointment }) => {
             department={formInputs.businessArea}
             appointment={appointment}
             type={type}
-            handleCancelButton={handleCancelButton}
+            handleBackButton={handleBackButton}
             handleFormSubmitButton={handleFormSubmitButton}
           />
         )}
