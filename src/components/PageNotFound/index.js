@@ -12,8 +12,13 @@ const PageNotFound = () => {
       <Title style={{ gridColumnStart: '1', gridColumnEnd: '3' }}>404 Page not found</Title>
       <Container gap="2">
         <Heading>The page you are looking for does not exist.</Heading>
-        <Text>Check the address is typed correctly or navigate back to Customer search.</Text>
-        <Text>If this issues persists, please raise an issues at <TextAccent>IT@LBG</TextAccent>.</Text>
+        <div>
+          <Text>Check the address is typed correctly or navigate back to Customer search.</Text>
+          <Text>
+            If this issues persists, please raise an issues at <TextAccent>IT@BG</TextAccent>.
+          </Text>
+        </div>
+
         <TextButton onClick={handleBackToCustomerSearch}>{'<'} Back to Customer search</TextButton>
       </Container>
     </TwoColumnBS>

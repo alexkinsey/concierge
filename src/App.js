@@ -11,6 +11,7 @@ import CreateEditCustomer from './components/CreateEditCustomer';
 import AppointmentDetails from './components/AppointmentDetails';
 import CreateEditAppointment from './components/CreateEditAppointment';
 import PageNotFound from './components/PageNotFound';
+import MockLogin from './components/common/MockLogin';
 
 import {
   getCustomersByCustomerSearch,
@@ -124,6 +125,7 @@ function App() {
             }
           />
           <Route path="/*" element={<PageNotFound />} />
+          <Route path="/login" element={<MockLogin />} />
         </Routes>
       </GlobalPageWidth>
     </Router>
