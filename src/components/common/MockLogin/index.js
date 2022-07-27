@@ -5,6 +5,10 @@ import { TwoColumn, Container, Separator } from '../../../styles/Layout.styles';
 import { Heading, Text, TextLarger, Title, TextAccent } from '../../../styles/Text.styles';
 
 const MockLogin = () => {
+  const handleLoginSubmit = (e) => {
+    e.preventDefault();
+    window.location.href = '/';
+  };
   return (
     <TwoColumn large>
       <Title style={{ gridColumnStart: '1', gridColumnEnd: '3' }}>Banking Group employee login</Title>
@@ -27,21 +31,21 @@ const MockLogin = () => {
         <Text style={{ color: 'var(--white)', margin: '-115px auto auto auto' }}>
           Not all features are implemented and finalised. Please report any issues to IT@BG.
         </Text>
-        <Text style={{ color: 'var(--white)' }}>V0.10.1.9</Text>
+        <Text style={{ color: 'var(--white)' }}>V0.12.8</Text>
       </Container>
 
       <Container gap={1}>
         <Heading>Please use your details to log in</Heading>
 
-        <Form>
+        <Form onSubmit={handleLoginSubmit}>
           <FieldGroup>
             <Label>Username</Label>
-            <Field type="email" placeholder="Your employee email address" />
+            <Field type="email" placeholder="Your employee email address" required />
           </FieldGroup>
           <FieldGroup>
             <Label>Password</Label>
             <div>
-              <Field style={{ width: '252px' }} type="password" placeholder="Please enter your password" />{' '}
+              <Field style={{ width: '252px' }} type="password" placeholder="Please enter your password" required />
               <Field style={{ width: '40px', textAlign: 'center' }} placeholder="show" disabled />
             </div>
           </FieldGroup>
