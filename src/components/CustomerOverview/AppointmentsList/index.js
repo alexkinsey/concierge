@@ -10,18 +10,51 @@ import { Heading } from '../../../styles/Text.styles';
 import { PrimaryButton } from '../../../styles/Button.styles';
 
 const AppointmentsList = ({ appointments }) => {
-  const totalAppointments = appointments.length;
+  const pastAppointments = appointments.filter((appointment) => {
+    const date = new Date(appointment.date);
+    return date < Date.now();
+  });
+  const upcomingAppointments = appointments.filter((appointment) => {
+    const date = new Date(appointment.date);
+    return date > Date.now();
+  });
 
-  const appointmentCards = appointments.map((appointment) => {
+  const pastAppointmentCards = pastAppointments.map((appointment) => {
+    return <AppointmentCard key={appointment.appointmentId} appointment={appointment} />;
+  });
+  const upcomingAppointmentCards = upcomingAppointments.map((appointment) => {
     return <AppointmentCard key={appointment.appointmentId} appointment={appointment} />;
   });
 
   return (
     <Container gap={1}>
-      <Heading>Appointments</Heading>
-      {totalAppointments === 0 && <InfoWarningCard type="info" message="Customer has no appointments" />}
-      {appointmentCards}
+      {appointments.length === 0 ? (
+        <>
+          <Heading>Appointments</Heading>
+          <InfoWarningCard type="info" message="Customer has no appointments" />
+        </>
+      ): upcomingAppointments.length === 0 && (
+        <>
+          <Heading>Upcoming Appointments</Heading>
+          <InfoWarningCard type="info" message="Customer has no upcoming appointments" />
+        </>
+      )}
+
+      {upcomingAppointments.length > 0 && (
+        <>
+          <Heading>Upcoming Appointments</Heading>
+          {upcomingAppointmentCards}
+        </>
+      )}
+      {pastAppointments.length > 0 && (
+        <>
+          <Heading>Past Appointments</Heading>
+          {pastAppointmentCards}
+        </>
+      )}
+      
       <Separator />
+
       <Link to="create-appointment">
         <PrimaryButton right>Create a new appointment</PrimaryButton>
       </Link>

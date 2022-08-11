@@ -1,10 +1,10 @@
 import { useState } from 'react';
 
 // STYLES
-import { PrimaryButton, SecondaryButton } from '../../../styles/Button.styles';
-import { Field, FieldGroup, Form, Label } from '../../../styles/Form.styles';
-import { TwoColumn, Container, Separator } from '../../../styles/Layout.styles';
-import { Heading, Text, TextLarger, Title, TextAccent } from '../../../styles/Text.styles';
+import { PrimaryButton, SecondaryButton } from '../../styles/Button.styles';
+import { Field, FieldGroup, Form, Label } from '../../styles/Form.styles';
+import { TwoColumn, Container, Separator } from '../../styles/Layout.styles';
+import { Heading, Text, TextLarger, Title, TextAccent } from '../../styles/Text.styles';
 
 const MockLogin = () => {
   const [showPassword, setShowPassword] = useState(false);
@@ -28,7 +28,7 @@ const MockLogin = () => {
           height: '88%',
         }}
       >
-        <Title style={{ color: 'var(--white)', margin: 'auto', fontSize: '80px' }}>Welcome back!</Title>
+        <Title style={{ color: 'var(--white)', margin: 'auto', fontSize: '80px' }}>Welcome back</Title>
 
         <Separator
           style={{ color: 'var(--white)', margin: '-100px auto auto auto', width: '15%', borderBottom: '8px solid' }}
@@ -77,13 +77,13 @@ const MockLogin = () => {
               </SecondaryButton>
             </div>
           </FieldGroup>
-          <PrimaryButton>Log in</PrimaryButton>
+          <PrimaryButton full>Log in</PrimaryButton>
         </Form>
         <Separator />
         <div>
           <TextLarger>Need Help?</TextLarger>
           <Text>
-            If you're having trouble logging in, please call on <TextAccent>0300 111 2222</TextAccent>. Lines are open
+            If you're having trouble logging in, please call on <TextAccent>0300 111 2222</TextAccent>. Lines are operated
             Monday to Friday, 9am - 6pm.
           </Text>
           <p></p>

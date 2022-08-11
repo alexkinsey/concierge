@@ -11,7 +11,7 @@ import CreateEditCustomer from './components/CreateEditCustomer';
 import AppointmentDetails from './components/AppointmentDetails';
 import CreateEditAppointment from './components/CreateEditAppointment';
 import PageNotFound from './components/PageNotFound';
-import MockLogin from './components/common/MockLogin';
+import MockLogin from './components/MockLogin';
 
 import {
   getCustomersByCustomerSearch,
